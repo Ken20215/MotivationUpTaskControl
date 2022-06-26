@@ -10,7 +10,7 @@ import SwiftUI
 import SwiftUI
 import CoreData
 
-struct HomeView: View {
+struct HomenView: View {
     @Environment(\.managedObjectContext) private var viewContext
 
     @FetchRequest(
@@ -78,9 +78,9 @@ private let itemFormatter: DateFormatter = {
     return formatter
 }()
 
-struct HomeView_Previews: PreviewProvider {
+struct HomenView_Previews: PreviewProvider {
     static var previews: some View {
-        HomeView().environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
+        HomenView().environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
     }
 }
 
