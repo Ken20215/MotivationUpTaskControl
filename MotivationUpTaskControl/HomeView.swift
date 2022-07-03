@@ -6,57 +6,85 @@
 //
 
 import SwiftUI
+import CoreData
 
 struct HomeView: View {
+    @Environment(\.managedObjectContext) private var viewContext
+    @Environment(\.dismiss) private var dismiss
+    @Environment(\.presentationMode) var presentationMode
+    @State var isShowTap: Bool = false
     var body: some View {
         NavigationView {
-            VStack {
-                Spacer()
-                HStack {
-                    Button(action: {
-                        
-                    }) {
-                        // 緊急かつ重要
-                        Text("Urgrnt and vital")
-                            .frame(width: 130, height: 130)
-                            .foregroundColor(Color.white)
-                            .background(Color.red)
-                    } // 「緊急かつ重要」Buttonここまで
-                    
-                    Button(action: {
-                        
-                    }) {
-                        // 緊急だが重要でない
-                        Text("Urgent but unimportant")
-                            .frame(width: 130, height: 130)
-                            .foregroundColor(Color.white)
-                            .background(Color.yellow)
-                    } // 「緊急だが重要でない」Buttonここまで
-                } // Hstackここまで
-                HStack{
-                    Button(action: {
-                        
-                    }) {
-                        // 緊急でないが重要
-                        Text("Not urgent, but important")
-                            .frame(width: 130, height: 130)
-                            .foregroundColor(Color.white)
-                            .background(Color.green)
-                    } // 「緊急でないが重要」Buttonここまで
-                    
-                    Button(action: {
-                        
-                    }) {
-                        //　緊急でなく重要でない
-                        Text("Not urgent, not important.")
-                            .frame(width: 130, height: 130)
-                            .foregroundColor(Color.white)
-                            .background(Color.blue)
-                    } // 「緊急でなく重要でない」Buttonここまで
-                } // Hstackここまで
-                Spacer()
-            } // Vstackここまで
-            .navigationBarTitle("Task")
+            // もしisShowtapがfalseであれば画面をそのままの状態にし、trueであれば画面をNavigationLink先に遷移させ、HomeView画面を閉じる。
+            if isShowTap == false {
+                ZStack {
+                    VStack {
+                        Spacer()
+                        HStack {
+                            Button(action: {
+                                isShowTap.toggle()
+                            }) {
+                                // 緊急かつ重要
+                                Text("緊急かつ重要")
+                                    .frame(width: 130, height: 130)
+                                    .foregroundColor(Color.white)
+                                    .background(Color.red)
+                            } // 「緊急かつ重要」Buttonここまで
+
+                            Button(action: {
+                                isShowTap.toggle()
+                            }) {
+                                // 緊急だが重要でない
+                                Text("緊急だが重要でない")
+                                    .frame(width: 130, height: 130)
+                                    .foregroundColor(Color.white)
+                                    .background(Color.yellow)
+                            } // 「緊急だが重要でない」Buttonここまで
+                        } // Hstackここまで
+                        HStack {
+                            Button(action: {
+                                isShowTap.toggle()
+                            }) {
+                                // 緊急でないが重要
+                                Text("緊急でないが重要")
+                                    .frame(width: 130, height: 130)
+                                    .foregroundColor(Color.white)
+                                    .background(Color.green)
+                            } // 「緊急でないが重要」Buttonここまで
+
+                            Button(action: {
+                                isShowTap.toggle()
+                            }) {
+                                //　緊急でなく重要でない
+                                Text("緊急でなく重要でない")
+                                    .frame(width: 130, height: 130)
+                                    .foregroundColor(Color.white)
+                                    .background(Color.blue)
+                            } // 「緊急でなく重要でない」Buttonここまで
+                        } // Hstackここまで
+                        Spacer()
+                    } // Vstackここまで
+                    .navigationBarTitle("Task")
+                } // Zstackここまで
+            } else {
+                // 引数（isActive）に画面遷移の条件となるフラグ（Bool型のバインド変数）を指定します。
+                // このフラグがtrueになった時に画面遷移します。
+                NavigationLink(destination: InputMemoFaile(), isActive: $isShowTap) {
+                    // ラベルに EmptyView() を指定して「ラベルViewを表示しない」ようにすると、タップによる遷移を排除可能です。
+                    EmptyView()
+                }
+                .toolbar {
+                    ToolbarItem(placement: .navigationBarLeading) {
+                        Button(action: {
+                            presentationMode.wrappedValue.dismiss()
+                            isShowTap.toggle()
+                        }) {
+                            // Image(systemName: "chevron.backward")
+
+                        }
+                    }
+                }
+            }
         } //  NavigationViewここまで
     }
 }
