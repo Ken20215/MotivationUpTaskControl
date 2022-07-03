@@ -80,7 +80,6 @@ struct HomeView: View {
                             isShowTap.toggle()
                         }) {
                             // Image(systemName: "chevron.backward")
-
                         }
                     }
                 }
