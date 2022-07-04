@@ -8,7 +8,7 @@
 import SwiftUI
 import CoreData
 
-struct SaveView: View {
+struct SavedView: View {
     @StateObject private var saveItems = AddSaveViewModel()
     @State private var prioritys: [String] = ["緊急かつ重要", "緊急だが重要でない", "緊急でないが重要", "緊急でなく重要でない"]
     @State private var priorityCategory: Int = 0
@@ -48,7 +48,7 @@ struct SaveView: View {
                     } // ForEachここまで
                     .onDelete { IndexSet in
                         saveItems.deleteItems(offsets: IndexSet, items: items, viewContext: viewContext)
-                    }
+                    } // .onDeleteここまで
                 } // Listここまで
             } //  VStackここまで
         } // NavigationViewここまで
@@ -57,6 +57,6 @@ struct SaveView: View {
 
 struct SaveView_Previews: PreviewProvider {
     static var previews: some View {
-        SaveView()
+        SavedView()
     }
 }

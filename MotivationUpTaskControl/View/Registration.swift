@@ -8,7 +8,7 @@
 import SwiftUI
 import CoreData
 
-struct InputMemoFaile: View {
+struct Registration: View {
     @Environment(\.managedObjectContext) private var viewContext
     @Environment(\.dismiss) private var dismiss
     @StateObject private var inputItem = InputMemoFaileViewModel()
@@ -81,6 +81,6 @@ struct InputMemoFaile: View {
 
 struct InputMemoFaile_Previews: PreviewProvider {
     static var previews: some View {
-        InputMemoFaile()
+        Registration()
     }
 }
