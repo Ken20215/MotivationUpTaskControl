@@ -8,7 +8,7 @@
 import SwiftUI
 import CoreData
 
-class EditViewModel: ObservableObject {
+class EditMemoViewModel: ObservableObject {
     @Published var content = ""
     @Published var date = Date()
     
