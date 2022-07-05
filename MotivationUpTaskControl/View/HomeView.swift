@@ -25,23 +25,17 @@ struct HomeView: View {
                                 isShowTap.toggle()
                             }) {
                                 // 緊急かつ重要
-                                VStack {
-                                    Text("緊急かつ")
-                                    Text("重要")
-                                }
-                                .frame(width: 130, height: 130)
-                                .foregroundColor(Color.white)
-                                .background(Color.red)
+                                Text("緊急かつ\n重要")
+                                    .frame(width: 130, height: 130)
+                                    .foregroundColor(Color.white)
+                                    .background(Color.red)
                             } // 「緊急かつ重要」Buttonここまで
-
+                            
                             Button(action: {
                                 isShowTap.toggle()
                             }) {
                                 // 緊急だが重要でない
-                                VStack {
-                                    Text("緊急だが")
-                                    Text("重要でない")
-                                }
+                                Text("緊急だが\n重要でない")
                                 .frame(width: 130, height: 130)
                                 .foregroundColor(Color.white)
                                 .background(Color.yellow)
@@ -52,23 +46,17 @@ struct HomeView: View {
                                 isShowTap.toggle()
                             }) {
                                 // 緊急でないが重要
-                                VStack {
-                                    Text("緊急でないが")
-                                    Text("重要")
-                                }
+                                Text("緊急でないが\n重要")
                                 .frame(width: 130, height: 130)
                                 .foregroundColor(Color.white)
                                 .background(Color.green)
                             } // 「緊急でないが重要」Buttonここまで
-
+                            
                             Button(action: {
                                 isShowTap.toggle()
                             }) {
                                 //　緊急でなく重要でない
-                                VStack {
-                                    Text("緊急でなく")
-                                    Text("重要でない")
-                                }
+                                Text("緊急でなく\n重要でない")
                                 .frame(width: 130, height: 130)
                                 .foregroundColor(Color.white)
                                 .background(Color.blue)
