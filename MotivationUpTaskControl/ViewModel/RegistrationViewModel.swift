@@ -8,7 +8,7 @@
 import SwiftUI
 import CoreData
 
-class InputMemoFaileViewModel: ObservableObject {
+class RegistrationViewModel: ObservableObject {
     @Published var content = ""
     @Published var date = Date()
 

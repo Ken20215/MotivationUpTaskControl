@@ -11,7 +11,7 @@ import CoreData
 struct Registration: View {
     @Environment(\.managedObjectContext) private var viewContext
     @Environment(\.dismiss) private var dismiss
-    @StateObject private var inputItem = InputMemoFaileViewModel()
+    @StateObject private var inputItem = RegistrationViewModel()
     @State private var inputText: String = ""
     @State private var flag = false
     @State private var priority: String = "高"

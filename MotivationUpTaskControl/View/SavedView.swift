@@ -29,7 +29,7 @@ struct SavedView: View {
                 Picker("", selection: self.$priorityCategory) {
                     ForEach(0..<prioritys.count, id: \.self) {
                         Text(self.prioritys[$0])
-                    }
+                    } // ForEachここまで
                 } // Pickerここまで
                 .labelsHidden()
                 .pickerStyle(SegmentedPickerStyle())
