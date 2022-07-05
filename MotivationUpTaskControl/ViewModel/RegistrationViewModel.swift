@@ -8,10 +8,10 @@
 import SwiftUI
 import CoreData
 
-class InputMemoFaileViewModel: ObservableObject {
+class RegistrationViewModel: ObservableObject {
     @Published var content = ""
     @Published var date = Date()
-
+    
     func memoInputText(viewContext: NSManagedObjectContext, dismiss: DismissAction) {
         // 保存するCoreDataのMemo型インスタンス変数を作成・初期化する。
         let inputItem = Memo(context: viewContext)

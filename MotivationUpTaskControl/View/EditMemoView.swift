@@ -10,10 +10,10 @@ import CoreData
 
 struct EditMemoView: View {
     var edititem: Memo
-    @StateObject private var editMemoItem = EditViewModel()
+    @StateObject private var editMemoItem = EditMemoViewModel()
     @Environment(\.managedObjectContext) private var viewContext
     @Environment(\.dismiss) private var dismiss
-
+    
     var body: some View {
         VStack {
             Group {

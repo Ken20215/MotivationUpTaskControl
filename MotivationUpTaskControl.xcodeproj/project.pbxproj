@@ -7,13 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		BE599B79286DDA1C00A6F780 /* AddSaveViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE599B78286DDA1C00A6F780 /* AddSaveViewModel.swift */; };
-		BE600D0C2867F748000EA1FA /* SaveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE600D0B2867F748000EA1FA /* SaveView.swift */; };
-		BE600D0E2867F7B3000EA1FA /* InputMemoFaile.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE600D0D2867F7B3000EA1FA /* InputMemoFaile.swift */; };
+		BE599B79286DDA1C00A6F780 /* SavedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE599B78286DDA1C00A6F780 /* SavedViewModel.swift */; };
+		BE600D0C2867F748000EA1FA /* SavedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE600D0B2867F748000EA1FA /* SavedView.swift */; };
+		BE600D0E2867F7B3000EA1FA /* RegistrationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE600D0D2867F7B3000EA1FA /* RegistrationView.swift */; };
 		BE600D1028680CCC000EA1FA /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE600D0F28680CCC000EA1FA /* HomeView.swift */; };
-		BE6611D0286F2823005B3991 /* InputMemoFaileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE6611CF286F2823005B3991 /* InputMemoFaileViewModel.swift */; };
+		BE6611D0286F2823005B3991 /* RegistrationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE6611CF286F2823005B3991 /* RegistrationViewModel.swift */; };
 		BE6611D2286F2CFA005B3991 /* EditMemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE6611D1286F2CFA005B3991 /* EditMemoView.swift */; };
-		BE6611D4286F2D9A005B3991 /* EditViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE6611D3286F2D9A005B3991 /* EditViewModel.swift */; };
+		BE6611D4286F2D9A005B3991 /* EditMemoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE6611D3286F2D9A005B3991 /* EditMemoViewModel.swift */; };
 		BEB8503C2865DF7F00EF1059 /* MotivationUpTaskControlApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB8503B2865DF7F00EF1059 /* MotivationUpTaskControlApp.swift */; };
 		BEB8503E2865DF7F00EF1059 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB8503D2865DF7F00EF1059 /* ContentView.swift */; };
 		BEB850402865DF8500EF1059 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BEB8503F2865DF8500EF1059 /* Assets.xcassets */; };
@@ -23,13 +23,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		BE599B78286DDA1C00A6F780 /* AddSaveViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AddSaveViewModel.swift; path = MotivationUpTaskControl/ViewModel/AddSaveViewModel.swift; sourceTree = SOURCE_ROOT; };
-		BE600D0B2867F748000EA1FA /* SaveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SaveView.swift; path = MotivationUpTaskControl/SaveView.swift; sourceTree = SOURCE_ROOT; };
-		BE600D0D2867F7B3000EA1FA /* InputMemoFaile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = InputMemoFaile.swift; path = MotivationUpTaskControl/InputMemoFaile.swift; sourceTree = SOURCE_ROOT; };
-		BE600D0F28680CCC000EA1FA /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HomeView.swift; path = MotivationUpTaskControl/HomeView.swift; sourceTree = SOURCE_ROOT; };
-		BE6611CF286F2823005B3991 /* InputMemoFaileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = InputMemoFaileViewModel.swift; path = MotivationUpTaskControl/ViewModel/InputMemoFaileViewModel.swift; sourceTree = SOURCE_ROOT; };
-		BE6611D1286F2CFA005B3991 /* EditMemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = EditMemoView.swift; path = MotivationUpTaskControl/EditMemoView.swift; sourceTree = SOURCE_ROOT; };
-		BE6611D3286F2D9A005B3991 /* EditViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = EditViewModel.swift; path = MotivationUpTaskControl/ViewModel/EditViewModel.swift; sourceTree = SOURCE_ROOT; };
+		BE599B78286DDA1C00A6F780 /* SavedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SavedViewModel.swift; path = MotivationUpTaskControl/ViewModel/SavedViewModel.swift; sourceTree = SOURCE_ROOT; };
+		BE600D0B2867F748000EA1FA /* SavedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SavedView.swift; path = motivationUpTaskControl/View/SavedView.swift; sourceTree = SOURCE_ROOT; };
+		BE600D0D2867F7B3000EA1FA /* RegistrationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RegistrationView.swift; path = motivationUpTaskControl/View/RegistrationView.swift; sourceTree = SOURCE_ROOT; };
+		BE600D0F28680CCC000EA1FA /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HomeView.swift; path = motivationUpTaskControl/View/HomeView.swift; sourceTree = SOURCE_ROOT; };
+		BE6611CF286F2823005B3991 /* RegistrationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RegistrationViewModel.swift; path = MotivationUpTaskControl/ViewModel/RegistrationViewModel.swift; sourceTree = SOURCE_ROOT; };
+		BE6611D1286F2CFA005B3991 /* EditMemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = EditMemoView.swift; path = motivationUpTaskControl/View/EditMemoView.swift; sourceTree = SOURCE_ROOT; };
+		BE6611D3286F2D9A005B3991 /* EditMemoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = EditMemoViewModel.swift; path = MotivationUpTaskControl/ViewModel/EditMemoViewModel.swift; sourceTree = SOURCE_ROOT; };
 		BEB850382865DF7F00EF1059 /* motivationUpTaskControl.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = motivationUpTaskControl.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BEB8503B2865DF7F00EF1059 /* MotivationUpTaskControlApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotivationUpTaskControlApp.swift; sourceTree = "<group>"; };
 		BEB8503D2865DF7F00EF1059 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -50,12 +50,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		BE4D579628730C27007FFB8B /* View */ = {
+			isa = PBXGroup;
+			children = (
+				BEB8503D2865DF7F00EF1059 /* ContentView.swift */,
+				BE600D0F28680CCC000EA1FA /* HomeView.swift */,
+				BE600D0B2867F748000EA1FA /* SavedView.swift */,
+				BE600D0D2867F7B3000EA1FA /* RegistrationView.swift */,
+				BE6611D1286F2CFA005B3991 /* EditMemoView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		BE599B77286DD9F000A6F780 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				BE599B78286DDA1C00A6F780 /* AddSaveViewModel.swift */,
-				BE6611CF286F2823005B3991 /* InputMemoFaileViewModel.swift */,
-				BE6611D3286F2D9A005B3991 /* EditViewModel.swift */,
+				BE599B78286DDA1C00A6F780 /* SavedViewModel.swift */,
+				BE6611CF286F2823005B3991 /* RegistrationViewModel.swift */,
+				BE6611D3286F2D9A005B3991 /* EditMemoViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -80,11 +92,7 @@
 			isa = PBXGroup;
 			children = (
 				BEB8503B2865DF7F00EF1059 /* MotivationUpTaskControlApp.swift */,
-				BEB8503D2865DF7F00EF1059 /* ContentView.swift */,
-				BE600D0F28680CCC000EA1FA /* HomeView.swift */,
-				BE600D0B2867F748000EA1FA /* SaveView.swift */,
-				BE600D0D2867F7B3000EA1FA /* InputMemoFaile.swift */,
-				BE6611D1286F2CFA005B3991 /* EditMemoView.swift */,
+				BE4D579628730C27007FFB8B /* View */,
 				BE599B77286DD9F000A6F780 /* ViewModel */,
 				BEB8503F2865DF8500EF1059 /* Assets.xcassets */,
 				BEB850442865DF8500EF1059 /* Persistence.swift */,
@@ -194,17 +202,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BE6611D4286F2D9A005B3991 /* EditViewModel.swift in Sources */,
+				BE6611D4286F2D9A005B3991 /* EditMemoViewModel.swift in Sources */,
 				BEB850452865DF8500EF1059 /* Persistence.swift in Sources */,
-				BE599B79286DDA1C00A6F780 /* AddSaveViewModel.swift in Sources */,
+				BE599B79286DDA1C00A6F780 /* SavedViewModel.swift in Sources */,
 				BEB8503E2865DF7F00EF1059 /* ContentView.swift in Sources */,
 				BEB8503C2865DF7F00EF1059 /* MotivationUpTaskControlApp.swift in Sources */,
-				BE6611D0286F2823005B3991 /* InputMemoFaileViewModel.swift in Sources */,
+				BE6611D0286F2823005B3991 /* RegistrationViewModel.swift in Sources */,
 				BE6611D2286F2CFA005B3991 /* EditMemoView.swift in Sources */,
 				BEB850482865DF8500EF1059 /* motivationUpTaskControl.xcdatamodeld in Sources */,
 				BE600D1028680CCC000EA1FA /* HomeView.swift in Sources */,
-				BE600D0E2867F7B3000EA1FA /* InputMemoFaile.swift in Sources */,
-				BE600D0C2867F748000EA1FA /* SaveView.swift in Sources */,
+				BE600D0E2867F7B3000EA1FA /* RegistrationView.swift in Sources */,
+				BE600D0C2867F748000EA1FA /* SavedView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

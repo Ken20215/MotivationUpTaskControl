@@ -25,17 +25,17 @@ struct HomeView: View {
                                 isShowTap.toggle()
                             }) {
                                 // 緊急かつ重要
-                                Text("緊急かつ重要")
+                                Text("緊急かつ\n重要")
                                     .frame(width: 130, height: 130)
                                     .foregroundColor(Color.white)
                                     .background(Color.red)
                             } // 「緊急かつ重要」Buttonここまで
-
+                            
                             Button(action: {
                                 isShowTap.toggle()
                             }) {
                                 // 緊急だが重要でない
-                                Text("緊急だが重要でない")
+                                Text("緊急だが\n重要でない")
                                     .frame(width: 130, height: 130)
                                     .foregroundColor(Color.white)
                                     .background(Color.yellow)
@@ -46,17 +46,17 @@ struct HomeView: View {
                                 isShowTap.toggle()
                             }) {
                                 // 緊急でないが重要
-                                Text("緊急でないが重要")
+                                Text("緊急でないが\n重要")
                                     .frame(width: 130, height: 130)
                                     .foregroundColor(Color.white)
                                     .background(Color.green)
                             } // 「緊急でないが重要」Buttonここまで
-
+                            
                             Button(action: {
                                 isShowTap.toggle()
                             }) {
                                 //　緊急でなく重要でない
-                                Text("緊急でなく重要でない")
+                                Text("緊急でなく\n重要でない")
                                     .frame(width: 130, height: 130)
                                     .foregroundColor(Color.white)
                                     .background(Color.blue)
@@ -69,7 +69,7 @@ struct HomeView: View {
             } else {
                 // 引数（isActive）に画面遷移の条件となるフラグ（Bool型のバインド変数）を指定します。
                 // このフラグがtrueになった時に画面遷移します。
-                NavigationLink(destination: InputMemoFaile(), isActive: $isShowTap) {
+                NavigationLink(destination: Registration(), isActive: $isShowTap) {
                     // ラベルに EmptyView() を指定して「ラベルViewを表示しない」ようにすると、タップによる遷移を排除可能です。
                     EmptyView()
                 }
@@ -80,7 +80,6 @@ struct HomeView: View {
                             isShowTap.toggle()
                         }) {
                             // Image(systemName: "chevron.backward")
-
                         }
                     }
                 }

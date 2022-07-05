@@ -16,7 +16,7 @@ struct ContentView: View {
         UITabBar.appearance().backgroundColor = UIColor.gray
         UINavigationBar.appearance().largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.red]
     }
-
+    
     var body: some View {
         TabView {
             HomeView()
@@ -25,13 +25,13 @@ struct ContentView: View {
                     Text("home")
                 }
                 .padding()
-            SaveView()
+            SavedView()
                 .tabItem {
                     Image(systemName: "suit.heart.fill")
                     Text("Saved")
                 }
                 .padding()
-            InputMemoFaile()
+            Registration()
                 .tabItem {
                     Image(systemName: "square.and.pencil")
                     Text("Registration")

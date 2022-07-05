@@ -8,8 +8,8 @@
 import SwiftUI
 import CoreData
 
-struct SaveView: View {
-    @StateObject private var saveItems = AddSaveViewModel()
+struct SavedView: View {
+    @StateObject private var saveItems = SavedViewModel()
     @State private var prioritys: [String] = ["緊急かつ重要", "緊急だが重要でない", "緊急でないが重要", "緊急でなく重要でない"]
     @State private var priorityCategory: Int = 0
     @Environment(\.managedObjectContext) private var viewContext
@@ -18,7 +18,7 @@ struct SaveView: View {
         sortDescriptors: [NSSortDescriptor(keyPath: \Memo.date, ascending: true)],
         animation: .default)
     private var items: FetchedResults<Memo>
-
+    
     init() {
         UISegmentedControl.appearance().setTitleTextAttributes(
             [.font: UIFont.systemFont(ofSize: 6)], for: .selected)
@@ -29,26 +29,26 @@ struct SaveView: View {
                 Picker("", selection: self.$priorityCategory) {
                     ForEach(0..<prioritys.count, id: \.self) {
                         Text(self.prioritys[$0])
-                    }
+                    } // ForEachここまで
                 } // Pickerここまで
                 .labelsHidden()
                 .pickerStyle(SegmentedPickerStyle())
                 .frame(width: 320, height: 60)
-
+                
                 List() {
                     ForEach(items) { item in
                         NavigationLink(destination: EditMemoView(edititem: item),
                                        label: {
-                                        VStack(alignment: .leading) {
-                                            Text("\(item.content ?? "")")
-                                            Text(item.date!, style: .date)
-                                                .environment(\.locale, Locale.init(identifier: "en_US"))
-                                        } // Vstackここまで
-                                       }) // NavigationLinkここまで
+                            VStack(alignment: .leading) {
+                                Text("\(item.content ?? "")")
+                                Text(item.date!, style: .date)
+                                    .environment(\.locale, Locale.init(identifier: "en_US"))
+                            } // Vstackここまで
+                        }) // NavigationLinkここまで
                     } // ForEachここまで
                     .onDelete { IndexSet in
                         saveItems.deleteItems(offsets: IndexSet, items: items, viewContext: viewContext)
-                    }
+                    } // .onDeleteここまで
                 } // Listここまで
             } //  VStackここまで
         } // NavigationViewここまで
@@ -57,6 +57,6 @@ struct SaveView: View {
 
 struct SaveView_Previews: PreviewProvider {
     static var previews: some View {
-        SaveView()
+        SavedView()
     }
 }
