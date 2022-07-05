@@ -13,7 +13,7 @@ struct EditMemoView: View {
     @StateObject private var editMemoItem = EditViewModel()
     @Environment(\.managedObjectContext) private var viewContext
     @Environment(\.dismiss) private var dismiss
-
+    
     var body: some View {
         VStack {
             Group {

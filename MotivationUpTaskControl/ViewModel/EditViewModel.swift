@@ -11,12 +11,12 @@ import CoreData
 class EditViewModel: ObservableObject {
     @Published var content = ""
     @Published var date = Date()
-
+    
     func saveMemo(editItem: Memo, viewContext: NSManagedObjectContext, dismiss: DismissAction) {
         editItem.content = content
         editItem.date = date
         try? viewContext.save()
         dismiss()
     }
-
+    
 }

@@ -26,21 +26,21 @@ struct Registration: View {
                         .textFieldStyle(.roundedBorder)
                         .padding()
                         .border(Color.gray, width: 3)
-
+                    
                     Spacer()
-
+                    
                     Toggle(isOn: $flag) {
                         Text(flag ? "完了" : "未完了")
                     } // Toggleここまで
                     .frame(width: 290, height: 60)
                     .padding()
                     .border(Color.gray, width: 3)
-
+                    
                     Spacer()
                     HStack {
                         Text("優先度")
                             .padding()
-
+                        
                         Picker("", selection: self.$priority) {
                             ForEach(0 ..< priorityList.count, id: \.self) { index in
                                 Text(priorityList[index])
@@ -53,7 +53,7 @@ struct Registration: View {
                     } // Hstackここまで
                     .border(Color.gray, width: 3)
                     Spacer()
-
+                    
                     DatePicker("期日", selection: $inputItem.date)
                         .frame(width: 290, height: 60)
                         .padding()
@@ -61,7 +61,7 @@ struct Registration: View {
                     Spacer()
                     TextEditor(text: $inputItem.content)
                         .frame(width: 315, height: 250)
-                        // TextEditorのボーダーカラーをグレーに指定し、ボーダー線の太さを指定。
+                    // TextEditorのボーダーカラーをグレーに指定し、ボーダー線の太さを指定。
                         .border(Color.gray, width: 3)
                         .padding()
                 } // Groupここまで

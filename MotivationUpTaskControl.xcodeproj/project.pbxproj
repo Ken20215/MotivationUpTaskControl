@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		BE599B79286DDA1C00A6F780 /* AddSaveViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE599B78286DDA1C00A6F780 /* AddSaveViewModel.swift */; };
+		BE599B79286DDA1C00A6F780 /* SavedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE599B78286DDA1C00A6F780 /* SavedViewModel.swift */; };
 		BE600D0C2867F748000EA1FA /* SavedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE600D0B2867F748000EA1FA /* SavedView.swift */; };
 		BE600D0E2867F7B3000EA1FA /* RegistrationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE600D0D2867F7B3000EA1FA /* RegistrationView.swift */; };
 		BE600D1028680CCC000EA1FA /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE600D0F28680CCC000EA1FA /* HomeView.swift */; };
@@ -23,7 +23,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		BE599B78286DDA1C00A6F780 /* AddSaveViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AddSaveViewModel.swift; path = MotivationUpTaskControl/ViewModel/AddSaveViewModel.swift; sourceTree = SOURCE_ROOT; };
+		BE599B78286DDA1C00A6F780 /* SavedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SavedViewModel.swift; path = MotivationUpTaskControl/ViewModel/SavedViewModel.swift; sourceTree = SOURCE_ROOT; };
 		BE600D0B2867F748000EA1FA /* SavedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SavedView.swift; path = motivationUpTaskControl/View/SavedView.swift; sourceTree = SOURCE_ROOT; };
 		BE600D0D2867F7B3000EA1FA /* RegistrationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RegistrationView.swift; path = motivationUpTaskControl/View/RegistrationView.swift; sourceTree = SOURCE_ROOT; };
 		BE600D0F28680CCC000EA1FA /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HomeView.swift; path = motivationUpTaskControl/View/HomeView.swift; sourceTree = SOURCE_ROOT; };
@@ -65,7 +65,7 @@
 		BE599B77286DD9F000A6F780 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				BE599B78286DDA1C00A6F780 /* AddSaveViewModel.swift */,
+				BE599B78286DDA1C00A6F780 /* SavedViewModel.swift */,
 				BE6611CF286F2823005B3991 /* RegistrationViewModel.swift */,
 				BE6611D3286F2D9A005B3991 /* EditViewModel.swift */,
 			);
@@ -204,7 +204,7 @@
 			files = (
 				BE6611D4286F2D9A005B3991 /* EditViewModel.swift in Sources */,
 				BEB850452865DF8500EF1059 /* Persistence.swift in Sources */,
-				BE599B79286DDA1C00A6F780 /* AddSaveViewModel.swift in Sources */,
+				BE599B79286DDA1C00A6F780 /* SavedViewModel.swift in Sources */,
 				BEB8503E2865DF7F00EF1059 /* ContentView.swift in Sources */,
 				BEB8503C2865DF7F00EF1059 /* MotivationUpTaskControlApp.swift in Sources */,
 				BE6611D0286F2823005B3991 /* RegistrationViewModel.swift in Sources */,

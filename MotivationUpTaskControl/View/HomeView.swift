@@ -36,9 +36,9 @@ struct HomeView: View {
                             }) {
                                 // 緊急だが重要でない
                                 Text("緊急だが\n重要でない")
-                                .frame(width: 130, height: 130)
-                                .foregroundColor(Color.white)
-                                .background(Color.yellow)
+                                    .frame(width: 130, height: 130)
+                                    .foregroundColor(Color.white)
+                                    .background(Color.yellow)
                             } // 「緊急だが重要でない」Buttonここまで
                         } // Hstackここまで
                         HStack {
@@ -47,9 +47,9 @@ struct HomeView: View {
                             }) {
                                 // 緊急でないが重要
                                 Text("緊急でないが\n重要")
-                                .frame(width: 130, height: 130)
-                                .foregroundColor(Color.white)
-                                .background(Color.green)
+                                    .frame(width: 130, height: 130)
+                                    .foregroundColor(Color.white)
+                                    .background(Color.green)
                             } // 「緊急でないが重要」Buttonここまで
                             
                             Button(action: {
@@ -57,9 +57,9 @@ struct HomeView: View {
                             }) {
                                 //　緊急でなく重要でない
                                 Text("緊急でなく\n重要でない")
-                                .frame(width: 130, height: 130)
-                                .foregroundColor(Color.white)
-                                .background(Color.blue)
+                                    .frame(width: 130, height: 130)
+                                    .foregroundColor(Color.white)
+                                    .background(Color.blue)
                             } // 「緊急でなく重要でない」Buttonここまで
                         } // Hstackここまで
                         Spacer()
