@@ -18,7 +18,7 @@ struct SavedView: View {
         sortDescriptors: [NSSortDescriptor(keyPath: \Memo.date, ascending: true)],
         animation: .default)
     private var items: FetchedResults<Memo>
-    
+
     init() {
         UISegmentedControl.appearance().setTitleTextAttributes(
             [.font: UIFont.systemFont(ofSize: 6)], for: .selected)
@@ -34,17 +34,17 @@ struct SavedView: View {
                 .labelsHidden()
                 .pickerStyle(SegmentedPickerStyle())
                 .frame(width: 320, height: 60)
-                
+
                 List() {
                     ForEach(items) { item in
                         NavigationLink(destination: EditMemoView(edititem: item),
                                        label: {
-                            VStack(alignment: .leading) {
-                                Text("\(item.content ?? "")")
-                                Text(item.date!, style: .date)
-                                    .environment(\.locale, Locale.init(identifier: "en_US"))
-                            } // Vstackここまで
-                        }) // NavigationLinkここまで
+                                        VStack(alignment: .leading) {
+                                            Text("\(item.content ?? "")")
+                                            Text(item.date!, style: .date)
+                                                .environment(\.locale, Locale.init(identifier: "en_US"))
+                                        } // Vstackここまで
+                                       }) // NavigationLinkここまで
                     } // ForEachここまで
                     .onDelete { IndexSet in
                         saveItems.deleteItems(offsets: IndexSet, items: items, viewContext: viewContext)

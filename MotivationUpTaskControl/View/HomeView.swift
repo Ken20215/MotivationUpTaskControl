@@ -30,7 +30,7 @@ struct HomeView: View {
                                     .foregroundColor(Color.white)
                                     .background(Color.red)
                             } // 「緊急かつ重要」Buttonここまで
-                            
+
                             Button(action: {
                                 isShowTap.toggle()
                             }) {
@@ -51,7 +51,7 @@ struct HomeView: View {
                                     .foregroundColor(Color.white)
                                     .background(Color.green)
                             } // 「緊急でないが重要」Buttonここまで
-                            
+
                             Button(action: {
                                 isShowTap.toggle()
                             }) {
