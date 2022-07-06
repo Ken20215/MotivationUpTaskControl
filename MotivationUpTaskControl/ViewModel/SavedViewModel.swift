@@ -9,7 +9,7 @@ import SwiftUI
 import CoreData
 
 class SavedViewModel: ObservableObject {
-    
+
     func deleteItems(offsets: IndexSet, items: FetchedResults<Memo>, viewContext: NSManagedObjectContext) {
         for index in offsets {
             viewContext.delete(items[index])
