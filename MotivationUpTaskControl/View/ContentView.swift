@@ -33,13 +33,6 @@ struct ContentView: View {
                     Text("Saved")
                 }
                 .padding()
-            // Registrationを呼び出す。
-            Registration()
-                .tabItem {
-                    Image(systemName: "square.and.pencil")
-                    Text("Registration")
-                }
-                .padding()
         } // TabViewここまで
     } // var bodyここまで
 } // ContentViewここまで
