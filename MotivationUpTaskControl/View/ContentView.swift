@@ -19,18 +19,21 @@ struct ContentView: View {
 
     var body: some View {
         TabView {
+            // HomeViewを呼び出す。
             HomeView()
                 .tabItem {
                     Image(systemName: "house")
                     Text("home")
                 }
                 .padding()
+            // SavedViewを呼び出す。
             SavedView()
                 .tabItem {
                     Image(systemName: "suit.heart.fill")
                     Text("Saved")
                 }
                 .padding()
+            // Registrationを呼び出す。
             Registration()
                 .tabItem {
                     Image(systemName: "square.and.pencil")
