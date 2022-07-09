@@ -9,26 +9,27 @@ import SwiftUI
 import CoreData
 
 struct SavedView: View {
-    @StateObject private var saveItems = SavedViewModel()
-    @State private var prioritys: [String] = ["緊急かつ重要", "緊急だが重要でない", "緊急でないが重要", "緊急でなく重要でない"]
-    @State private var priorityCategory: Int = 0
     @Environment(\.managedObjectContext) private var viewContext
     @Environment(\.dismiss) private var dismiss
     @FetchRequest(
-        sortDescriptors: [NSSortDescriptor(keyPath: \Memo.date, ascending: true)],
+        sortDescriptors: [NSSortDescriptor(keyPath: \Memo.date1, ascending: true)],
         animation: .default)
     private var items: FetchedResults<Memo>
-
+    @StateObject private var saveItems = SavedViewModel()
+    @State private var prioritys: [String] = ["緊急かつ重要", "緊急だが重要でない", "緊急でないが重要", "緊急でなく重要でない"]
+    @State private var priorityCategory = 0
     init() {
         UISegmentedControl.appearance().setTitleTextAttributes(
             [.font: UIFont.systemFont(ofSize: 6)], for: .selected)
     }
+
     var body: some View {
         NavigationView {
             VStack {
                 Picker("", selection: self.$priorityCategory) {
                     ForEach(0..<prioritys.count, id: \.self) {
                         Text(self.prioritys[$0])
+                            .tag(prioritys[$0])
                     } // ForEachここまで
                 } // Pickerここまで
                 .labelsHidden()
@@ -40,8 +41,8 @@ struct SavedView: View {
                         NavigationLink(destination: EditMemoView(edititem: item),
                                        label: {
                                         VStack(alignment: .leading) {
-                                            Text("\(item.content ?? "")")
-                                            Text(item.date!, style: .date)
+                                            Text("\(item.content1 ?? "")")
+                                            Text(item.date1!, style: .date)
                                                 .environment(\.locale, Locale.init(identifier: "en_US"))
                                         } // Vstackここまで
                                        }) // NavigationLinkここまで

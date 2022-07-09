@@ -25,6 +25,7 @@ struct HomeView: View {
                                 isShowTap.toggle()
                             }) {
                                 // 緊急かつ重要
+                                // urgent and vital
                                 Text("緊急かつ\n重要")
                                     .frame(width: 130, height: 130)
                                     .foregroundColor(Color.white)
@@ -35,6 +36,7 @@ struct HomeView: View {
                                 isShowTap.toggle()
                             }) {
                                 // 緊急だが重要でない
+                                // Urgent but unimportant
                                 Text("緊急だが\n重要でない")
                                     .frame(width: 130, height: 130)
                                     .foregroundColor(Color.white)
@@ -46,6 +48,7 @@ struct HomeView: View {
                                 isShowTap.toggle()
                             }) {
                                 // 緊急でないが重要
+                                // Not urgent, but important
                                 Text("緊急でないが\n重要")
                                     .frame(width: 130, height: 130)
                                     .foregroundColor(Color.white)
@@ -56,6 +59,7 @@ struct HomeView: View {
                                 isShowTap.toggle()
                             }) {
                                 //　緊急でなく重要でない
+                                //  Not urgent, not important.
                                 Text("緊急でなく\n重要でない")
                                     .frame(width: 130, height: 130)
                                     .foregroundColor(Color.white)
@@ -79,7 +83,6 @@ struct HomeView: View {
                             presentationMode.wrappedValue.dismiss()
                             isShowTap.toggle()
                         }) {
-                            // Image(systemName: "chevron.backward")
                         }
                     }
                 }

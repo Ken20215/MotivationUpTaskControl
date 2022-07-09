@@ -65,6 +65,7 @@ struct Registration: View {
                         .border(Color.gray, width: 3)
                         .padding()
                 } // Groupここまで
+                // ボタンを押した時に優先順位毎に応じて、Listに登録し表示できるようにする。
                 Button(action: {
                     inputItem.memoInputText(viewContext: viewContext, dismiss: dismiss)
                 }) {

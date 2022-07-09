@@ -29,8 +29,8 @@ struct EditMemoView: View {
                     .environment(\.locale, Locale.init(identifier: "en_US"))
             }
             .onAppear(perform: {
-                editMemoItem.content = edititem.content ?? ""
-                editMemoItem.date = edititem.date!
+                editMemoItem.content = edititem.content1 ?? ""
+                editMemoItem.date = edititem.date1!
                 try? viewContext.save()
             })
         }

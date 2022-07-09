@@ -15,7 +15,7 @@ struct PersistenceController {
         let viewContext = result.container.viewContext
         for _ in 0..<10 {
             let newMemo = Memo(context: viewContext)
-            newMemo.date = Date()
+            newMemo.date1 = Date()
         }
         do {
             try viewContext.save()
