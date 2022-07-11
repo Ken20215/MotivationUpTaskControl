@@ -13,8 +13,8 @@ class EditMemoViewModel: ObservableObject {
     @Published var date = Date()
 
     func saveMemo(editItem: Memo, viewContext: NSManagedObjectContext, dismiss: DismissAction) {
-        editItem.content1 = content
-        editItem.date1 = date
+        editItem.content = content
+        editItem.date = date
         try? viewContext.save()
         dismiss()
     }

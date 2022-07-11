@@ -12,9 +12,10 @@ struct SavedView: View {
     @Environment(\.managedObjectContext) private var viewContext
     @Environment(\.dismiss) private var dismiss
     @FetchRequest(
-        sortDescriptors: [NSSortDescriptor(keyPath: \Memo.date1, ascending: true)],
+        sortDescriptors: [NSSortDescriptor(keyPath: \Memo.date, ascending: true)],
         animation: .default)
     private var items: FetchedResults<Memo>
+    
     @StateObject private var saveItems = SavedViewModel()
     @State private var prioritys: [String] = ["緊急かつ重要", "緊急だが重要でない", "緊急でないが重要", "緊急でなく重要でない"]
     @State private var priorityCategory = 0
@@ -22,6 +23,7 @@ struct SavedView: View {
         UISegmentedControl.appearance().setTitleTextAttributes(
             [.font: UIFont.systemFont(ofSize: 6)], for: .selected)
     }
+
 
     var body: some View {
         NavigationView {
@@ -35,14 +37,13 @@ struct SavedView: View {
                 .labelsHidden()
                 .pickerStyle(SegmentedPickerStyle())
                 .frame(width: 320, height: 60)
-
                 List() {
                     ForEach(items) { item in
                         NavigationLink(destination: EditMemoView(edititem: item),
                                        label: {
                                         VStack(alignment: .leading) {
-                                            Text("\(item.content1 ?? "")")
-                                            Text(item.date1!, style: .date)
+                                            Text("\(item.content ?? "")")
+                                            Text(item.date!, style: .date)
                                                 .environment(\.locale, Locale.init(identifier: "en_US"))
                                         } // Vstackここまで
                                        }) // NavigationLinkここまで

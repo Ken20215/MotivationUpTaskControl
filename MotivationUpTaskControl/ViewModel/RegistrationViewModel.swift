@@ -15,10 +15,8 @@ class RegistrationViewModel: ObservableObject {
     func memoInputText(viewContext: NSManagedObjectContext, dismiss: DismissAction) {
         // 保存するCoreDataのMemo型インスタンス変数を作成・初期化する。
         let inputItem = Memo(context: viewContext)
-        inputItem.content1 = content
-        inputItem.date1 = date
-        print(inputItem.content1 ?? "")
-        print(inputItem.date1!)
+        inputItem.content = content
+        inputItem.date = date
         // 「try? viewContext.save()」でデータを保存する。
         try? viewContext.save()
         // 画面を閉じる

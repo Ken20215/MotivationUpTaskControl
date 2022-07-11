@@ -1,16 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="20086" systemVersion="21E258" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Memo" representedClassName="Memo" syncable="YES" codeGenerationType="class">
-        <attribute name="content1" optional="YES" attributeType="String"/>
-        <attribute name="content2" optional="YES" attributeType="String"/>
-        <attribute name="content3" optional="YES" attributeType="String"/>
-        <attribute name="content4" optional="YES" attributeType="String"/>
-        <attribute name="date1" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
-        <attribute name="date2" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
-        <attribute name="date3" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
-        <attribute name="date4" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="content" optional="YES" attributeType="String"/>
+        <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="priority" optional="YES" attributeType="String"/>
     </entity>
     <elements>
-        <element name="Memo" positionX="-63" positionY="-18" width="128" height="149"/>
+        <element name="Memo" positionX="-63" positionY="-18" width="128" height="74"/>
     </elements>
 </model>
