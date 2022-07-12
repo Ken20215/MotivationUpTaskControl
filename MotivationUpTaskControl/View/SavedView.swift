@@ -15,7 +15,7 @@ struct SavedView: View {
         sortDescriptors: [NSSortDescriptor(keyPath: \Memo.date, ascending: true)],
         animation: .default)
     private var items: FetchedResults<Memo>
-    
+
     @StateObject private var saveItems = SavedViewModel()
     @State private var prioritys: [String] = ["緊急かつ重要", "緊急だが重要でない", "緊急でないが重要", "緊急でなく重要でない"]
     @State private var priorityCategory = 0
@@ -23,7 +23,6 @@ struct SavedView: View {
         UISegmentedControl.appearance().setTitleTextAttributes(
             [.font: UIFont.systemFont(ofSize: 6)], for: .selected)
     }
-
 
     var body: some View {
         NavigationView {

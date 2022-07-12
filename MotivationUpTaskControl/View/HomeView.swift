@@ -36,8 +36,8 @@ struct HomeView: View {
                         Spacer()
                         HStack {
                             Button(action: {
-                                tapButton = Memo(context: viewContext)
-                                tapButton = priority.rawValue
+                                let tapButton = Memo(context: viewContext)
+                                tapButton.priority = priority.rawValue
                                 isShowTap.toggle()
                             }) {
                                 // 緊急かつ重要
@@ -49,9 +49,8 @@ struct HomeView: View {
                             } // 「緊急かつ重要」Buttonここまで
                             
                             Button(action: {
-                                priority = PriorityEnum.emergencyHighAndImportantLow
-                                tapButton = Memo(context: viewContext)
-                                tapButton = priority.rawValue
+                                let tapButton = Memo(context: viewContext)
+                                tapButton.priority = PriorityEnum.emergencyHighAndImportantLow.rawValue
                                 isShowTap.toggle()
                             }) {
                                 // 緊急だが重要でない
@@ -64,9 +63,8 @@ struct HomeView: View {
                         } // Hstackここまで
                         HStack {
                             Button(action: {
-                                priority = PriorityEnum.emergencyLowAndImportantHigh
-                                tapButton = Memo(context: viewContext)
-                                tapButton = priority.rawValue
+                                let tapButton = Memo(context: viewContext)
+                                tapButton.priority = PriorityEnum.emergencyLowAndImportantHigh.rawValue
                                 isShowTap.toggle()
                             }) {
                                 // 緊急でないが重要
@@ -78,9 +76,8 @@ struct HomeView: View {
                             } // 「緊急でないが重要」Buttonここまで
                             
                             Button(action: {
-                                priority = PriorityEnum.emergencyLowAndImportantLow
-                                tapButton = Memo(context: viewContext)
-                                tapButton = priority.rawValue
+                                let tapButton = Memo(context: viewContext)
+                                tapButton.priority = PriorityEnum.emergencyLowAndImportantLow.rawValue
                                 isShowTap.toggle()
                             }) {
                                 //　緊急でなく重要でない
