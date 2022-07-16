@@ -12,13 +12,14 @@ struct SavedView: View {
     @Environment(\.managedObjectContext) private var viewContext
     @Environment(\.dismiss) private var dismiss
     @StateObject private var saveItems = SavedViewModel()
+    // PriorityModelViewで定義した列挙値をrawValueを使用し、String型で表示できるように指示する。
     @State private var prioritys: [String] = [
         PriorityEnum.emergencyHighAndImportantHigh.rawValue,
         PriorityEnum.emergencyHighAndImportantLow.rawValue,
         PriorityEnum.emergencyLowAndImportantLow.rawValue,
         PriorityEnum.emergencyLowAndImportantHigh.rawValue
     ]
-    @State private var priorityCategory = "緊急かつ重要"
+    @State private var priorityCategory = PriorityEnum.emergencyHighAndImportantHigh.rawValue
     init() {
         UISegmentedControl.appearance().setTitleTextAttributes(
             [.font: UIFont.systemFont(ofSize: 6)], for: .selected)

@@ -59,9 +59,9 @@
 			children = (
 				BEB8503D2865DF7F00EF1059 /* ContentView.swift */,
 				BE600D0F28680CCC000EA1FA /* HomeView.swift */,
+				BE600D0D2867F7B3000EA1FA /* RegistrationView.swift */,
 				BE600D0B2867F748000EA1FA /* SavedView.swift */,
 				BE6314F6287D9D01008DFDFC /* TaskListView.swift */,
-				BE600D0D2867F7B3000EA1FA /* RegistrationView.swift */,
 				BE6611D1286F2CFA005B3991 /* EditMemoView.swift */,
 			);
 			path = View;
