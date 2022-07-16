@@ -12,8 +12,13 @@ struct SavedView: View {
     @Environment(\.managedObjectContext) private var viewContext
     @Environment(\.dismiss) private var dismiss
     @StateObject private var saveItems = SavedViewModel()
-    @State private var prioritys: [String] = ["緊急かつ重要", "緊急かつ重要ではない", "緊急ではないが、重要", "緊急ではないが、重要ではない"]
-    @State private var priorityCategory = "緊急かつ重要"
+    @State private var prioritys: [String] = [
+        PriorityEnum.emergencyHighAndImportantHigh.rawValue,
+        PriorityEnum.emergencyHighAndImportantLow.rawValue,
+        PriorityEnum.emergencyLowAndImportantLow.rawValue,
+        PriorityEnum.emergencyLowAndImportantHigh.rawValue
+    ]
+    @State private var priorityCategory = PriorityEnum.emergencyHighAndImportantHigh.rawValue
     init() {
         UISegmentedControl.appearance().setTitleTextAttributes(
             [.font: UIFont.systemFont(ofSize: 6)], for: .selected)

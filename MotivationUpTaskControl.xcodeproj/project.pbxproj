@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9DF9CC93288289E600CE5E43 /* PriorityEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF9CC92288289E600CE5E43 /* PriorityEnum.swift */; };
 		BE599B79286DDA1C00A6F780 /* SavedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE599B78286DDA1C00A6F780 /* SavedViewModel.swift */; };
 		BE600D0C2867F748000EA1FA /* SavedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE600D0B2867F748000EA1FA /* SavedView.swift */; };
 		BE600D0E2867F7B3000EA1FA /* RegistrationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE600D0D2867F7B3000EA1FA /* RegistrationView.swift */; };
@@ -24,6 +25,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9DF9CC92288289E600CE5E43 /* PriorityEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PriorityEnum.swift; path = MotivationUpTaskControl/Model/PriorityEnum.swift; sourceTree = SOURCE_ROOT; };
 		BE599B78286DDA1C00A6F780 /* SavedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SavedViewModel.swift; path = MotivationUpTaskControl/ViewModel/SavedViewModel.swift; sourceTree = SOURCE_ROOT; };
 		BE600D0B2867F748000EA1FA /* SavedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SavedView.swift; path = motivationUpTaskControl/View/SavedView.swift; sourceTree = SOURCE_ROOT; };
 		BE600D0D2867F7B3000EA1FA /* RegistrationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RegistrationView.swift; path = motivationUpTaskControl/View/RegistrationView.swift; sourceTree = SOURCE_ROOT; };
@@ -52,6 +54,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9DF9CC91288289D400CE5E43 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				9DF9CC92288289E600CE5E43 /* PriorityEnum.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		BE4D579628730C27007FFB8B /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -97,6 +107,7 @@
 				BEB8503B2865DF7F00EF1059 /* MotivationUpTaskControlApp.swift */,
 				BE4D579628730C27007FFB8B /* View */,
 				BE599B77286DD9F000A6F780 /* ViewModel */,
+				9DF9CC91288289D400CE5E43 /* Model */,
 				BEB8503F2865DF8500EF1059 /* Assets.xcassets */,
 				BEB850442865DF8500EF1059 /* Persistence.swift */,
 				BEB850462865DF8500EF1059 /* motivationUpTaskControl.xcdatamodeld */,
@@ -214,6 +225,7 @@
 				BE6611D2286F2CFA005B3991 /* EditMemoView.swift in Sources */,
 				BEB850482865DF8500EF1059 /* motivationUpTaskControl.xcdatamodeld in Sources */,
 				BE600D1028680CCC000EA1FA /* HomeView.swift in Sources */,
+				9DF9CC93288289E600CE5E43 /* PriorityEnum.swift in Sources */,
 				BE600D0E2867F7B3000EA1FA /* RegistrationView.swift in Sources */,
 				BE600D0C2867F748000EA1FA /* SavedView.swift in Sources */,
 				BE6314F7287D9D01008DFDFC /* TaskListView.swift in Sources */,
