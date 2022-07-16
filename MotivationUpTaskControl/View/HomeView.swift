@@ -13,20 +13,20 @@ struct HomeView: View {
     @Environment(\.dismiss) private var dismiss
     @Environment(\.presentationMode) var presentationMode
     @State var isShowTap: Bool = false
-    
+
     // 各優先度の押したボタンに従ってタスクメモを登録する。
     // 列挙型で管理するには押したボタンに沿ってメモを登録する。列挙体に中に優先度を定義して、その中にString型とDate型の値を入れる関数を作成。
     // ボタンタップで優先度を選ぶようにする。
-    
+
     enum PriorityEnum: String {
-        case emergencyHighAndImportantHigh    // 緊急かつ重要
-        case emergencyHighAndImportantLow    // 緊急かつ重要ではない
-        case emergencyLowAndImportantHigh    // 緊急ではないが、重要
-        case emergencyLowAndImportantLow    // 緊急ではないが、重要ではない
+        case emergencyHighAndImportantHigh = "緊急かつ重要"   // 緊急かつ重要
+        case emergencyHighAndImportantLow =  "緊急かつ重要ではない"   // 緊急かつ重要ではない
+        case emergencyLowAndImportantHigh = "緊急ではないが、重要"    // 緊急ではないが、重要
+        case emergencyLowAndImportantLow  = "緊急ではないが、重要ではない"  // 緊急ではないが、重要ではない
     }
-    
+
     let priority: PriorityEnum = .emergencyHighAndImportantHigh
-    
+
     var body: some View {
         NavigationView {
             // もしisShowtapがfalseであれば画面をそのままの状態にし、trueであれば画面をNavigationLink先に遷移させ、HomeView画面を閉じる。
@@ -38,6 +38,7 @@ struct HomeView: View {
                             Button(action: {
                                 let tapButton = Memo(context: viewContext)
                                 tapButton.priority = priority.rawValue
+                                try? viewContext.save()
                                 isShowTap.toggle()
                             }) {
                                 // 緊急かつ重要
@@ -47,10 +48,11 @@ struct HomeView: View {
                                     .foregroundColor(Color.white)
                                     .background(Color.red)
                             } // 「緊急かつ重要」Buttonここまで
-                            
+
                             Button(action: {
                                 let tapButton = Memo(context: viewContext)
                                 tapButton.priority = PriorityEnum.emergencyHighAndImportantLow.rawValue
+                                try? viewContext.save()
                                 isShowTap.toggle()
                             }) {
                                 // 緊急だが重要でない
@@ -65,6 +67,7 @@ struct HomeView: View {
                             Button(action: {
                                 let tapButton = Memo(context: viewContext)
                                 tapButton.priority = PriorityEnum.emergencyLowAndImportantHigh.rawValue
+                                try? viewContext.save()
                                 isShowTap.toggle()
                             }) {
                                 // 緊急でないが重要
@@ -74,10 +77,11 @@ struct HomeView: View {
                                     .foregroundColor(Color.white)
                                     .background(Color.green)
                             } // 「緊急でないが重要」Buttonここまで
-                            
+
                             Button(action: {
                                 let tapButton = Memo(context: viewContext)
                                 tapButton.priority = PriorityEnum.emergencyLowAndImportantLow.rawValue
+                                try? viewContext.save()
                                 isShowTap.toggle()
                             }) {
                                 //　緊急でなく重要でない

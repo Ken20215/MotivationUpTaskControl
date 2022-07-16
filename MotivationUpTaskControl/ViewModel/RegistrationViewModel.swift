@@ -17,6 +17,8 @@ class RegistrationViewModel: ObservableObject {
         let inputItem = Memo(context: viewContext)
         inputItem.content = content
         inputItem.date = date
+        print(inputItem.content ?? "")
+        print(inputItem.date!)
         // 「try? viewContext.save()」でデータを保存する。
         try? viewContext.save()
         // 画面を閉じる
