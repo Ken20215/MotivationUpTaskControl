@@ -8,14 +8,16 @@
 import SwiftUI
 import CoreData
 
-struct Registration: View {
+struct RegistrationView: View {
+    @Binding var selectedPriority: PriorityEnum
     @Environment(\.managedObjectContext) private var viewContext
     @Environment(\.dismiss) private var dismiss
     @StateObject private var inputItem = RegistrationViewModel()
     @State private var inputText: String = ""
     @State private var flag = false
     @State private var priority: String = "高"
-    private var priorityList: [String] = ["高", "中", "低"]
+    var priorityList: [String] = ["高", "中", "低"]
+
     var body: some View {
         VStack {
             ScrollView {
@@ -67,6 +69,7 @@ struct Registration: View {
                 } // Groupここまで
                 // ボタンを押した時に優先順位毎に応じて、Listに登録し表示できるようにする。
                 Button(action: {
+                    inputItem.priority = selectedPriority
                     inputItem.memoInputText(viewContext: viewContext, dismiss: dismiss)
                 }) {
                     Text("保存")
@@ -80,8 +83,8 @@ struct Registration: View {
     } // var bodyここまで
 } // InputMemoFaileここまで
 
-struct InputMemoFaile_Previews: PreviewProvider {
+struct RegistrationView_Previews: PreviewProvider {
     static var previews: some View {
-        Registration()
+        RegistrationView(selectedPriority: .constant(.emergencyHighAndImportantHigh))
     }
 }

@@ -21,7 +21,8 @@ struct TaskListView: View {
                                label: {
                                 VStack(alignment: .leading) {
                                     Text("\(item.content ?? "")")
-                                        //                                    Text(item.date!, style: .date)
+                                    //　CoreDataのAttributeに登録しないといけいのに、個別で一つの登録を行なったため、エラーが発生。
+                                    Text(item.date!, style: .date)
                                         .environment(\.locale, Locale.init(identifier: "en_US"))
                                 } // Vstackここまで
                                }) // NavigationLinkここまで
