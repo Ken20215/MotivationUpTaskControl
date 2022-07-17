@@ -6,11 +6,11 @@
 //
 
 import SwiftUI
-import CoreData
 
 struct RegistrationView: View {
     // CoreDataの登録する所まで情報をもらう為、＠Bindingを使って画面間で受け渡しする。
     // @Stateを使用すると、状態変数の値が変えてから画面遷移しても初期値のままなので＠Bindingを使用している。
+    // @StateはselectedPriorityの値が初期状態のままでファイル間で受け渡ししてしまうため @Bindingであれそのままの状態で参照渡しできる。
     @Binding var selectedPriority: PriorityEnum
     @Environment(\.managedObjectContext) private var viewContext
     @Environment(\.dismiss) private var dismiss

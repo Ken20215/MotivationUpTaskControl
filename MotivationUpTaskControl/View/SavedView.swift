@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import CoreData
 
 struct SavedView: View {
     @Environment(\.managedObjectContext) private var viewContext
