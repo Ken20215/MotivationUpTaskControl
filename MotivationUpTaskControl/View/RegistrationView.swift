@@ -18,8 +18,8 @@ struct RegistrationView: View {
     @State private var inputText: String = ""
     @State private var flag = false
     @State private var priority: String = "高"
-    var priorityList: [String] = ["高", "中", "低"]
-
+    private var priorityList: [String] = ["高", "中", "低"]
+   
     var body: some View {
         VStack {
             ScrollView {

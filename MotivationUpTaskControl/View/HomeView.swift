@@ -10,10 +10,10 @@ import SwiftUI
 struct HomeView: View {
     @Environment(\.managedObjectContext) private var viewContext
     @Environment(\.dismiss) private var dismiss
-    @Environment(\.presentationMode) var presentationMode
-    @State var isShowTap: Bool = false
+    @Environment(\.presentationMode) private var presentationMode
+    @State private var isShowTap: Bool = false
     // PriorityModelViewの列挙型の値をインスタンス変数に初期化してあげる。
-    @State var tapPriority: PriorityEnum = .emergencyHighAndImportantHigh
+    @State private var tapPriority: PriorityEnum = .emergencyHighAndImportantHigh
 
     var body: some View {
         NavigationView {
