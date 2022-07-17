@@ -17,9 +17,14 @@ struct RegistrationView: View {
     @StateObject private var inputItem = RegistrationViewModel()
     @State private var inputText: String = ""
     @State private var flag = false
-    @State private var priority: String = "高"
-    private var priorityList: [String] = ["高", "中", "低"]
-   
+    @State private var priorityList: [String] = [
+        PriorityEnum.emergencyHighAndImportantHigh.rawValue,
+        PriorityEnum.emergencyHighAndImportantLow.rawValue,
+        PriorityEnum.emergencyLowAndImportantLow.rawValue,
+        PriorityEnum.emergencyLowAndImportantHigh.rawValue
+    ]
+    @State private var priority: String = PriorityEnum.emergencyHighAndImportantHigh.rawValue
+
     var body: some View {
         VStack {
             ScrollView {
@@ -51,7 +56,7 @@ struct RegistrationView: View {
                                     .tag(priorityList[index])
                             }
                         } // Pickerここまで
-                        .pickerStyle(SegmentedPickerStyle())
+                        .pickerStyle(WheelPickerStyle())
                         .frame(width: 200, height: 60)
                         .padding()
                     } // Hstackここまで
