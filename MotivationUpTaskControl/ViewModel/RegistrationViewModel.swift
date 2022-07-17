@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import CoreData
 
 class RegistrationViewModel: ObservableObject {
     @Published var content = ""

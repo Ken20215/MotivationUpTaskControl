@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import CoreData
 
 class EditMemoViewModel: ObservableObject {
     @Published var content = ""
