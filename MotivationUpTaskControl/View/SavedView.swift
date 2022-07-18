@@ -34,8 +34,8 @@ struct SavedView: View {
                     } // ForEachここまで
                 } // Pickerここまで
                 .labelsHidden()
-                .pickerStyle(InlinePickerStyle())
                 .frame(width: 320, height: 60)
+                .padding()
 
                 TaskListView(items: FetchRequest(sortDescriptors: [NSSortDescriptor(keyPath: \Memo.date, ascending: true)],
                                                  predicate: NSPredicate(format: "priority == %@", priorityCategory),
