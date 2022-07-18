@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import CoreData
 
 struct EditMemoView: View {
     var edititem: Memo

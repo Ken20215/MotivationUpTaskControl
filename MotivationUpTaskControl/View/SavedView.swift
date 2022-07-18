@@ -6,50 +6,40 @@
 //
 
 import SwiftUI
-import CoreData
 
 struct SavedView: View {
-    @StateObject private var saveItems = SavedViewModel()
-    @State private var prioritys: [String] = ["緊急かつ重要", "緊急だが重要でない", "緊急でないが重要", "緊急でなく重要でない"]
-    @State private var priorityCategory: Int = 0
     @Environment(\.managedObjectContext) private var viewContext
     @Environment(\.dismiss) private var dismiss
-    @FetchRequest(
-        sortDescriptors: [NSSortDescriptor(keyPath: \Memo.date, ascending: true)],
-        animation: .default)
-    private var items: FetchedResults<Memo>
-
+    @StateObject private var saveItems = SavedViewModel()
+    // PriorityModelViewで定義した列挙値をrawValueを使用し、String型で表示できるように指示する。
+    @State private var prioritys: [String] = [
+        PriorityEnum.emergencyHighAndImportantHigh.rawValue,
+        PriorityEnum.emergencyHighAndImportantLow.rawValue,
+        PriorityEnum.emergencyLowAndImportantLow.rawValue,
+        PriorityEnum.emergencyLowAndImportantHigh.rawValue
+    ]
+    @State private var priorityCategory = PriorityEnum.emergencyHighAndImportantHigh.rawValue
     init() {
         UISegmentedControl.appearance().setTitleTextAttributes(
             [.font: UIFont.systemFont(ofSize: 6)], for: .selected)
     }
+
     var body: some View {
         NavigationView {
             VStack {
                 Picker("", selection: self.$priorityCategory) {
                     ForEach(0..<prioritys.count, id: \.self) {
                         Text(self.prioritys[$0])
+                            .tag(prioritys[$0])
                     } // ForEachここまで
                 } // Pickerここまで
                 .labelsHidden()
-                .pickerStyle(SegmentedPickerStyle())
+                .pickerStyle(InlinePickerStyle())
                 .frame(width: 320, height: 60)
 
-                List() {
-                    ForEach(items) { item in
-                        NavigationLink(destination: EditMemoView(edititem: item),
-                                       label: {
-                                        VStack(alignment: .leading) {
-                                            Text("\(item.content ?? "")")
-                                            Text(item.date!, style: .date)
-                                                .environment(\.locale, Locale.init(identifier: "en_US"))
-                                        } // Vstackここまで
-                                       }) // NavigationLinkここまで
-                    } // ForEachここまで
-                    .onDelete { IndexSet in
-                        saveItems.deleteItems(offsets: IndexSet, items: items, viewContext: viewContext)
-                    } // .onDeleteここまで
-                } // Listここまで
+                TaskListView(items: FetchRequest(sortDescriptors: [NSSortDescriptor(keyPath: \Memo.date, ascending: true)],
+                                                 predicate: NSPredicate(format: "priority == %@", priorityCategory),
+                                                 animation: .default))
             } //  VStackここまで
         } // NavigationViewここまで
     } // var bodyここまで

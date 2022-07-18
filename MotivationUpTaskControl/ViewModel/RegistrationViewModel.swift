@@ -11,13 +11,20 @@ import CoreData
 class RegistrationViewModel: ObservableObject {
     @Published var content = ""
     @Published var date = Date()
+    // 列挙型のインスタンス変数を作り、インスタンス化を行う。
+    //    var priority: PriorityEnum = .emergencyHighAndImportantHigh
+    @Published var priority = ""
 
     func memoInputText(viewContext: NSManagedObjectContext, dismiss: DismissAction) {
         // 保存するCoreDataのMemo型インスタンス変数を作成・初期化する。
+        // CoreDataに格納するタイミングは、全てのCoreDataに登録する値が揃ったタイミングで登録を行う。
+        // 他のファイルなど別々に登録を行わないこと。
         let inputItem = Memo(context: viewContext)
         inputItem.content = content
         inputItem.date = date
-        // Memo型のインスタンス変数のinputItemに文字と日付を入れて
+        // CoreDataにRegistrationViewから受け取った値をrpwValueでStringに変換す格納する。
+        //        inputItem.priority =  priority.rawValue
+        inputItem.priority = priority
         // 「try? viewContext.save()」でデータを保存する。
         try? viewContext.save()
         // 画面を閉じる
