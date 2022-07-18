@@ -12,7 +12,8 @@ class RegistrationViewModel: ObservableObject {
     @Published var content = ""
     @Published var date = Date()
     // 列挙型のインスタンス変数を作り、インスタンス化を行う。
-    var priority: PriorityEnum = .emergencyHighAndImportantHigh
+    //    var priority: PriorityEnum = .emergencyHighAndImportantHigh
+    @Published var priority = ""
 
     func memoInputText(viewContext: NSManagedObjectContext, dismiss: DismissAction) {
         // 保存するCoreDataのMemo型インスタンス変数を作成・初期化する。
@@ -22,7 +23,8 @@ class RegistrationViewModel: ObservableObject {
         inputItem.content = content
         inputItem.date = date
         // CoreDataにRegistrationViewから受け取った値をrpwValueでStringに変換す格納する。
-        inputItem.priority =  priority.rawValue
+        //        inputItem.priority =  priority.rawValue
+        inputItem.priority = priority
         // 「try? viewContext.save()」でデータを保存する。
         try? viewContext.save()
         // 画面を閉じる

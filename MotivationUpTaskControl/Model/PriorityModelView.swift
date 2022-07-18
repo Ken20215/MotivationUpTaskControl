@@ -18,11 +18,11 @@ enum PriorityEnum: String {
         case .emergencyHighAndImportantHigh:
             return "緊急かつ\n重要"
         case .emergencyHighAndImportantLow:
-            return "緊急かつ\n重要"
+            return "緊急かつ\n重要でない"
         case .emergencyLowAndImportantHigh:
-            return "緊急かつ\n重要"
+            return "緊急ではないが、\n重要"
         case .emergencyLowAndImportantLow:
-            return "緊急かつ\n重要"
+            return "緊急ではないが、\n重要でない"
         }
     }
 }

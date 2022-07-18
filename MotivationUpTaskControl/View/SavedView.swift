@@ -34,7 +34,7 @@ struct SavedView: View {
                     } // ForEachここまで
                 } // Pickerここまで
                 .labelsHidden()
-                .pickerStyle(WheelPickerStyle())
+                .pickerStyle(InlinePickerStyle())
                 .frame(width: 320, height: 60)
 
                 TaskListView(items: FetchRequest(sortDescriptors: [NSSortDescriptor(keyPath: \Memo.date, ascending: true)],

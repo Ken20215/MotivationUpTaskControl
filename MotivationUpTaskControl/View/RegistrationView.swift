@@ -23,7 +23,7 @@ struct RegistrationView: View {
         PriorityEnum.emergencyLowAndImportantLow.rawValue,
         PriorityEnum.emergencyLowAndImportantHigh.rawValue
     ]
-    @State private var priority: String = PriorityEnum.emergencyHighAndImportantHigh.rawValue
+    @State private var afterPriority = ""
 
     var body: some View {
         VStack {
@@ -50,13 +50,13 @@ struct RegistrationView: View {
                         Text("優先度")
                             .padding()
 
-                        Picker("", selection: self.$priority) {
+                        Picker("", selection: self.$afterPriority) {
                             ForEach(0 ..< priorityList.count, id: \.self) { index in
                                 Text(priorityList[index])
                                     .tag(priorityList[index])
                             }
                         } // Pickerここまで
-                        .pickerStyle(WheelPickerStyle())
+                        .pickerStyle(DefaultPickerStyle())
                         .frame(width: 200, height: 60)
                         .padding()
                     } // Hstackここまで
@@ -79,7 +79,8 @@ struct RegistrationView: View {
                 Button(action: {
                     // HomeViewで選択した、優先順位のボタンをタップしたときに受け取る列挙型の値をViewModelのpriority変数に格納する。
                     // RegistrationViewModelで定義した値に引き渡す。
-                    inputItem.priority = selectedPriority
+                    //                    inputItem.priority = selectedPriority
+                    inputItem.priority = afterPriority
                     inputItem.memoInputText(viewContext: viewContext, dismiss: dismiss)
                 }) {
                     Text("保存")
@@ -90,6 +91,9 @@ struct RegistrationView: View {
                 Spacer()
             } // ScrollViewここまで
         } // VStackここまで
+        .onAppear(perform: {
+            afterPriority = selectedPriority.rawValue
+        })
     } // var bodyここまで
 } // InputMemoFaileここまで
 
