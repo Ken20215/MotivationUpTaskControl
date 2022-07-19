@@ -27,15 +27,27 @@ struct SavedView: View {
     var body: some View {
         NavigationView {
             VStack {
-                Picker("", selection: self.$priorityCategory) {
-                    ForEach(0..<prioritys.count, id: \.self) {
-                        Text(self.prioritys[$0])
-                            .tag(prioritys[$0])
-                    } // ForEachここまで
-                } // Pickerここまで
-                .labelsHidden()
-                .pickerStyle(InlinePickerStyle())
-                .frame(width: 320, height: 60)
+                ScrollView(.horizontal) {
+                    HStack {
+                        ForEach(0..<prioritys.count, id: \.self) { item in
+                            Button(action: {
+                                priorityCategory = prioritys[item]
+                            }) {
+                                Text(self.prioritys[item])
+                                    .border(Color.gray, width: 1)
+                            }
+                        }
+                    }
+                }
+                //                Picker("", selection: self.$priorityCategory) {
+                //                    ForEach(0..<prioritys.count, id: \.self) {
+                //                        Text(self.prioritys[$0])
+                //                            .tag(prioritys[$0])
+                //                    } // ForEachここまで
+                //                } // Pickerここまで
+                //                .labelsHidden()
+                //                .pickerStyle(InlinePickerStyle())
+                //                .frame(width: 320, height: 60)
 
                 TaskListView(items: FetchRequest(sortDescriptors: [NSSortDescriptor(keyPath: \Memo.date, ascending: true)],
                                                  predicate: NSPredicate(format: "priority == %@", priorityCategory),
