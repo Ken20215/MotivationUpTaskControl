@@ -39,16 +39,6 @@ struct SavedView: View {
                         }
                     }
                 }
-                //                Picker("", selection: self.$priorityCategory) {
-                //                    ForEach(0..<prioritys.count, id: \.self) {
-                //                        Text(self.prioritys[$0])
-                //                            .tag(prioritys[$0])
-                //                    } // ForEachここまで
-                //                } // Pickerここまで
-                //                .labelsHidden()
-                //                .pickerStyle(InlinePickerStyle())
-                //                .frame(width: 320, height: 60)
-
                 TaskListView(items: FetchRequest(sortDescriptors: [NSSortDescriptor(keyPath: \Memo.date, ascending: true)],
                                                  predicate: NSPredicate(format: "priority == %@", priorityCategory),
                                                  animation: .default))
