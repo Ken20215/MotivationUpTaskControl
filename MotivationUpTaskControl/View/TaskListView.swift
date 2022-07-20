@@ -12,6 +12,8 @@ struct TaskListView: View {
     @Environment(\.dismiss) private var dismiss
     @StateObject private var saveItems = SavedViewModel()
     @FetchRequest var items: FetchedResults<Memo>
+    @State var displayContent: String = ""
+    @State var displayDate: Date = Date()
 
     var body: some View {
         List {
@@ -19,9 +21,9 @@ struct TaskListView: View {
                 NavigationLink(destination: EditMemoView(edititem: item),
                                label: {
                                 VStack(alignment: .leading) {
-                                    Text("\(item.content ?? "")")
+                                    Text("\(displayContent)")
                                     //　CoreDataのAttributeに登録しないといけいのに、個別で一つの登録を行なったため、エラーが発生。
-                                    Text(item.date!, style: .date)
+                                    Text(displayDate, style: .date)
                                         .environment(\.locale, Locale.init(identifier: "en_US"))
                                 } // Vstackここまで
                                }) // NavigationLinkここまで
@@ -29,6 +31,17 @@ struct TaskListView: View {
             .onDelete { IndexSet in
                 saveItems.deleteItems(offsets: IndexSet, items: items, viewContext: viewContext)
             } // .onDeleteここまで
+
+            .onAppear(perform: {
+                for item in items {
+                    if let uwnrapContent = item.content {
+                        displayContent = uwnrapContent
+                    }
+                    if let uwnrapDate = item.date {
+                        displayDate = uwnrapDate
+                    }
+                }
+            })
         } // Listここまで
     }
 }
