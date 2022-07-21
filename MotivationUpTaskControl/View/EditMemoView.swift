@@ -12,7 +12,9 @@ struct EditMemoView: View {
     @StateObject private var editMemoItem = EditMemoViewModel()
     @Environment(\.managedObjectContext) private var viewContext
     @Environment(\.dismiss) private var dismiss
-
+    @State var editContent: String = ""
+    @State var editDate: Date = Date()
+    
     var body: some View {
         VStack {
             Group {
@@ -28,8 +30,11 @@ struct EditMemoView: View {
                     .environment(\.locale, Locale.init(identifier: "en_US"))
             }
             .onAppear(perform: {
-                editMemoItem.content = edititem.content ?? ""
-                editMemoItem.date = edititem.date!
+                if let uwnrapContent = edititem.content,
+                   let uwnrapDate = edititem.date {
+                    editMemoItem.content = uwnrapContent
+                    editMemoItem.date = uwnrapDate
+                }
                 try? viewContext.save()
             })
         }
