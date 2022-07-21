@@ -42,7 +42,7 @@ struct TaskListView: View {
             .onAppear(perform: {
                 for item in items {
                     if let uwnrapSubject = item.subject,
-                       let  uwnrapContent = item.content,
+                       let uwnrapContent = item.content,
                        let uwnrapDate = item.date {
                         displaySubject = uwnrapSubject
                         displayContent = uwnrapContent
