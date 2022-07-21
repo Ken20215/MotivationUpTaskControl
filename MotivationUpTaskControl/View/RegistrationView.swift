@@ -15,7 +15,6 @@ struct RegistrationView: View {
     @Environment(\.managedObjectContext) private var viewContext
     @Environment(\.dismiss) private var dismiss
     @StateObject private var inputItem = RegistrationViewModel()
-    @State private var inputText: String = ""
     @State private var flag = false
     @State private var priorityList: [String] = [
         PriorityEnum.emergencyHighAndImportantHigh.rawValue,
@@ -30,7 +29,7 @@ struct RegistrationView: View {
             ScrollView {
                 Group {
                     Spacer()
-                    TextField("件名", text: $inputText)
+                    TextField("件名", text: $inputItem.subject)
                         .frame(width: 290, height: 60)
                         .textFieldStyle(.roundedBorder)
                         .padding()

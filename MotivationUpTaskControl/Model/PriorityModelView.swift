@@ -8,7 +8,7 @@
 import SwiftUI
 import Foundation
 
-enum PriorityEnum: String {
+enum PriorityEnum: String, CaseIterable {
     case emergencyHighAndImportantHigh = "緊急かつ重要"   // 緊急かつ重要
     case emergencyHighAndImportantLow =  "緊急かつ重要ではない"   // 緊急かつ重要ではない
     case emergencyLowAndImportantHigh = "緊急ではないが、重要"    // 緊急ではないが、重要
