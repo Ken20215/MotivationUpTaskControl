@@ -23,7 +23,7 @@ struct RegistrationView: View {
         PriorityEnum.emergencyLowAndImportantHigh.rawValue
     ]
     @State private var afterPriority = ""
-    
+
     var body: some View {
         VStack {
             ScrollView {
@@ -34,21 +34,21 @@ struct RegistrationView: View {
                         .textFieldStyle(.roundedBorder)
                         .padding()
                         .border(Color.gray, width: 3)
-                    
+
                     Spacer()
-                    
+
                     Toggle(isOn: $flag) {
                         Text(flag ? "完了" : "未完了")
                     } // Toggleここまで
                     .frame(width: 290, height: 60)
                     .padding()
                     .border(Color.gray, width: 3)
-                    
+
                     Spacer()
                     HStack {
                         Text("優先度")
                             .padding()
-                        
+
                         Picker("", selection: self.$afterPriority) {
                             ForEach(0 ..< priorityList.count, id: \.self) { index in
                                 Text(priorityList[index])
@@ -70,7 +70,7 @@ struct RegistrationView: View {
                     // RegistrationViewModelで定義した値を引数に指定する。
                     TextEditor(text: $inputItem.content)
                         .frame(width: 315, height: 250)
-                    // TextEditorのボーダーカラーをグレーに指定し、ボーダー線の太さを指定。
+                        // TextEditorのボーダーカラーをグレーに指定し、ボーダー線の太さを指定。
                         .border(Color.gray, width: 3)
                         .padding()
                 } // Groupここまで

@@ -12,9 +12,9 @@ struct EditMemoView: View {
     @StateObject private var editMemoItem = EditMemoViewModel()
     @Environment(\.managedObjectContext) private var viewContext
     @Environment(\.dismiss) private var dismiss
-    @State var editContent: String = ""
-    @State var editDate: Date = Date()
-    
+    @State private var editContent: String = ""
+    @State private var editDate: Date = Date()
+
     var body: some View {
         VStack {
             Group {
