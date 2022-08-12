@@ -15,7 +15,6 @@ struct RegistrationView: View {
     @Environment(\.managedObjectContext) private var viewContext
     @Environment(\.dismiss) private var dismiss
     @StateObject private var inputItem = RegistrationViewModel()
-    @State private var flag = false
     @State private var priorityList: [String] = [
         PriorityEnum.emergencyHighAndImportantHigh.rawValue,
         PriorityEnum.emergencyHighAndImportantLow.rawValue,
@@ -36,13 +35,6 @@ struct RegistrationView: View {
                         .border(Color.gray, width: 3)
 
                     Spacer()
-
-                    Toggle(isOn: $flag) {
-                        Text(flag ? "完了" : "未完了")
-                    } // Toggleここまで
-                    .frame(width: 290, height: 60)
-                    .padding()
-                    .border(Color.gray, width: 3)
 
                     Spacer()
                     HStack {

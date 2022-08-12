@@ -37,6 +37,12 @@ struct SavedView: View {
                                     .border(Color.gray, width: 1)
                             }
                         }
+                        .background(alignment: .bottomLeading) {
+                            Capsule()
+                                .fill(.white)
+                                .offset(y: 12)
+
+                        }
                     }
                 }
                 TaskListView(items: FetchRequest(sortDescriptors: [NSSortDescriptor(keyPath: \Memo.date, ascending: true)],
