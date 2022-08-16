@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import CoreGraphics
 
 struct SavedView: View {
     @Environment(\.managedObjectContext) private var viewContext
@@ -19,14 +20,18 @@ struct SavedView: View {
         PriorityEnum.emergencyLowAndImportantHigh.rawValue
     ]
     @State private var priorityCategory = PriorityEnum.emergencyHighAndImportantHigh.rawValue
-    init() {
-        UISegmentedControl.appearance().setTitleTextAttributes(
-            [.font: UIFont.systemFont(ofSize: 6)], for: .selected)
-    }
 
     var body: some View {
-        NavigationView {
-            VStack {
+        Group {
+            VStack(spacing: 25) {
+                HStack {
+                    Text("List一覧")
+                        // 太文字に変更
+                        .fontWeight(.bold)
+                        // 文字サイズを変更
+                        .font(.title)
+                }
+                .padding()
                 ScrollView(.horizontal) {
                     HStack {
                         ForEach(0..<prioritys.count, id: \.self) { item in
@@ -34,22 +39,29 @@ struct SavedView: View {
                                 priorityCategory = prioritys[item]
                             }) {
                                 Text(self.prioritys[item])
-                                    .border(Color.gray, width: 1)
-                            }
-                        }
-                        .background(alignment: .bottomLeading) {
-                            Capsule()
-                                .fill(.white)
-                                .offset(y: 12)
+                                    .font(.callout)
+                                    .foregroundColor(Color.white)
+                                    .padding()
+                            } // Buttonここまで
+                            .background {
+                                Capsule()
+                                    // 影を装飾
+                                    .shadow(radius: 4)
+                                    .opacity(0.4)
+                            } // backgroundここまで
 
-                        }
-                    }
-                }
+                        } // ForEachここまで
+                    } // Hstackここまで
+                } //  ScrollViewここまで
+                .padding(.horizontal)
+
+                Spacer()
                 TaskListView(items: FetchRequest(sortDescriptors: [NSSortDescriptor(keyPath: \Memo.date, ascending: true)],
                                                  predicate: NSPredicate(format: "priority == %@", priorityCategory),
                                                  animation: .default))
+                Spacer()
             } //  VStackここまで
-        } // NavigationViewここまで
+        } // Groopここまで
     } // var bodyここまで
 } // SaveViewここまで
 

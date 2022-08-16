@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import UIKit
 
 struct HomeView: View {
     @Environment(\.managedObjectContext) private var viewContext
@@ -20,6 +21,7 @@ struct HomeView: View {
             // もしisShowtapがfalseであれば画面をそのままの状態にし、trueであれば画面をNavigationLink先に遷移させ、HomeView画面を閉じる。
             if isShowTap == false {
                 ZStack {
+
                     VStack {
                         Spacer()
                         HStack {

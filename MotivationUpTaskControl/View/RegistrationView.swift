@@ -32,11 +32,9 @@ struct RegistrationView: View {
                         .frame(width: 290, height: 60)
                         .textFieldStyle(.roundedBorder)
                         .padding()
-                        .border(Color.gray, width: 3)
+                        // 色をAssetsで指定すること。
+                        .border(Color.white, width: 3)
 
-                    Spacer()
-
-                    Spacer()
                     HStack {
                         Text("優先度")
                             .padding()
@@ -49,21 +47,20 @@ struct RegistrationView: View {
                         } // Pickerここまで
                         .pickerStyle(DefaultPickerStyle())
                         .frame(width: 200, height: 60)
-                        .padding()
+                        .shadow(radius: 5)
                     } // Hstackここまで
-                    .border(Color.gray, width: 3)
-                    Spacer()
                     // RegistrationViewModelで定義した値を引数に指定する。
                     DatePicker("期日", selection: $inputItem.date)
-                        .frame(width: 290, height: 60)
-                        .padding()
-                        .border(Color.gray, width: 3)
+                        .frame(width: 315, height: 60)
+                        .shadow(radius: 5)
+
                     Spacer()
+
                     // RegistrationViewModelで定義した値を引数に指定する。
                     TextEditor(text: $inputItem.content)
                         .frame(width: 315, height: 250)
                         // TextEditorのボーダーカラーをグレーに指定し、ボーダー線の太さを指定。
-                        .border(Color.gray, width: 3)
+                        .shadow(radius: 5)
                         .padding()
                 } // Groupここまで
                 // ボタンを押した時に優先順位毎に応じて、Listに登録し表示できるようにする。
@@ -78,9 +75,9 @@ struct RegistrationView: View {
                         .frame(width: 290, height: 60)
                         .padding()
                         .border(Color.gray, width: 3)
-                }
+                } // Buttonここまで
                 Spacer()
-            } // ScrollViewここまで
+            }
         } // VStackここまで
         .onAppear(perform: {
             afterPriority = selectedPriority.rawValue

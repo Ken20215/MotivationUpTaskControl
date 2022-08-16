@@ -49,6 +49,7 @@ struct ContentView: View {
             .shadow(color: Color("TabButtonColor").opacity(0.1), radius: 5, x: 0, y: -5)
             .padding(.top, -15)
         } // VStackここまで
+
         .ignoresSafeArea(edges: [.bottom])
     } // var bodyここまで
 } // ContentViewここまで
