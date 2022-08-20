@@ -26,7 +26,7 @@ struct SavedView: View {
         Group {
             VStack(spacing: 25) {
                 HStack {
-                    Text("List一覧")
+                    Text("Lists")
                         // 太文字に変更
                         .fontWeight(.bold)
                         // 文字サイズを変更

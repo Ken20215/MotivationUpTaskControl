@@ -18,7 +18,7 @@ struct TaskListView: View {
 
     var body: some View {
         if items.isEmpty {
-            Text("なし")
+            Text("No Task")
                 .font(.largeTitle)
                 // 文字の太さを指定。
                 .fontWeight(.black)
