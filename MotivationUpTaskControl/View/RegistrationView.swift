@@ -34,7 +34,7 @@ struct RegistrationView: View {
                     Text("Registration")
                         .font(.title)
                         .foregroundColor(Color.white)
-
+                      Spacer()
                 }
                 ScrollView {
                     ZStack {
@@ -47,9 +47,10 @@ struct RegistrationView: View {
                                         .padding()
                                 } // Hstackここまで
                                 TextField("", text: $inputItem.subject)
+                                    .multilineTextAlignment(.leading)
                                     .frame(width: 270, height: 60)
                                     .textFieldStyle(.roundedBorder)
-                                    .shadow(radius: 5)
+                                    .shadow(radius: 3)
 
                                     // 色をAssetsで指定すること。
                                     .border(Color.white, width: 3)
@@ -64,9 +65,10 @@ struct RegistrationView: View {
                                 }
                                 // RegistrationViewModelで定義した値を引数に指定する。
                                 TextField("", text: $inputItem.content)
+                                    .multilineTextAlignment(.leading)
                                     .frame(width: 270, height: 60)
                                     .textFieldStyle(.roundedBorder)
-                                    .shadow(radius: 5)
+                                    .shadow(radius: 3)
                                     // 色をAssetsで指定すること。
                                     .border(Color.white, width: 3)
                                     .padding()
