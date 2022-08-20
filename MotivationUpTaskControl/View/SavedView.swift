@@ -20,6 +20,7 @@ struct SavedView: View {
         PriorityEnum.emergencyLowAndImportantHigh.rawValue
     ]
     @State private var priorityCategory = PriorityEnum.emergencyHighAndImportantHigh.rawValue
+    @State var index = 0
 
     var body: some View {
         Group {
@@ -30,27 +31,75 @@ struct SavedView: View {
                         .fontWeight(.bold)
                         // 文字サイズを変更
                         .font(.title)
+                    Spacer()
                 }
-                .padding()
+                .padding(.horizontal)
                 ScrollView(.horizontal) {
                     HStack {
-                        ForEach(0..<prioritys.count, id: \.self) { item in
-                            Button(action: {
-                                priorityCategory = prioritys[item]
-                            }) {
-                                Text(self.prioritys[item])
-                                    .font(.callout)
-                                    .foregroundColor(Color.white)
-                                    .padding()
-                            } // Buttonここまで
-                            .background {
-                                Capsule()
-                                    // 影を装飾
-                                    .shadow(radius: 4)
-                                    .opacity(0.4)
-                            } // backgroundここまで
+                        Button(action: {
+                            priorityCategory = PriorityEnum.emergencyHighAndImportantHigh.rawValue
+                            self.index = 0
+                        }) {
+                            Text("\(PriorityEnum.emergencyHighAndImportantHigh.rawValue)")
+                                .fontWeight(self.index == 0 ? .bold : .none)
+                                .foregroundColor(Color.white)
+                                .padding()
+                                .background {
+                                    Capsule()
+                                        // 影を装飾
+                                        .shadow(radius: 4)
+                                        .opacity(self.index == 0 ? 1 : 0.4)
+                                } // backgroundここまで
+                        }
 
-                        } // ForEachここまで
+                        Button(action: {
+                            priorityCategory = PriorityEnum.emergencyHighAndImportantLow.rawValue
+                            self.index = 1
+                        }) {
+                            Text("\(PriorityEnum.emergencyHighAndImportantLow.rawValue)")
+                                .fontWeight(self.index == 1 ? .bold : .none)
+                                .foregroundColor(Color.white)
+                                .padding()
+                                .background {
+                                    Capsule()
+                                        // 影を装飾
+                                        .shadow(radius: 4)
+                                        .opacity(self.index == 1 ? 1 : 0.4)
+                                } // backgroundここまで
+                        }
+
+                        Button(action: {
+                            priorityCategory =  PriorityEnum.emergencyLowAndImportantLow.rawValue
+                            self.index = 2
+                        }) {
+                            Text("\( PriorityEnum.emergencyLowAndImportantLow.rawValue)")
+                                .fontWeight(self.index == 2 ? .bold : .none)
+                                .foregroundColor(Color.white)
+                                .padding()
+                                .background {
+                                    Capsule()
+                                        // 影を装飾
+                                        .shadow(radius: 4)
+                                        .opacity(self.index == 2 ? 1 : 0.4)
+                                } // backgroundここまで
+                        }
+
+                        Button(action: {
+                            priorityCategory =  PriorityEnum.emergencyLowAndImportantHigh.rawValue
+                            self.index = 3
+                        }) {
+                            Text("\(PriorityEnum.emergencyLowAndImportantHigh.rawValue)")
+                                .fontWeight(self.index == 3 ? .bold : .none)
+                                .foregroundColor(Color.white)
+                                .padding()
+                                .background {
+                                    Capsule()
+                                        // 影を装飾
+                                        .shadow(radius: 4)
+                                        .opacity(self.index == 3 ? 1 : 0.4)
+                                } // backgroundここまで
+                        }
+
                     } // Hstackここまで
                 } //  ScrollViewここまで
                 .padding(.horizontal)

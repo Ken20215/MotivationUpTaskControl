@@ -15,13 +15,11 @@ struct HomeView: View {
     @State private var isShowTap: Bool = false
     // PriorityModelViewの列挙型の値をインスタンス変数に初期化してあげる。
     @State private var tapPriority: PriorityEnum = .emergencyHighAndImportantHigh
-
     var body: some View {
         NavigationView {
             // もしisShowtapがfalseであれば画面をそのままの状態にし、trueであれば画面をNavigationLink先に遷移させ、HomeView画面を閉じる。
             if isShowTap == false {
                 ZStack {
-
                     VStack {
                         Spacer()
                         HStack {

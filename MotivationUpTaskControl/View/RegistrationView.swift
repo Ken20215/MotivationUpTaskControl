@@ -24,61 +24,119 @@ struct RegistrationView: View {
     @State private var afterPriority = ""
 
     var body: some View {
-        VStack {
-            ScrollView {
-                Group {
-                    Spacer()
-                    TextField("件名", text: $inputItem.subject)
-                        .frame(width: 290, height: 60)
-                        .textFieldStyle(.roundedBorder)
-                        .padding()
-                        // 色をAssetsで指定すること。
-                        .border(Color.white, width: 3)
+        ZStack {
+            Color.black
+                .edgesIgnoringSafeArea(.all)
 
-                    HStack {
-                        Text("優先度")
-                            .padding()
-
-                        Picker("", selection: self.$afterPriority) {
-                            ForEach(0 ..< priorityList.count, id: \.self) { index in
-                                Text(priorityList[index])
-                                    .tag(priorityList[index])
-                            }
-                        } // Pickerここまで
-                        .pickerStyle(DefaultPickerStyle())
-                        .frame(width: 200, height: 60)
-                        .shadow(radius: 5)
-                    } // Hstackここまで
-                    // RegistrationViewModelで定義した値を引数に指定する。
-                    DatePicker("期日", selection: $inputItem.date)
-                        .frame(width: 315, height: 60)
-                        .shadow(radius: 5)
-
-                    Spacer()
-
-                    // RegistrationViewModelで定義した値を引数に指定する。
-                    TextEditor(text: $inputItem.content)
-                        .frame(width: 315, height: 250)
-                        // TextEditorのボーダーカラーをグレーに指定し、ボーダー線の太さを指定。
-                        .shadow(radius: 5)
-                        .padding()
-                } // Groupここまで
-                // ボタンを押した時に優先順位毎に応じて、Listに登録し表示できるようにする。
-                Button(action: {
-                    // HomeViewで選択した、優先順位のボタンをタップしたときに受け取る列挙型の値をViewModelのpriority変数に格納する。
-                    // RegistrationViewModelで定義した値に引き渡す。
-                    //                    inputItem.priority = selectedPriority
-                    inputItem.priority = afterPriority
-                    inputItem.memoInputText(viewContext: viewContext, dismiss: dismiss)
-                }) {
-                    Text("保存")
-                        .frame(width: 290, height: 60)
-                        .padding()
-                        .border(Color.gray, width: 3)
-                } // Buttonここまで
+            VStack(spacing: 25) {
                 Spacer()
-            }
-        } // VStackここまで
+                HStack {
+                    Text("Registration")
+                        .font(.title)
+                        .foregroundColor(Color.white)
+
+                }
+                ScrollView {
+                    ZStack {
+                        VStack {
+                            VStack(spacing: -20) {
+                                HStack(spacing: 20) {
+                                    Text("Task title")
+                                        .frame(maxWidth: .infinity, alignment: .leading)
+                                        .foregroundColor(Color.gray)
+                                        .padding()
+                                } // Hstackここまで
+                                TextField("", text: $inputItem.subject)
+                                    .frame(width: 270, height: 60)
+                                    .textFieldStyle(.roundedBorder)
+                                    .shadow(radius: 5)
+
+                                    // 色をAssetsで指定すること。
+                                    .border(Color.white, width: 3)
+                            } // Vstackここまで
+
+                            VStack(spacing: -20) {
+                                HStack(spacing: 20) {
+                                    Text("Task Contents")
+                                        .frame(maxWidth: .infinity, alignment: .leading)
+                                        .foregroundColor(Color.gray)
+                                        .padding()
+                                }
+                                // RegistrationViewModelで定義した値を引数に指定する。
+                                TextField("", text: $inputItem.content)
+                                    .frame(width: 270, height: 60)
+                                    .textFieldStyle(.roundedBorder)
+                                    .shadow(radius: 5)
+                                    // 色をAssetsで指定すること。
+                                    .border(Color.white, width: 3)
+                                    .padding()
+                            }
+                        } // Vstackここまで
+                    } //  ZStackここまで
+                    .background(Color.white)
+                    .cornerRadius(10)
+                    .shadow(radius: 10)
+                    .padding()
+
+                    Capsule()
+                        .frame(width: 330, height: 1)
+                        .foregroundColor(Color.white)
+
+                    ZStack {
+                        VStack {
+                            HStack {
+                                Text("優先度")
+                                    .padding()
+
+                                Picker("", selection: self.$afterPriority) {
+                                    ForEach(0 ..< priorityList.count, id: \.self) { index in
+                                        Text(priorityList[index])
+                                            .tag(priorityList[index])
+                                    }
+                                } // Pickerここまで
+                                .pickerStyle(DefaultPickerStyle())
+                                .foregroundColor(Color.black)
+                                .frame(width: 200, height: 60)
+                                .shadow(radius: 5)
+                            } // Hstackここまで
+                            // RegistrationViewModelで定義した値を引数に指定する。
+                            DatePicker("期日", selection: $inputItem.date)
+                                .frame(width: 270, height: 60)
+                                .shadow(radius: 5)
+
+                            Spacer()
+                        } // VStackここまで
+                    } //  ZStackここまで
+                    .background(Color.white)
+                    .cornerRadius(10)
+                    .shadow(radius: 10)
+                    .padding()
+                    // ボタンを押した時に優先順位毎に応じて、Listに登録し表示できるようにする。
+                    HStack {
+                        Spacer()
+                        Button(action: {
+                            // HomeViewで選択した、優先順位のボタンをタップしたときに受け取る列挙型の値をViewModelのpriority変数に格納する。
+                            // RegistrationViewModelで定義した値に引き渡す。
+                            //                    inputItem.priority = selectedPriority
+                            inputItem.priority = afterPriority
+                            inputItem.memoInputText(viewContext: viewContext, dismiss: dismiss)
+                        }) {
+                            ZStack {
+                                Circle()
+                                    .background(Color.blue)
+                                    .frame(width: 60, height: 60, alignment: .leading)
+                                    .cornerRadius(50)
+                                    .padding()
+                                Image(systemName: "plus")
+                                    .foregroundColor(Color.white)
+                                    .font(.system(size: 30))
+
+                            } // Zstackここまで
+                        } // Buttonここまで
+                    } // Hstackここまで
+                } // ScrollViewここまで
+            } // VStackここまで
+        }
         .onAppear(perform: {
             afterPriority = selectedPriority.rawValue
         })
