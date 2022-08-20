@@ -25,17 +25,20 @@ struct RegistrationView: View {
 
     var body: some View {
         ZStack {
-            Color.black
+            // 背景色をグラデーションする。
+            LinearGradient(gradient: Gradient(colors: [.black, .white]),
+                           startPoint: .top, endPoint: .bottom)
                 .edgesIgnoringSafeArea(.all)
 
             VStack(spacing: 25) {
                 Spacer()
                 HStack {
-                    Text("Registration")
-                        .font(.title)
+                    Text("New Task")
+                        .font(.system(size: 50, weight: .bold, design: .default))
                         .foregroundColor(Color.white)
-                      Spacer()
+                    Spacer()
                 }
+                .padding(.horizontal)
                 ScrollView {
                     ZStack {
                         VStack {
@@ -80,14 +83,12 @@ struct RegistrationView: View {
                     .shadow(radius: 10)
                     .padding()
 
-                    Capsule()
-                        .frame(width: 330, height: 1)
-                        .foregroundColor(Color.white)
-
                     ZStack {
                         VStack {
                             HStack {
-                                Text("優先度")
+                                Text("Priority Reset")
+                                    .frame(maxWidth: .infinity, alignment: .leading)
+                                    .foregroundColor(Color.gray)
                                     .padding()
 
                                 Picker("", selection: self.$afterPriority) {
@@ -102,7 +103,7 @@ struct RegistrationView: View {
                                 .shadow(radius: 5)
                             } // Hstackここまで
                             // RegistrationViewModelで定義した値を引数に指定する。
-                            DatePicker("期日", selection: $inputItem.date)
+                            DatePicker("", selection: $inputItem.date)
                                 .frame(width: 270, height: 60)
                                 .shadow(radius: 5)
 
@@ -114,6 +115,11 @@ struct RegistrationView: View {
                     .shadow(radius: 10)
                     .padding()
                     // ボタンを押した時に優先順位毎に応じて、Listに登録し表示できるようにする。
+
+                    Capsule()
+                        .frame(width: 370, height: 1)
+                        .foregroundColor(Color.white)
+
                     HStack {
                         Spacer()
                         Button(action: {
@@ -138,7 +144,7 @@ struct RegistrationView: View {
                     } // Hstackここまで
                 } // ScrollViewここまで
             } // VStackここまで
-        }
+        } // ZStackここまで
         .onAppear(perform: {
             afterPriority = selectedPriority.rawValue
         })
