@@ -27,9 +27,7 @@ struct SavedView: View {
             VStack {
                 VStack {
                     HStack {
-                        Text("Lists")
-                            // 太文字に変更
-                            .fontWeight(.bold)
+                        Text("Tasks")
                             // 文字サイズを変更
                             .font(.system(size: 40, weight: .bold, design: .default))
                             .foregroundColor(Color.white)

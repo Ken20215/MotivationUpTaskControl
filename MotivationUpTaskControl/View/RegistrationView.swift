@@ -31,7 +31,6 @@ struct RegistrationView: View {
                 .edgesIgnoringSafeArea(.all)
 
             VStack(spacing: 25) {
-                Spacer()
                 HStack {
                     Text("New Task")
                         .font(.system(size: 50, weight: .bold, design: .default))
@@ -46,10 +45,11 @@ struct RegistrationView: View {
                                 HStack(spacing: 20) {
                                     Text("Task title")
                                         .frame(maxWidth: .infinity, alignment: .leading)
-                                        .foregroundColor(Color.gray)
+                                        .foregroundColor(Color.black)
                                         .padding()
                                 } // Hstackここまで
                                 TextField("", text: $inputItem.subject)
+                                    .foregroundColor(Color.black)
                                     .multilineTextAlignment(.leading)
                                     .frame(width: 270, height: 60)
                                     .textFieldStyle(.roundedBorder)
@@ -63,11 +63,12 @@ struct RegistrationView: View {
                                 HStack(spacing: 20) {
                                     Text("Task Contents")
                                         .frame(maxWidth: .infinity, alignment: .leading)
-                                        .foregroundColor(Color.gray)
+                                        .foregroundColor(Color.black)
                                         .padding()
                                 }
                                 // RegistrationViewModelで定義した値を引数に指定する。
                                 TextField("", text: $inputItem.content)
+                                    .foregroundColor(Color.black)
                                     .multilineTextAlignment(.leading)
                                     .frame(width: 270, height: 60)
                                     .textFieldStyle(.roundedBorder)
@@ -85,26 +86,9 @@ struct RegistrationView: View {
 
                     ZStack {
                         VStack {
-                            HStack {
-                                Text("Priority Reset")
-                                    .frame(maxWidth: .infinity, alignment: .leading)
-                                    .foregroundColor(Color.gray)
-                                    .padding()
-
-                                Picker("", selection: self.$afterPriority) {
-                                    ForEach(0 ..< priorityList.count, id: \.self) { index in
-                                        Text(priorityList[index])
-                                            .tag(priorityList[index])
-                                    }
-                                } // Pickerここまで
-                                .pickerStyle(DefaultPickerStyle())
-                                .foregroundColor(Color.black)
-                                .frame(width: 200, height: 60)
-                                .shadow(radius: 5)
-                            } // Hstackここまで
                             // RegistrationViewModelで定義した値を引数に指定する。
                             DatePicker("", selection: $inputItem.date)
-                                .frame(width: 270, height: 60)
+                                .datePickerStyle(.graphical)
                                 .shadow(radius: 5)
 
                             Spacer()
@@ -121,6 +105,30 @@ struct RegistrationView: View {
                         .foregroundColor(Color.white)
 
                     HStack {
+                        VStack {
+                            HStack {
+                                Text("Priority Reset")
+                                    .frame(maxWidth: .infinity, alignment: .leading)
+                                    .foregroundColor(Color.black)
+                                    .padding(.horizontal)
+                            } // Hstackここまで
+                            Picker("", selection: self.$afterPriority) {
+                                ForEach(0 ..< priorityList.count, id: \.self) { index in
+                                    Text(priorityList[index])
+                                        .tag(priorityList[index])
+                                } // ForEachここまで
+                            } // Pickerここまで
+                            .pickerStyle(DefaultPickerStyle())
+                            .foregroundColor(Color.black)
+                            .shadow(radius: 5)
+                        } // VStackここまで
+                        .background(Color.white)
+                        .cornerRadius(10)
+                        .shadow(radius: 10)
+                        .padding(.horizontal)
+                        .padding(.top)
+                        .padding(.bottom)
+
                         Spacer()
                         Button(action: {
                             // HomeViewで選択した、優先順位のボタンをタップしたときに受け取る列挙型の値をViewModelのpriority変数に格納する。

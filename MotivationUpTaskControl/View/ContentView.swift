@@ -20,11 +20,11 @@ struct ContentView: View {
                 // HomeViewを呼び出す。
                 HomeView()
                     .tag(tabItems[0])
-                    .padding()
+
                 // SavedViewを呼び出す。
                 SavedView()
                     .tag(tabItems[1])
-                    .padding()
+
             } // TabViewここまで
             HStack {
                 ForEach(tabItems, id: \.self) { value in
