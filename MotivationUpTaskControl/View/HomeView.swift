@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import UIKit
 
 struct HomeView: View {
     @Environment(\.managedObjectContext) private var viewContext

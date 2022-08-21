@@ -6,8 +6,6 @@
 //
 
 import SwiftUI
-import CoreData
-import UIKit
 
 struct ContentView: View {
     var tabItems = ["house", "suit.heart.fill"]

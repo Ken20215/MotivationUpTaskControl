@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import CoreGraphics
 
 struct SavedView: View {
     @Environment(\.managedObjectContext) private var viewContext
@@ -20,12 +19,13 @@ struct SavedView: View {
         PriorityEnum.emergencyLowAndImportantHigh.rawValue
     ]
     @State private var priorityCategory = PriorityEnum.emergencyHighAndImportantHigh.rawValue
-    @State var index = 0
+    @State private var index: Int = 0
 
     var body: some View {
         Group {
             VStack {
                 VStack {
+                    // showがtrueであればText（Tasks）を表示させる。
                     HStack {
                         Text("Tasks")
                             // 文字サイズを変更
@@ -51,7 +51,6 @@ struct SavedView: View {
                                             .opacity(self.index == 0 ? 1 : 0.2)
                                     } // backgroundここまで
                             }
-
                             Button(action: {
                                 priorityCategory = PriorityEnum.emergencyHighAndImportantLow.rawValue
                                 self.index = 1
@@ -67,7 +66,6 @@ struct SavedView: View {
                                             .opacity(self.index == 1 ? 1 : 0.2)
                                     } // backgroundここまで
                             }
-
                             Button(action: {
                                 priorityCategory =  PriorityEnum.emergencyLowAndImportantLow.rawValue
                                 self.index = 2
@@ -83,7 +81,6 @@ struct SavedView: View {
                                             .opacity(self.index == 2 ? 1 : 0.2)
                                     } // backgroundここまで
                             }
-
                             Button(action: {
                                 priorityCategory =  PriorityEnum.emergencyLowAndImportantHigh.rawValue
                                 self.index = 3
@@ -110,6 +107,7 @@ struct SavedView: View {
                 .background(Color.gray)
 
                 Spacer()
+
                 TaskListView(items: FetchRequest(sortDescriptors: [NSSortDescriptor(keyPath: \Memo.date, ascending: true)],
                                                  predicate: NSPredicate(format: "priority == %@", priorityCategory),
                                                  animation: .default))

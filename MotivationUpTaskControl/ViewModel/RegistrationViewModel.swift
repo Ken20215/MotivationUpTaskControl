@@ -25,7 +25,7 @@ class RegistrationViewModel: ObservableObject {
         inputItem.content = content
         inputItem.date = date
         // CoreDataにRegistrationViewから受け取った値をrpwValueでStringに変換す格納する。
-        //        inputItem.priority =  priority.rawValue
+        // inputItem.priority =  priority.rawValue
         inputItem.priority = priority
         // 「try? viewContext.save()」でデータを保存する。
         try? viewContext.save()
