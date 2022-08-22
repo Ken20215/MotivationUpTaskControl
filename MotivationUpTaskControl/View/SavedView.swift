@@ -29,7 +29,7 @@ struct SavedView: View {
                     HStack {
                         Text("Tasks")
                             // 文字サイズを変更
-                            .font(.system(size: 40, weight: .bold, design: .default))
+                            .font(.system(size: 45, weight: .bold, design: .default))
                             .foregroundColor(Color.white)
                         Spacer()
                     }

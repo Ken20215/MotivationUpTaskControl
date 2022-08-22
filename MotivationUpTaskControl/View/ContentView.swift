@@ -34,12 +34,11 @@ struct ContentView: View {
                                     dipText = "Home"
                                 }
                             })
-                    }
+                    } //  GeometryReaderここまで
                     .frame(width: 70, height: 50)
                     if value != tabItems.last {Spacer(minLength: 0)}
-
-                }
-            }
+                } // ForEachここまで
+            } // Hstackここまで
             .padding(.horizontal, 25)
             .padding(.top)
             .padding(.bottom, 25)
@@ -47,7 +46,6 @@ struct ContentView: View {
             .shadow(color: Color("TabButtonColor").opacity(0.1), radius: 5, x: 0, y: -5)
             .padding(.top, -15)
         } // VStackここまで
-
         .ignoresSafeArea(edges: [.bottom])
     } // var bodyここまで
 } // ContentViewここまで

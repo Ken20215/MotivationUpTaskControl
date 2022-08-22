@@ -17,6 +17,16 @@ struct HomeView: View {
     var body: some View {
         ZStack {
             VStack {
+                HStack {
+                    Text("Task")
+                        .font(.system(size: 45, weight: .bold, design: .default))
+                        .foregroundColor(Color.white)
+                        .padding(.horizontal)
+                        .padding(.top)
+                    Spacer()
+                }
+                .background(Color.gray)
+
                 Spacer()
                 HStack {
                     Button(action: {
