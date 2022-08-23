@@ -26,10 +26,8 @@ struct TaskListView: View {
                         NavigationLink(destination: EditMemoView(edititem: item),
                                        label: {
                                         VStack(alignment: .leading) {
-                                            Text("\(item.subject ?? "")")
-                                                .font(.system(.largeTitle, design: .monospaced))
-                                                .fontWeight(.ultraLight)
-                                                .bold()
+                                            Text("件名：\(item.subject ?? "")")
+                                                .font(.system(size: 20, weight: .bold, design: .default))
                                                 .italic()
                                             Text("\(item.content ?? "")")
                                             //　CoreDataのAttributeに登録しないといけいのに、個別で一つの登録を行なったため、エラーが発生。
