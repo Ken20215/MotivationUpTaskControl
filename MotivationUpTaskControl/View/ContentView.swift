@@ -12,17 +12,16 @@ struct ContentView: View {
     @State var selected =  "house"
     @State var centerX: CGFloat = 0
     @State var dipText: String = ""
+
     var body: some View {
         VStack(spacing: 0) {
             TabView(selection: $selected) {
                 // HomeViewを呼び出す。
                 HomeView()
                     .tag(tabItems[0])
-
                 // SavedViewを呼び出す。
                 SavedView()
                     .tag(tabItems[1])
-
             } // TabViewここまで
             HStack {
                 ForEach(tabItems, id: \.self) { value in
@@ -43,7 +42,7 @@ struct ContentView: View {
             .padding(.top)
             .padding(.bottom, 25)
             .background(Color.black.clipShape(AnimatedShape(centerX: centerX)))
-            .shadow(color: Color("TabButtonColor").opacity(0.1), radius: 5, x: 0, y: -5)
+            .shadow(color: Color.blue.opacity(0.1), radius: 5, x: 0, y: -5)
             .padding(.top, -15)
         } // VStackここまで
         .ignoresSafeArea(edges: [.bottom])
