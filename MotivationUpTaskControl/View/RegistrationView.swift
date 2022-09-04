@@ -43,7 +43,7 @@ struct RegistrationView: View {
                         VStack {
                             VStack(spacing: -20) {
                                 HStack(spacing: 20) {
-                                    Text("Task title")
+                                    Text("Task Title")
                                         .frame(maxWidth: .infinity, alignment: .leading)
                                         .foregroundColor(Color.black)
                                         .padding()
