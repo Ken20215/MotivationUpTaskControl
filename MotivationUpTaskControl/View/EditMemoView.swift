@@ -46,7 +46,7 @@ struct EditMemoView: View {
                                           viewContext: viewContext,
                                           dismiss: dismiss)
                 }, label: {
-                    Text("Edit")
+                    Text("DONE")
                 })
             }
         }
