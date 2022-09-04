@@ -38,7 +38,7 @@ struct HomeView: View {
                         // PriorityViewModelで定義した格納型変数をインスタンスし呼び出す。
                         Text(PriorityEnum.emergencyHighAndImportantHigh.displayString)
                             .frame(width: 140, height: 140)
-                            .foregroundColor(Color.black)
+                            .foregroundColor(Color.white)
                             .background(Color("Task1Color"))
                             .sheet(isPresented: $isShowTap) {
                                 RegistrationView(selectedPriority: $tapPriority)
