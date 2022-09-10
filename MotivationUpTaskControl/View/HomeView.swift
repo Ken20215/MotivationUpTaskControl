@@ -25,7 +25,7 @@ struct HomeView: View {
                         .padding(.top)
                     Spacer()
                 }
-                .background(Color.gray)
+                .background(Color.black)
 
                 Spacer()
                 HStack {

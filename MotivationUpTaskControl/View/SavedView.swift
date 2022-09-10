@@ -106,7 +106,7 @@ struct SavedView: View {
                     .edgesIgnoringSafeArea(.horizontal)
                     .padding(.top)
                     .padding(.horizontal)
-                    .background(Color.gray)
+                    .background(Color.black)
                 }
                 Spacer()
                 // 編集画面が表示される際に、上のText「Tasks」と優先度を決めるボタンの表示を無くしたい。
