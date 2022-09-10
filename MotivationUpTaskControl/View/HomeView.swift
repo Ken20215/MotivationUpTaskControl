@@ -26,7 +26,7 @@ struct HomeView: View {
                     Spacer()
                 }
                 .background(Color.black)
-                
+
                 Spacer()
                 HStack {
                     Button(action: {
@@ -44,7 +44,7 @@ struct HomeView: View {
                                 RegistrationView(selectedPriority: $tapPriority)
                             }
                     } // 「緊急かつ重要」Buttonここまで
-                    
+
                     Button(action: {
                         // 優先を決めるボタンをタップしたら、指定の優先順位の文字が入ってい列挙型の値「.emergencyHighAndImportantLow」を代入する。
                         tapPriority = .emergencyHighAndImportantLow
@@ -77,7 +77,7 @@ struct HomeView: View {
                                 RegistrationView(selectedPriority: $tapPriority)
                             }
                     } // 「緊急でないが重要」Buttonここまで
-                    
+
                     Button(action: {
                         // 優先を決めるボタンをタップしたら、指定の優先順位の文字が入ってい列挙型の値「.emergencyLowAndImportantLow」を代入する。
                         tapPriority = .emergencyLowAndImportantLow

@@ -13,12 +13,12 @@ struct TaskListView: View {
     @StateObject private var saveItems = SavedViewModel()
     @FetchRequest var items: FetchedResults<Memo>
     @Binding var showEdit: Bool
-    
+
     var body: some View {
         if items.isEmpty {
             Text("No Task")
                 .font(.largeTitle)
-            // 文字の太さを指定。
+                // 文字の太さを指定。
                 .fontWeight(.black)
                 .foregroundColor(Color.orange)
         } else {
@@ -28,21 +28,21 @@ struct TaskListView: View {
                         NavigationLink(destination: EditMemoView(edititem: item),
                                        isActive: $showEdit,
                                        label: {
-                            Button(action: {
-                                showEdit = true
-                            }) {
-                                VStack(alignment: .leading) {
-                                    Text("件名：\(item.subject ?? "")")
-                                        .font(.system(size: 20, weight: .bold, design: .default))
-                                        .italic()
-                                    Text("\(item.content ?? "")")
-                                    //　CoreDataのAttributeに登録しないといけいのに、個別で一つの登録を行なったため、エラーが発生。
-                                    Text(item.date!, style: .date)
-                                        .environment(\.locale, Locale.init(identifier: "en_US"))
-                                        .foregroundColor(.red)
-                                } // Vstackここまで
-                            }
-                        }) // NavigationLinkここまで
+                                        Button(action: {
+                                            showEdit = true
+                                        }) {
+                                            VStack(alignment: .leading) {
+                                                Text("件名：\(item.subject ?? "")")
+                                                    .font(.system(size: 20, weight: .bold, design: .default))
+                                                    .italic()
+                                                Text("\(item.content ?? "")")
+                                                //　CoreDataのAttributeに登録しないといけいのに、個別で一つの登録を行なったため、エラーが発生。
+                                                Text(item.date!, style: .date)
+                                                    .environment(\.locale, Locale.init(identifier: "en_US"))
+                                                    .foregroundColor(.red)
+                                            } // Vstackここまで
+                                        }
+                                       }) // NavigationLinkここまで
                     } // ForEachここまで
                     .onDelete { IndexSet in
                         saveItems.deleteItems(offsets: IndexSet,
