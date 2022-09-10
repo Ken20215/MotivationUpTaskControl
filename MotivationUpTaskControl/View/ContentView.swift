@@ -11,7 +11,7 @@ struct ContentView: View {
     @State var selected =  "house"
     @State var centerX: CGFloat = 0
     @State var dipText: String = ""
-
+    
     var body: some View {
         VStack(spacing: 0) {
             TabView(selection: $selected) {
@@ -77,7 +77,7 @@ struct TabBarButton: View {
                     .renderingMode(.template)
                     .frame(width: 26, height: 26)
                     .foregroundColor(selected == value ? Color.orange : .white)
-
+                
                 Text(dipText)
                     .font(.caption)
                     .foregroundColor(selected == value ? Color.orange : .white)
@@ -87,28 +87,28 @@ struct TabBarButton: View {
             .frame(width: 70, height: 50)
             .offset(y: selected == value ? -15 : 0)
         }
-
+        
     }
 }
 
 // Custom Shape
 struct AnimatedShape: Shape {
-
+    
     var centerX: CGFloat
-
+    
     // animation Path
     var animatableData: CGFloat {
         get {return centerX}
         set {centerX = newValue}
     }
-
+    
     func path(in rect: CGRect) -> Path {
         return Path { path in
             path.move(to: CGPoint(x: 0, y: 15))
             path.addLine(to: CGPoint(x: 0, y: rect.height))
             path.addLine(to: CGPoint(x: rect.width, y: rect.height))
             path.addLine(to: CGPoint(x: rect.width, y: 15))
-
+            
             // Curve
             path.move(to: CGPoint(x: centerX - 35, y: 15))
             path.addQuadCurve(to: CGPoint(x: centerX + 35, y: 15), control:

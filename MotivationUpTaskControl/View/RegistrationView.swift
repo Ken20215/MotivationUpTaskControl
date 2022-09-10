@@ -22,14 +22,14 @@ struct RegistrationView: View {
         PriorityEnum.emergencyLowAndImportantHigh.rawValue
     ]
     @State private var afterPriority = ""
-
+    
     var body: some View {
         ZStack {
             // 背景色をグラデーションする。
             LinearGradient(gradient: Gradient(colors: [.black, .white]),
                            startPoint: .top, endPoint: .bottom)
-                .edgesIgnoringSafeArea(.all)
-
+            .edgesIgnoringSafeArea(.all)
+            
             VStack(spacing: 25) {
                 HStack {
                     Text("New Task")
@@ -49,16 +49,17 @@ struct RegistrationView: View {
                                         .padding()
                                 } // Hstackここまで
                                 TextField("", text: $inputItem.subject)
+                                    .font(.system(.title, design: .rounded))
                                     .foregroundColor(Color.black)
                                     .multilineTextAlignment(.leading)
-                                    .frame(width: 270, height: 60)
+                                    .overlay(
+                                        RoundedRectangle(cornerRadius: 3)
+                                            .stroke(Color.black, lineWidth: 2)
+                                    )
+                                    .frame(width: 290, height: 60)
                                     .textFieldStyle(.roundedBorder)
-                                    .shadow(radius: 3)
-
-                                    // 色をAssetsで指定すること。
-                                    .border(Color.white, width: 3)
                             } // Vstackここまで
-
+                            
                             VStack(spacing: -20) {
                                 HStack(spacing: 20) {
                                     Text("Task Contents")
@@ -68,13 +69,15 @@ struct RegistrationView: View {
                                 }
                                 // RegistrationViewModelで定義した値を引数に指定する。
                                 TextField("", text: $inputItem.content)
+                                    .font(.system(.title, design: .rounded))
                                     .foregroundColor(Color.black)
                                     .multilineTextAlignment(.leading)
-                                    .frame(width: 270, height: 60)
+                                    .overlay(
+                                        RoundedRectangle(cornerRadius: 3)
+                                            .stroke(Color.black, lineWidth: 2)
+                                    )
+                                    .frame(width: 290, height: 60)
                                     .textFieldStyle(.roundedBorder)
-                                    .shadow(radius: 3)
-                                    // 色をAssetsで指定すること。
-                                    .border(Color.white, width: 3)
                                     .padding()
                             }
                         } // Vstackここまで
@@ -83,14 +86,14 @@ struct RegistrationView: View {
                     .cornerRadius(10)
                     .shadow(radius: 10)
                     .padding()
-
+                    
                     ZStack {
                         VStack {
                             // RegistrationViewModelで定義した値を引数に指定する。
                             DatePicker("", selection: $inputItem.date)
                                 .datePickerStyle(.graphical)
                                 .shadow(radius: 5)
-
+                            
                             Spacer()
                         } // VStackここまで
                     } //  ZStackここまで
@@ -99,11 +102,11 @@ struct RegistrationView: View {
                     .shadow(radius: 10)
                     .padding()
                     // ボタンを押した時に優先順位毎に応じて、Listに登録し表示できるようにする。
-
+                    
                     Capsule()
                         .frame(width: 370, height: 1)
                         .foregroundColor(Color.white)
-
+                    
                     HStack {
                         VStack {
                             HStack {
@@ -128,7 +131,7 @@ struct RegistrationView: View {
                         .padding(.horizontal)
                         .padding(.top)
                         .padding(.bottom)
-
+                        
                         Spacer()
                         Button(action: {
                             // HomeViewで選択した、優先順位のボタンをタップしたときに受け取る列挙型の値をViewModelのpriority変数に格納する。
@@ -146,7 +149,7 @@ struct RegistrationView: View {
                                 Image(systemName: "plus")
                                     .foregroundColor(Color.white)
                                     .font(.system(size: 30))
-
+                                
                             } // Zstackここまで
                         } // Buttonここまで
                     } // Hstackここまで

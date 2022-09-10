@@ -14,7 +14,7 @@ struct EditMemoView: View {
     @StateObject private var editMemoItem = EditMemoViewModel()
     @State private var editContent: String = ""
     @State private var editDate: Date = Date()
-
+    
     var body: some View {
         VStack {
             Spacer()
