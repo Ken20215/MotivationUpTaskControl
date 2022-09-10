@@ -9,14 +9,15 @@ import SwiftUI
 
 struct EditMemoView: View {
     var edititem: Memo
-    @StateObject private var editMemoItem = EditMemoViewModel()
     @Environment(\.managedObjectContext) private var viewContext
     @Environment(\.dismiss) private var dismiss
+    @StateObject private var editMemoItem = EditMemoViewModel()
     @State private var editContent: String = ""
     @State private var editDate: Date = Date()
 
     var body: some View {
         VStack {
+            Spacer()
             Group {
                 TextEditor(text: $editMemoItem.content)
                     .edgesIgnoringSafeArea(.all)

@@ -20,97 +20,99 @@ struct SavedView: View {
     ]
     @State private var priorityCategory = PriorityEnum.emergencyHighAndImportantHigh.rawValue
     @State private var index: Int = 0
+    @State private var showEdit: Bool = false
 
     var body: some View {
         Group {
             VStack {
-                VStack {
-                    // showがtrueであればText（Tasks）を表示させる。
-                    HStack {
-                        Text("Tasks")
-                            // 文字サイズを変更
-                            .font(.system(size: 45, weight: .bold, design: .default))
-                            .foregroundColor(Color.white)
-                        Spacer()
-                    }
-                    .padding(.horizontal)
-                    ScrollView(.horizontal) {
+                if showEdit == false {
+                    VStack {
+                        // showがtrueであればText（Tasks）を表示させる。
                         HStack {
-                            Button(action: {
-                                priorityCategory = PriorityEnum.emergencyHighAndImportantHigh.rawValue
-                                self.index = 0
-                            }) {
-                                Text("\(PriorityEnum.emergencyHighAndImportantHigh.rawValue)")
-                                    .fontWeight(self.index == 0 ? .bold : .none)
-                                    .foregroundColor(Color.white)
-                                    .padding()
-                                    .background {
-                                        Capsule()
-                                            // 影を装飾
-                                            .shadow(radius: 4)
-                                            .opacity(self.index == 0 ? 1 : 0.2)
-                                    } // backgroundここまで
-                            }
-                            Button(action: {
-                                priorityCategory = PriorityEnum.emergencyHighAndImportantLow.rawValue
-                                self.index = 1
-                            }) {
-                                Text("\(PriorityEnum.emergencyHighAndImportantLow.rawValue)")
-                                    .fontWeight(self.index == 1 ? .bold : .none)
-                                    .foregroundColor(Color.white)
-                                    .padding()
-                                    .background {
-                                        Capsule()
-                                            // 影を装飾
-                                            .shadow(radius: 4)
-                                            .opacity(self.index == 1 ? 1 : 0.2)
-                                    } // backgroundここまで
-                            }
-                            Button(action: {
-                                priorityCategory =  PriorityEnum.emergencyLowAndImportantLow.rawValue
-                                self.index = 2
-                            }) {
-                                Text("\( PriorityEnum.emergencyLowAndImportantLow.rawValue)")
-                                    .fontWeight(self.index == 2 ? .bold : .none)
-                                    .foregroundColor(Color.white)
-                                    .padding()
-                                    .background {
-                                        Capsule()
-                                            // 影を装飾
-                                            .shadow(radius: 4)
-                                            .opacity(self.index == 2 ? 1 : 0.2)
-                                    } // backgroundここまで
-                            }
-                            Button(action: {
-                                priorityCategory =  PriorityEnum.emergencyLowAndImportantHigh.rawValue
-                                self.index = 3
-                            }) {
-                                Text("\(PriorityEnum.emergencyLowAndImportantHigh.rawValue)")
-                                    .fontWeight(self.index == 3 ? .bold : .none)
-                                    .foregroundColor(Color.white)
-                                    .padding()
-                                    .background {
-                                        Capsule()
-                                            // 影を装飾
-                                            .shadow(radius: 4)
-                                            .opacity(self.index == 3 ? 1 : 0.2)
-                                    } // backgroundここまで
-                            }
-                            .padding()
-                        } // Hstackここまで
-                    } //  ScrollViewここまで
-                } // Vstackここまで
-                .edgesIgnoringSafeArea(.top)
-                .edgesIgnoringSafeArea(.horizontal)
-                .padding(.top)
-                .padding(.horizontal)
-                .background(Color.gray)
-
+                            Text("Tasks")
+                                // 文字サイズを変更
+                                .font(.system(size: 45, weight: .bold, design: .default))
+                                .foregroundColor(Color.white)
+                            Spacer()
+                        } //  HStackここまで
+                        .padding(.horizontal)
+                        ScrollView(.horizontal) {
+                            HStack {
+                                Button(action: {
+                                    priorityCategory = PriorityEnum.emergencyHighAndImportantHigh.rawValue
+                                    self.index = 0
+                                }) {
+                                    Text("\(PriorityEnum.emergencyHighAndImportantHigh.rawValue)")
+                                        .fontWeight(self.index == 0 ? .bold : .none)
+                                        .foregroundColor(Color.white)
+                                        .padding()
+                                        .background {
+                                            Capsule()
+                                                // 影を装飾
+                                                .shadow(radius: 4)
+                                                .opacity(self.index == 0 ? 1 : 0.2)
+                                        } // backgroundここまで
+                                }
+                                Button(action: {
+                                    priorityCategory = PriorityEnum.emergencyHighAndImportantLow.rawValue
+                                    self.index = 1
+                                }) {
+                                    Text("\(PriorityEnum.emergencyHighAndImportantLow.rawValue)")
+                                        .fontWeight(self.index == 1 ? .bold : .none)
+                                        .foregroundColor(Color.white)
+                                        .padding()
+                                        .background {
+                                            Capsule()
+                                                // 影を装飾
+                                                .shadow(radius: 4)
+                                                .opacity(self.index == 1 ? 1 : 0.2)
+                                        } // backgroundここまで
+                                }
+                                Button(action: {
+                                    priorityCategory =  PriorityEnum.emergencyLowAndImportantLow.rawValue
+                                    self.index = 2
+                                }) {
+                                    Text("\( PriorityEnum.emergencyLowAndImportantLow.rawValue)")
+                                        .fontWeight(self.index == 2 ? .bold : .none)
+                                        .foregroundColor(Color.white)
+                                        .padding()
+                                        .background {
+                                            Capsule()
+                                                // 影を装飾
+                                                .shadow(radius: 4)
+                                                .opacity(self.index == 2 ? 1 : 0.2)
+                                        } // backgroundここまで
+                                }
+                                Button(action: {
+                                    priorityCategory =  PriorityEnum.emergencyLowAndImportantHigh.rawValue
+                                    self.index = 3
+                                }) {
+                                    Text("\(PriorityEnum.emergencyLowAndImportantHigh.rawValue)")
+                                        .fontWeight(self.index == 3 ? .bold : .none)
+                                        .foregroundColor(Color.white)
+                                        .padding()
+                                        .background {
+                                            Capsule()
+                                                // 影を装飾
+                                                .shadow(radius: 4)
+                                                .opacity(self.index == 3 ? 1 : 0.2)
+                                        } // backgroundここまで
+                                }
+                                .padding()
+                            } // Hstackここまで
+                        } //  ScrollViewここまで
+                    } // Vstackここまで
+                    .edgesIgnoringSafeArea(.top)
+                    .edgesIgnoringSafeArea(.horizontal)
+                    .padding(.top)
+                    .padding(.horizontal)
+                    .background(Color.gray)
+                }
                 Spacer()
-
+                // 編集画面が表示される際に、上のText「Tasks」と優先度を決めるボタンの表示を無くしたい。
                 TaskListView(items: FetchRequest(sortDescriptors: [NSSortDescriptor(keyPath: \Memo.date, ascending: true)],
                                                  predicate: NSPredicate(format: "priority == %@", priorityCategory),
-                                                 animation: .default))
+                                                 animation: .default), showEdit: $showEdit)
                 Spacer()
             } //  VStackここまで
         } // Groopここまで
