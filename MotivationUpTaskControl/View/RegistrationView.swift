@@ -34,7 +34,7 @@ struct RegistrationView: View {
                 HStack {
                     Text("New Task")
                         .font(.system(size: 50, weight: .bold, design: .default))
-                        .foregroundColor(Color.white)
+                        .foregroundColor(Color.orange)
                     Spacer()
                 }
                 .padding(.horizontal)
