@@ -20,7 +20,7 @@ struct HomeView: View {
                 HStack {
                     Text("Task")
                         .font(.system(size: 45, weight: .bold, design: .default))
-                        .foregroundColor(Color.white)
+                        .foregroundColor(Color.orange)
                         .padding(.horizontal)
                         .padding(.top)
                     Spacer()

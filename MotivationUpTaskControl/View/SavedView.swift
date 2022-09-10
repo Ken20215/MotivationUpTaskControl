@@ -32,7 +32,7 @@ struct SavedView: View {
                             Text("Tasks")
                                 // 文字サイズを変更
                                 .font(.system(size: 45, weight: .bold, design: .default))
-                                .foregroundColor(Color.white)
+                                .foregroundColor(Color.orange)
                             Spacer()
                         } //  HStackここまで
                         .padding(.horizontal)

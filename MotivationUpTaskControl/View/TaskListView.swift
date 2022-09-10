@@ -20,6 +20,7 @@ struct TaskListView: View {
                 .font(.largeTitle)
                 // 文字の太さを指定。
                 .fontWeight(.black)
+                .foregroundColor(Color.orange)
         } else {
             NavigationView {
                 List {

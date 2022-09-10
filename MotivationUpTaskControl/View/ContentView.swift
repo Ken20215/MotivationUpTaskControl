@@ -76,11 +76,11 @@ struct TabBarButton: View {
                     .resizable()
                     .renderingMode(.template)
                     .frame(width: 26, height: 26)
-                    .foregroundColor(selected == value ? Color.yellow : .white)
+                    .foregroundColor(selected == value ? Color.orange : .white)
 
                 Text(dipText)
                     .font(.caption)
-                    .foregroundColor(selected == value ? Color.yellow : .white)
+                    .foregroundColor(selected == value ? Color.orange : .white)
                     .opacity(selected == value ? 1 : 0)
             }
             .padding(.top)
