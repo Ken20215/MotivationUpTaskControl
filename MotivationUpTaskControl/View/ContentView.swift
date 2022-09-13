@@ -64,10 +64,10 @@ struct TabBarButton: View {
             withAnimation(.spring()) {
                 selected = value
                 centerX = rect.midX
-                if selected == value {
+                if selected == "house" {
                     dipText = "Home"
-                } else {
-                    dipText = "save"
+                } else if selected == "suit.heart.fill" {
+                    dipText = "List"
                 }
             }
         }) {
