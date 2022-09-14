@@ -29,7 +29,7 @@ struct ContentView: View {
                             .onAppear(perform: {
                                 if value == tabItems.first {
                                     centerX = reader.frame(in: .global).midX
-                                    dipText = "Home"
+                                    dipText = "ホーム"
                                 }
                             })
                     } //  GeometryReaderここまで
@@ -65,9 +65,9 @@ struct TabBarButton: View {
                 selected = value
                 centerX = rect.midX
                 if selected == "house" {
-                    dipText = "Home"
+                    dipText = "ホーム"
                 } else if selected == "suit.heart.fill" {
-                    dipText = "List"
+                    dipText = "リスト一覧"
                 }
             }
         }) {

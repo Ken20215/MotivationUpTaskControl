@@ -91,7 +91,7 @@ struct RegistrationView: View {
                     ZStack {
                         VStack {
                             // RegistrationViewModelで定義した値を引数に指定する。
-                            DatePicker("", selection: $inputItem.date)
+                            DatePicker("", selection: $inputItem.date, displayedComponents: .date)
                                 .datePickerStyle(.graphical)
                                 .shadow(radius: 5)
 
