@@ -29,7 +29,7 @@ struct HomeView: View {
 
                 Spacer()
                 VStack {
-                    Text("急いでやらないといけない事\nいつか達成させたい夢や目標\nじっくり考えたい問題\n人生の様々な場面で\nあなたの達成したい事を登録しましょう。")
+                    Text("急いでやらないといけない事\nいつか達成させたい夢や目標\nあなたの達成したい事を登録しましょう。")
                         .font(.callout)
                         .frame(width: 400, height: 150)
                         .padding(35)

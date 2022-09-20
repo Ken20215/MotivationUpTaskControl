@@ -16,7 +16,7 @@ struct TaskListView: View {
 
     var body: some View {
         if items.isEmpty {
-            Text("No Task")
+            Text("なし")
                 .font(.largeTitle)
                 // 文字の太さを指定。
                 .fontWeight(.black)
@@ -46,8 +46,7 @@ struct TaskListView: View {
                     } // ForEachここまで
                     .onDelete { IndexSet in
                         saveItems.deleteItems(offsets: IndexSet,
-                                              items: items,
-                                              viewContext: viewContext)
+                                              items: items)
                     } // .onDeleteここまで
                 } // Listここまで
                 Spacer(minLength: 200)

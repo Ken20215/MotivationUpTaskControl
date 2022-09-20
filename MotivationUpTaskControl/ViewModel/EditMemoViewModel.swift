@@ -9,10 +9,11 @@ import SwiftUI
 import CoreData
 
 class EditMemoViewModel: ObservableObject {
+    let viewContext = PersistenceController.shared.container.viewContext
     @Published var content = ""
     @Published var date = Date()
 
-    func saveMemo(editItem: Memo, viewContext: NSManagedObjectContext, dismiss: DismissAction) {
+    func saveMemo(editItem: Memo, dismiss: DismissAction) {
         editItem.content = content
         editItem.date = date
         try? viewContext.save()

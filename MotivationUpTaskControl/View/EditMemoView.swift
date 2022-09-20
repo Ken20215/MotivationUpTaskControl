@@ -44,7 +44,6 @@ struct EditMemoView: View {
             ToolbarItem(placement: .navigationBarTrailing) {
                 Button( action: {
                     editMemoItem.saveMemo(editItem: edititem,
-                                          viewContext: viewContext,
                                           dismiss: dismiss)
                 }, label: {
                     Text("DONE")

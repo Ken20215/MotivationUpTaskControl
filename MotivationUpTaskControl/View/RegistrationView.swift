@@ -139,7 +139,7 @@ struct RegistrationView: View {
                             // RegistrationViewModelで定義した値に引き渡す。
                             //                    inputItem.priority = selectedPriority
                             inputItem.priority = afterPriority
-                            inputItem.memoInputText(viewContext: viewContext, dismiss: dismiss)
+                            inputItem.memoInputText(dismiss: dismiss)
                         }) {
                             ZStack {
                                 Circle()
