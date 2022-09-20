@@ -25,6 +25,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		BE0FBC6F28D7FA130039D5A4 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		BE52C47728C47E0400A9698A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		BE599B78286DDA1C00A6F780 /* SavedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SavedViewModel.swift; path = MotivationUpTaskControl/ViewModel/SavedViewModel.swift; sourceTree = SOURCE_ROOT; };
 		BE600D0B2867F748000EA1FA /* SavedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SavedView.swift; path = motivationUpTaskControl/View/SavedView.swift; sourceTree = SOURCE_ROOT; };
@@ -89,6 +90,7 @@
 		BEB8502F2865DF7F00EF1059 = {
 			isa = PBXGroup;
 			children = (
+				BE0FBC6F28D7FA130039D5A4 /* README.md */,
 				BEB8503A2865DF7F00EF1059 /* motivationUpTaskControl */,
 				BEB850392865DF7F00EF1059 /* Products */,
 			);
@@ -105,8 +107,8 @@
 		BEB8503A2865DF7F00EF1059 /* motivationUpTaskControl */ = {
 			isa = PBXGroup;
 			children = (
-				BE52C47728C47E0400A9698A /* Info.plist */,
 				BEB8503B2865DF7F00EF1059 /* MotivationUpTaskControlApp.swift */,
+				BE52C47728C47E0400A9698A /* Info.plist */,
 				BE4D579628730C27007FFB8B /* View */,
 				BE599B77286DD9F000A6F780 /* ViewModel */,
 				BE5CEABC28829EB400A8E861 /* Model */,
@@ -368,8 +370,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -402,8 +403,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

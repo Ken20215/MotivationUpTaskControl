@@ -10,7 +10,6 @@ import SwiftUI
 struct SavedView: View {
     @Environment(\.managedObjectContext) private var viewContext
     @Environment(\.dismiss) private var dismiss
-    @StateObject private var saveItems = SavedViewModel()
     // PriorityModelViewで定義した列挙値をrawValueを使用し、String型で表示できるように指示する。
     @State private var prioritys: [String] = [
         PriorityEnum.emergencyHighAndImportantHigh.rawValue,
@@ -29,7 +28,7 @@ struct SavedView: View {
                     VStack {
                         // showがtrueであればText（Tasks）を表示させる。
                         HStack {
-                            Text("Tasks")
+                            Text("リスト")
                                 // 文字サイズを変更
                                 .font(.system(size: 45, weight: .bold, design: .default))
                                 .foregroundColor(Color.orange)

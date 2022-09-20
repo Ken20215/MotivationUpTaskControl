@@ -18,7 +18,7 @@ struct HomeView: View {
         ZStack {
             VStack {
                 HStack {
-                    Text("達成させるタスクを入力しよう！")
+                    Text("優先タスク")
                         .font(.system(size: 20, weight: .bold, design: .default))
                         .foregroundColor(Color.orange)
                         .padding(.horizontal)
@@ -29,10 +29,12 @@ struct HomeView: View {
 
                 Spacer()
                 VStack {
-                    Text("急いでやらないといけない事\nいつか達成させたい夢や目標\nじっくり考えたい問題\n人生の様々な場面で\nあなたの達成したい事を登録しましょう。")
-                        .font(.callout)
-                        .frame(width: 400, height: 150)
-                        .padding(35)
+                    Spacer()
+                    Text("急いでやらないといけない事\nいつか達成させたい夢や目標\n優先順位をつけて登録しましょう")
+                        .bold()
+                        .padding()
+                    Spacer()
+
                     HStack {
                         Button(action: {
                             // 優先を決めるボタンをタップしたら、指定の優先順位の文字が入ってい列挙型の値「emergencyHighAndImportantHigh」を代入する。

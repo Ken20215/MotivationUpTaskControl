@@ -101,7 +101,7 @@ struct AnimatedShape: Shape {
         get {return centerX}
         set {centerX = newValue}
     }
-
+    // Tabボタン　タップ時の場所を指定するメソッド
     func path(in rect: CGRect) -> Path {
         return Path { path in
             path.move(to: CGPoint(x: 0, y: 15))
