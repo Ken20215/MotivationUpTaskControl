@@ -33,8 +33,8 @@ struct RegistrationView: View {
 
             VStack(spacing: 25) {
                 HStack {
-                    Text("New Task")
-                        .font(.system(size: 50, weight: .bold, design: .default))
+                    Text("タスク登録")
+                        .font(.system(size: 40, weight: .bold, design: .default))
                         .foregroundColor(Color.orange)
                     Spacer()
                 }
@@ -44,7 +44,7 @@ struct RegistrationView: View {
                         VStack {
                             VStack(spacing: -20) {
                                 HStack(spacing: 20) {
-                                    Text("Task Title")
+                                    Text("タスク　件名")
                                         .frame(maxWidth: .infinity, alignment: .leading)
                                         .foregroundColor(Color.black)
                                         .padding()
@@ -63,7 +63,7 @@ struct RegistrationView: View {
 
                             VStack(spacing: -20) {
                                 HStack(spacing: 20) {
-                                    Text("Task Contents")
+                                    Text("タスク　詳細内容")
                                         .frame(maxWidth: .infinity, alignment: .leading)
                                         .foregroundColor(Color.black)
                                         .padding()
@@ -111,7 +111,7 @@ struct RegistrationView: View {
                     HStack {
                         VStack {
                             HStack {
-                                Text("Priority Reset")
+                                Text("タスク　再設定")
                                     .frame(maxWidth: .infinity, alignment: .leading)
                                     .foregroundColor(Color.black)
                                     .padding(.horizontal)
