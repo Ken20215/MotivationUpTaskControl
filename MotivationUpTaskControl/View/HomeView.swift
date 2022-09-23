@@ -26,7 +26,7 @@ struct HomeView: View {
                 }
                 .frame(width: 400, height: 90)
                 .background(Color.black)
-
+                
                 Spacer()
                 VStack {
                     Text("急いでやらないといけない事\nいつか達成させたい夢や目標\nあなたの達成したい事を登録しましょう。")
@@ -49,7 +49,7 @@ struct HomeView: View {
                                     RegistrationView(selectedPriority: $tapPriority)
                                 }
                         } // 「緊急かつ重要」Buttonここまで
-
+                        
                         Button(action: {
                             // 優先を決めるボタンをタップしたら、指定の優先順位の文字が入ってい列挙型の値「.emergencyHighAndImportantLow」を代入する。
                             tapPriority = .emergencyHighAndImportantLow
@@ -82,7 +82,7 @@ struct HomeView: View {
                                     RegistrationView(selectedPriority: $tapPriority)
                                 }
                         } // 「緊急でないが重要」Buttonここまで
-
+                        
                         Button(action: {
                             // 優先を決めるボタンをタップしたら、指定の優先順位の文字が入ってい列挙型の値「.emergencyLowAndImportantLow」を代入する。
                             tapPriority = .emergencyLowAndImportantLow
