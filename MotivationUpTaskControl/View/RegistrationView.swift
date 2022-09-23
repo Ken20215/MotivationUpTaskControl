@@ -23,14 +23,14 @@ struct RegistrationView: View {
         PriorityEnum.emergencyLowAndImportantHigh.rawValue
     ]
     @State private var afterPriority = ""
-    
+
     var body: some View {
         ZStack {
             // 背景色をグラデーションする。
             LinearGradient(gradient: Gradient(colors: [.black, .white]),
                            startPoint: .top, endPoint: .bottom)
-            .edgesIgnoringSafeArea(.all)
-            
+                .edgesIgnoringSafeArea(.all)
+
             VStack(spacing: 25) {
                 HStack {
                     Text("タスク登録")
@@ -72,14 +72,14 @@ struct RegistrationView: View {
                     .cornerRadius(10)
                     .shadow(radius: 10)
                     .padding()
-                    
+
                     ZStack {
                         VStack {
                             // RegistrationViewModelで定義した値を引数に指定する。
                             DatePicker("", selection: $inputItem.date, displayedComponents: .date)
                                 .datePickerStyle(.graphical)
                                 .shadow(radius: 5)
-                            
+
                             Spacer()
                         } // VStackここまで
                     } //  ZStackここまで
@@ -94,7 +94,7 @@ struct RegistrationView: View {
                     HStack {
                         VStack {
                             HStack {
-                                Text("再設定")
+                                Text("カテゴリ")
                                     .frame(maxWidth: .infinity, alignment: .leading)
                                     .foregroundColor(Color.black)
                                     .padding(.horizontal)
