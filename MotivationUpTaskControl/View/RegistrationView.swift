@@ -33,8 +33,8 @@ struct RegistrationView: View {
 
             VStack(spacing: 25) {
                 HStack {
-                    Text("New Task")
-                        .font(.system(size: 50, weight: .bold, design: .default))
+                    Text("タスク登録")
+                        .font(.system(size: 40, weight: .bold, design: .default))
                         .foregroundColor(Color.orange)
                     Spacer()
                 }
@@ -43,44 +43,29 @@ struct RegistrationView: View {
                     ZStack {
                         VStack {
                             VStack(spacing: -20) {
-                                HStack(spacing: 20) {
-                                    Text("Task Title")
-                                        .frame(maxWidth: .infinity, alignment: .leading)
-                                        .foregroundColor(Color.black)
-                                        .padding()
-                                } // Hstackここまで
-                                TextField("", text: $inputItem.subject)
-                                    .font(.system(.title, design: .rounded))
-                                    .foregroundColor(Color.black)
-                                    .multilineTextAlignment(.leading)
-                                    .overlay(
-                                        RoundedRectangle(cornerRadius: 3)
-                                            .stroke(Color.black, lineWidth: 3)
-                                    )
-                                    .frame(width: 290, height: 60)
-                                    .textFieldStyle(.roundedBorder)
-                            } // Vstackここまで
-
-                            VStack(spacing: -20) {
-                                HStack(spacing: 20) {
-                                    Text("Task Contents")
-                                        .frame(maxWidth: .infinity, alignment: .leading)
-                                        .foregroundColor(Color.black)
-                                        .padding()
-                                }
                                 // RegistrationViewModelで定義した値を引数に指定する。
-                                TextField("", text: $inputItem.content)
+                                TextField("件名", text: $inputItem.subject)
                                     .font(.system(.title, design: .rounded))
                                     .foregroundColor(Color.black)
                                     .multilineTextAlignment(.leading)
-                                    .overlay(
-                                        RoundedRectangle(cornerRadius: 3)
-                                            .stroke(Color.black, lineWidth: 3)
-                                    )
-                                    .frame(width: 290, height: 60)
-                                    .textFieldStyle(.roundedBorder)
                                     .padding()
-                            }
+                                Capsule()
+                                    .frame(width: 330, height: 1)
+                                    .foregroundColor(Color.gray)
+                                    .padding()
+                            } // Vstackここまで
+                            VStack(spacing: -20) {
+                                // RegistrationViewModelで定義した値を引数に指定する。
+                                TextField("詳細内容", text: $inputItem.content)
+                                    .font(.system(.title, design: .rounded))
+                                    .foregroundColor(Color.black)
+                                    .multilineTextAlignment(.leading)
+                                    .padding()
+                                Capsule()
+                                    .frame(width: 330, height: 1)
+                                    .foregroundColor(Color.gray)
+                                    .padding()
+                            } // Vstackここまで
                         } // Vstackここまで
                     } //  ZStackここまで
                     .background(Color.white)
@@ -103,18 +88,17 @@ struct RegistrationView: View {
                     .shadow(radius: 10)
                     .padding()
                     // ボタンを押した時に優先順位毎に応じて、Listに登録し表示できるようにする。
-
                     Capsule()
                         .frame(width: 370, height: 1)
                         .foregroundColor(Color.white)
-
                     HStack {
                         VStack {
                             HStack {
-                                Text("Priority Reset")
+                                Text("カテゴリ")
                                     .frame(maxWidth: .infinity, alignment: .leading)
                                     .foregroundColor(Color.black)
                                     .padding(.horizontal)
+                                    .padding(.top)
                             } // Hstackここまで
                             Picker("", selection: self.$afterPriority) {
                                 ForEach(0 ..< priorityList.count, id: \.self) { index in
@@ -125,6 +109,7 @@ struct RegistrationView: View {
                             .pickerStyle(DefaultPickerStyle())
                             .foregroundColor(Color.black)
                             .shadow(radius: 5)
+                            .padding(.bottom)
                         } // VStackここまで
                         .background(Color.white)
                         .cornerRadius(10)
@@ -132,14 +117,13 @@ struct RegistrationView: View {
                         .padding(.horizontal)
                         .padding(.top)
                         .padding(.bottom)
-
                         Spacer()
                         Button(action: {
                             // HomeViewで選択した、優先順位のボタンをタップしたときに受け取る列挙型の値をViewModelのpriority変数に格納する。
                             // RegistrationViewModelで定義した値に引き渡す。
                             //                    inputItem.priority = selectedPriority
                             inputItem.priority = afterPriority
-                            inputItem.memoInputText(viewContext: viewContext, dismiss: dismiss)
+                            inputItem.memoInputText(dismiss: dismiss)
                         }) {
                             ZStack {
                                 Circle()
@@ -150,7 +134,6 @@ struct RegistrationView: View {
                                 Image(systemName: "plus")
                                     .foregroundColor(Color.white)
                                     .font(.system(size: 30))
-
                             } // Zstackここまで
                         } // Buttonここまで
                     } // Hstackここまで

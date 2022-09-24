@@ -9,14 +9,13 @@ import SwiftUI
 import CoreData
 
 class RegistrationViewModel: ObservableObject {
+    let viewContext = PersistenceController.shared.container.viewContext
     @Published var subject = ""
     @Published var content = ""
     @Published var date = Date()
-    // 列挙型のインスタンス変数を作り、インスタンス化を行う。
-    //    var priority: PriorityEnum = .emergencyHighAndImportantHigh
     @Published var priority = ""
 
-    func memoInputText(viewContext: NSManagedObjectContext, dismiss: DismissAction) {
+    func memoInputText(dismiss: DismissAction) {
         // 保存するCoreDataのMemo型インスタンス変数を作成・初期化する。
         // CoreDataに格納するタイミングは、全てのCoreDataに登録する値が揃ったタイミングで登録を行う。
         // 他のファイルなど別々に登録を行わないこと。

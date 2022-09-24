@@ -29,7 +29,7 @@ struct SavedView: View {
                     VStack {
                         // showがtrueであればText（Tasks）を表示させる。
                         HStack {
-                            Text("Tasks")
+                            Text("タスク一覧")
                                 // 文字サイズを変更
                                 .font(.system(size: 45, weight: .bold, design: .default))
                                 .foregroundColor(Color.orange)
