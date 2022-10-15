@@ -35,6 +35,7 @@
 		BE6611D1286F2CFA005B3991 /* EditMemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = EditMemoView.swift; path = motivationUpTaskControl/View/EditMemoView.swift; sourceTree = SOURCE_ROOT; };
 		BE6611D3286F2D9A005B3991 /* EditMemoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = EditMemoViewModel.swift; path = MotivationUpTaskControl/ViewModel/EditMemoViewModel.swift; sourceTree = SOURCE_ROOT; };
 		BE8FB7A328841568006693A9 /* PriorityModelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PriorityModelView.swift; path = MotivationUpTaskControl/Model/PriorityModelView.swift; sourceTree = SOURCE_ROOT; };
+		BEAC0E7728FAB6B7000162EB /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		BEB850382865DF7F00EF1059 /* motivationUpTaskControl.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = motivationUpTaskControl.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BEB8503B2865DF7F00EF1059 /* MotivationUpTaskControlApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotivationUpTaskControlApp.swift; sourceTree = "<group>"; };
 		BEB8503D2865DF7F00EF1059 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -89,6 +90,7 @@
 		BEB8502F2865DF7F00EF1059 = {
 			isa = PBXGroup;
 			children = (
+				BEAC0E7728FAB6B7000162EB /* README.md */,
 				BEB8503A2865DF7F00EF1059 /* motivationUpTaskControl */,
 				BEB850392865DF7F00EF1059 /* Products */,
 			);
@@ -362,7 +364,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"motivationUpTaskControl/Preview Content\"";
 				DEVELOPMENT_TEAM = M7H7H978F2;
-				ENABLE_PREVIEWS = YES;
+				ENABLE_PREVIEWS = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = motivationUpTaskControl/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -371,11 +373,12 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.github.com.Ken20215.motivationUpTaskControl;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -395,7 +398,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"motivationUpTaskControl/Preview Content\"";
 				DEVELOPMENT_TEAM = M7H7H978F2;
-				ENABLE_PREVIEWS = YES;
+				ENABLE_PREVIEWS = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = motivationUpTaskControl/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -404,11 +407,12 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.github.com.Ken20215.motivationUpTaskControl;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";

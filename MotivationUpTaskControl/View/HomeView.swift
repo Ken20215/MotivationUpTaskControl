@@ -24,7 +24,7 @@ struct HomeView: View {
                         .padding(.horizontal)
                         .padding(.top)
                 }
-                .frame(width: 400, height: 90)
+                .frame(width: 450, height: 90)
                 .background(Color.black)
 
                 Spacer()
