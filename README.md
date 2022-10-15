@@ -10,9 +10,10 @@
 
 /Users/ken/Desktop/Simulator Screen Recording - iPhone 14 Pro - 2022-10-08 at 21.58.37.mp4
 
+
 ## 3.アプリの機能
 ### ホーム画面
-![Simulator Screen Shot - iPhone 14 Pro - 2022-10-09 at 16 23 15](https://user-images.githubusercontent.com/90130731/195977810-fa7c14e0-359e-4faf-bbf3-3d2324a0d136.png)
+| ![Simulator Screen Shot - iPhone 14 Pro - 2022-10-09 at 16 23 15](https://user-images.githubusercontent.com/90130731/195977810-fa7c14e0-359e-4faf-bbf3-3d2324a0d136.png) |
 
 ホーム画面では4つの優先順位毎にButtonを設置し、画面下部にTabViewをセットしてホーム画面とタスクListの一覧画面を
 切り替えるように設計しました。
@@ -20,7 +21,7 @@
 
 ### 登録画面
 
-![Simulator Screen Shot - iPhone 14 Pro - 2022-10-09 at 17 37 31](https://user-images.githubusercontent.com/90130731/195977831-0e3a33c6-f468-4231-a95a-cfb94d3c6562.png)
+| ![Simulator Screen Shot - iPhone 14 Pro - 2022-10-09 at 17 37 31](https://user-images.githubusercontent.com/90130731/195977831-0e3a33c6-f468-4231-a95a-cfb94d3c6562.png) |
 
 タスク登録画面では、CoreDataを活用してタスクの件名、詳細内容、タスクの実行日を登録できます。
 タスクの件名、詳細内容につきましてはTextFieldを利用し、日付はDatePickerを利用しました。
