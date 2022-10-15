@@ -1,24 +1,24 @@
 #  タスクアプリ（モチベーション維持）
 
-##1.概要
+## 1.概要
 タスクの重要度によって、優先順位を決めて登録するアプリです。
 4つの重要度に分けており、短期的に達成したい目標や、これから挑戦したいことなどを記録します。
 
 今後はグラフなどを用いてタスク達成度の確認ができるように改善していきます。
 
-##2.実行画面
+## 2.実行画面
 
 /Users/ken/Desktop/Simulator Screen Recording - iPhone 14 Pro - 2022-10-08 at 21.58.37.mp4
 
-##3.アプリの機能
-###ホーム画面
+## 3.アプリの機能
+### ホーム画面
 ![Simulator Screen Shot - iPhone 14 Pro - 2022-10-09 at 16 23 15](https://user-images.githubusercontent.com/90130731/195977810-fa7c14e0-359e-4faf-bbf3-3d2324a0d136.png)
 
 ホーム画面では4つの優先順位毎にButtonを設置し、画面下部にTabViewをセットしてホーム画面とタスクListの一覧画面を
 切り替えるように設計しました。
 優先順位ボタンをタップするとsheetモディファイアでタスク登録画面に遷移します。
 
-###登録画面
+### 登録画面
 
 ![Simulator Screen Shot - iPhone 14 Pro - 2022-10-09 at 17 37 31](https://user-images.githubusercontent.com/90130731/195977831-0e3a33c6-f468-4231-a95a-cfb94d3c6562.png)
 
@@ -28,15 +28,16 @@
 
 優先順位に沿ってタスクをCoreDataに動的に登録できるようにコードを記述しております。
 
-###タスク一覧画面
+### タスク一覧画面
 | ![Simulator Screen Shot - iPhone 14 Pro - 2022-10-09 at 16 16 41](https://user-images.githubusercontent.com/90130731/195977873-ea3a5f9b-3def-4187-8877-adb488c8ec9f.png) | ![Simulator Screen Shot - iPhone 14 Pro - 2022-10-09 at 16 16 43](https://user-images.githubusercontent.com/90130731/195977888-4ec60c61-023c-4812-be80-7509bbe64dfe.png) | 
 CoreDataからListとForEachを利用して値を取り出し、登録したタスクを一覧表示します。
 画面上部に優先順位を記したButtonをセットしており、表示させたい優先順位のボタンをタップすると、
 その優先順位で登録したタスクを一覧表示させます。
 
-##4.ダウンロードリンク
+## 4.ダウンロードリンク
 [‎タスクアプリ (モチベーション維持)](https://apps.apple.com/jp/app/%E3%82%BF%E3%82%B9%E3%82%AF%E3%82%A2%E3%83%97%E3%83%AA-%E3%83%A2%E3%83%81%E3%83%99%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3%E7%B6%AD%E6%8C%81/id1634411803)
-##5.アプリの設計について
+
+## 5.アプリの設計について
 
 ![1期_石岡顕さん - Frame 2](https://user-images.githubusercontent.com/90130731/195977939-ec3d2fb3-6324-4510-af7b-804bf88e8e8c.jpg)
 
@@ -54,8 +55,8 @@ CoreDataからListとForEachを利用して値を取り出し、登録したタ�
 |  PriorityModelView.swift | 優先度の名称を管理する列挙体 |
  
 
-##6.アプリを作った時にこだわったポイント
-###ポイント1.CoreDataを活用し優先順位毎に登録するタスクを動的に検索・表示出来るように工夫しました。
+## 6.アプリを作った時にこだわったポイント
+### ポイント1.CoreDataを活用し優先順位毎に登録するタスクを動的に検索・表示出来るように工夫しました。
 SavedViewで子ViewのTaskListViewを呼び出す際に、優先度毎にListを表示出来るようにしました。
 タスク登録画面で優先度を決める値をCoreDataのpriorityに代入する。
 TaskListViewの画面上部に優先度毎に表示できるボタンを配置し、変数priorityCategoryに値を代入する。
@@ -185,10 +186,11 @@ struct SaveView_Previews: PreviewProvider {
 ```
 
 ![1期_石岡顕さん - Frame 3](https://user-images.githubusercontent.com/90130731/195979462-4db4ef17-2c4f-426a-9d3c-df5ff4c55909.jpg)
-[](https://speakerdeck.com/ken20215/tasukuapuri-motibesiyonwei-chi)
-##7.開発環境
+
+<https://speakerdeck.com/ken20215/tasukuapuri-motibesiyonwei-chi>
+## 7.開発環境
 * Xcode14.0.1 
 * macOS Monterey 12.6
 * iOS16.0
 
-##8.作成者
+## 8.作成者
