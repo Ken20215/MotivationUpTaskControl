@@ -8,7 +8,7 @@
 
 ## 2.実行画面
 
-[<img width="320" alt="スクリーンショット 2022-10-17 21 21 59" src="https://user-images.githubusercontent.com/90130731/196175922-5f4633a9-4607-4afa-bd38-d0e8262a4106.png">](https://youtube.com/shorts/RsRpHOyPpZs?feature=share)
+[<img width="200" alt="デモ動画" src="https://user-images.githubusercontent.com/90130731/196175922-5f4633a9-4607-4afa-bd38-d0e8262a4106.png">](https://youtube.com/shorts/RsRpHOyPpZs?feature=share)
 
 
 
@@ -16,7 +16,7 @@
 ### ホーム画面
 
 | ---- | 
-|  ![Simulator Screen Shot - iPhone 14 Pro - 2022-10-09 at 16 23 15](https://user-images.githubusercontent.com/90130731/195977810-fa7c14e0-359e-4faf-bbf3-3d2324a0d136.png)  |   
+|  <img width="200" src="https://user-images.githubusercontent.com/90130731/195977810-fa7c14e0-359e-4faf-bbf3-3d2324a0d136.png"> |   
 
 
 ホーム画面では4つの優先順位毎にButtonを設置し、画面下部にTabViewをセットしてホーム画面とタスクListの一覧画面を
