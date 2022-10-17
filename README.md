@@ -8,7 +8,8 @@
 
 ## 2.実行画面
 
-/Users/ken/Desktop/Simulator Screen Recording - iPhone 14 Pro - 2022-10-08 at 21.58.37.mp4
+[<img width="320" alt="スクリーンショット 2022-10-17 21 21 59" src="https://user-images.githubusercontent.com/90130731/196175922-5f4633a9-4607-4afa-bd38-d0e8262a4106.png">](https://youtube.com/shorts/RsRpHOyPpZs?feature=share)
+
 
 
 ## 3.アプリの機能
