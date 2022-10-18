@@ -6,6 +6,9 @@
 
 今後はグラフなどを用いてタスク達成度の確認ができるように改善していきます。
 
+ [<img width="200" alt="紹介スライド" src="https://user-images.githubusercontent.com/90130731/196432434-fe3e8c03-7797-4bcc-9adf-1d9dfa7d2beb.png">]（https://speakerdeck.com/ken20215/tasukuapuri-motibesiyonwei-chi）
+
+
 ## 2.実行画面
 
 [<img width="200" alt="デモ動画" src="https://user-images.githubusercontent.com/90130731/196175922-5f4633a9-4607-4afa-bd38-d0e8262a4106.png">](https://youtube.com/shorts/RsRpHOyPpZs?feature=share)
@@ -194,7 +197,7 @@ struct SaveView_Previews: PreviewProvider {
 
 ![1期_石岡顕さん - Frame 3](https://user-images.githubusercontent.com/90130731/195979462-4db4ef17-2c4f-426a-9d3c-df5ff4c55909.jpg)
 
-<https://speakerdeck.com/ken20215/tasukuapuri-motibesiyonwei-chi>
+
 
 ## 7.開発環境
 * Xcode14.0.1 
