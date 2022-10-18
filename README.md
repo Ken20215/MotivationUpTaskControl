@@ -13,8 +13,6 @@
 
 [<img width="200" alt="デモ動画" src="https://user-images.githubusercontent.com/90130731/196175922-5f4633a9-4607-4afa-bd38-d0e8262a4106.png">](https://youtube.com/shorts/RsRpHOyPpZs?feature=share)
 
-
-
 ## 3.アプリの機能
 ### ホーム画面
  
