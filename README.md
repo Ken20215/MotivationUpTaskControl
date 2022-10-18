@@ -193,9 +193,7 @@ struct SaveView_Previews: PreviewProvider {
 
 ```
 
-![1期_石岡顕さん - Frame 3](https://user-images.githubusercontent.com/90130731/195979462-4db4ef17-2c4f-426a-9d3c-df5ff4c55909.jpg)
-
-
+![1期_石岡顕さん (11)](https://user-images.githubusercontent.com/90130731/196439017-3c0dbaf8-29ad-4f92-9d12-26b7ca5f6a43.jpg)
 
 ## 7.開発環境
 * Xcode14.0.1 
