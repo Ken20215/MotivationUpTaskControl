@@ -49,6 +49,8 @@ CoreDataからListとForEachを利用して値を取り出し、登録したタ�
 
 ![1期_石岡顕さん - Frame 2](https://user-images.githubusercontent.com/90130731/195977939-ec3d2fb3-6324-4510-af7b-804bf88e8e8c.jpg)
 
+![1期_石岡顕さん (11)](https://user-images.githubusercontent.com/90130731/196439017-3c0dbaf8-29ad-4f92-9d12-26b7ca5f6a43.jpg)
+
 |  ファイル名  | 解説・概要  |
 | ---- | ---- |
 |  ContentView.swift  |  TabViewを使用し、HomeViewとSaveViewの2画面を管理するView  |
@@ -193,7 +195,7 @@ struct SaveView_Previews: PreviewProvider {
 
 ```
 
-![1期_石岡顕さん (11)](https://user-images.githubusercontent.com/90130731/196439017-3c0dbaf8-29ad-4f92-9d12-26b7ca5f6a43.jpg)
+
 
 ## 7.開発環境
 * Xcode14.0.1 
