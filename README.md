@@ -6,12 +6,12 @@
 
 今後はグラフなどを用いてタスク達成度の確認ができるように改善していきます。
 
- [<img width="200" alt="紹介スライド" src="https://user-images.githubusercontent.com/90130731/196432434-fe3e8c03-7797-4bcc-9adf-1d9dfa7d2beb.png">]（https://speakerdeck.com/ken20215/tasukuapuri-motibesiyonwei-chi）
+ <a href="https://speakerdeck.com/ken20215/tasukuapuri-motibesiyonwei-chi"><img width="200" alt="紹介スライド" src="https://user-images.githubusercontent.com/90130731/196432434-fe3e8c03-7797-4bcc-9adf-1d9dfa7d2beb.png"></a>
 
 
 ## 2.実行画面
 
-[<img width="200" alt="デモ動画" src="https://user-images.githubusercontent.com/90130731/196175922-5f4633a9-4607-4afa-bd38-d0e8262a4106.png">](https://youtube.com/shorts/RsRpHOyPpZs?feature=share)
+<a href="https://youtube.com/shorts/RsRpHOyPpZs?feature=share"><img width="200" alt="デモ動画" src="https://user-images.githubusercontent.com/90130731/196175922-5f4633a9-4607-4afa-bd38-d0e8262a4106.png"></a>
 
 ## 3.アプリの機能
 ### ホーム画面
