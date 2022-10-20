@@ -35,7 +35,7 @@
 
 ### タスク一覧画面
 
-<img width="200" src="https://user-images.githubusercontent.com/90130731/195977873-ea3a5f9b-3def-4187-8877-adb488c8ec9f.png"><img width="200" src="https://user-images.githubusercontent.com/90130731/195977888-4ec60c61-023c-4812-be80-7509bbe64dfe.png">
+<img width="200" src="https://user-images.githubusercontent.com/90130731/195977873-ea3a5f9b-3def-4187-8877-adb488c8ec9f.png">　<img width="200" src="https://user-images.githubusercontent.com/90130731/195977888-4ec60c61-023c-4812-be80-7509bbe64dfe.png">
 
 
 CoreDataからListとForEachを利用して値を取り出し、登録したタスクを一覧表示します。
