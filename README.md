@@ -6,7 +6,7 @@
 
 今後はグラフなどを用いてタスク達成度の確認ができるように改善していきます。
 
- <a href="https://speakerdeck.com/ken20215/tasukuapuri-motibesiyonwei-chi"><img width="200" alt="紹介スライド" src="https://user-images.githubusercontent.com/90130731/196432434-fe3e8c03-7797-4bcc-9adf-1d9dfa7d2beb.png"></a>
+ <a href="https://speakerdeck.com/ken20215/tasukuapuri-motibesiyonwei-chi"><img alt="紹介スライド" src="https://user-images.githubusercontent.com/90130731/196432434-fe3e8c03-7797-4bcc-9adf-1d9dfa7d2beb.png"></a>
 
 
 ## 2.実行画面
