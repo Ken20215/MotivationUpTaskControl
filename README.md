@@ -46,10 +46,10 @@ CoreDataからListとForEachを利用して値を取り出し、登録したタ�
 [‎タスクアプリ (モチベーション維持)](https://apps.apple.com/jp/app/%E3%82%BF%E3%82%B9%E3%82%AF%E3%82%A2%E3%83%97%E3%83%AA-%E3%83%A2%E3%83%81%E3%83%99%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3%E7%B6%AD%E6%8C%81/id1634411803)
 
 ## 5.アプリの設計について
+![タスク管理アプリ  フロー図](https://user-images.githubusercontent.com/90130731/197327324-f903021a-7bc6-490f-81ab-7cb04620834e.jpg)
 
-![1期_石岡顕さん - Frame 2](https://user-images.githubusercontent.com/90130731/195977939-ec3d2fb3-6324-4510-af7b-804bf88e8e8c.jpg)
+![1期_石岡顕さん (11)](https://user-images.githubusercontent.com/90130731/197327332-af16204d-7ee5-44f9-9578-96c0479adc68.jpg)
 
-![1期_石岡顕さん (11)](https://user-images.githubusercontent.com/90130731/196439017-3c0dbaf8-29ad-4f92-9d12-26b7ca5f6a43.jpg)
 
 |  ファイル名  | 解説・概要  |
 | ---- | ---- |
