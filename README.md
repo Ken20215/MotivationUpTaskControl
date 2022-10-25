@@ -6,16 +6,17 @@
 
 今後はグラフなどを用いてタスク達成度の確認ができるように改善していきます。
 
+ <a href="https://speakerdeck.com/ken20215/tasukuapuri-motibesiyonwei-chi"><img alt="紹介スライド" src="https://user-images.githubusercontent.com/90130731/196432434-fe3e8c03-7797-4bcc-9adf-1d9dfa7d2beb.png"></a>
+
+
 ## 2.実行画面
 
-/Users/ken/Desktop/Simulator Screen Recording - iPhone 14 Pro - 2022-10-08 at 21.58.37.mp4
-
+<a href="https://youtube.com/shorts/RsRpHOyPpZs?feature=share"><img width="200" alt="デモ動画" src="https://user-images.githubusercontent.com/90130731/196175922-5f4633a9-4607-4afa-bd38-d0e8262a4106.png"></a>
 
 ## 3.アプリの機能
 ### ホーム画面
-
-| ---- | 
-|  ![Simulator Screen Shot - iPhone 14 Pro - 2022-10-09 at 16 23 15](https://user-images.githubusercontent.com/90130731/195977810-fa7c14e0-359e-4faf-bbf3-3d2324a0d136.png)  |   
+ 
+<img width="200" src="https://user-images.githubusercontent.com/90130731/195977810-fa7c14e0-359e-4faf-bbf3-3d2324a0d136.png">  
 
 
 ホーム画面では4つの優先順位毎にButtonを設置し、画面下部にTabViewをセットしてホーム画面とタスクListの一覧画面を
@@ -23,8 +24,8 @@
 優先順位ボタンをタップするとsheetモディファイアでタスク登録画面に遷移します。
 
 ### 登録画面
-| ---- | 
-| ![Simulator Screen Shot - iPhone 14 Pro - 2022-10-09 at 17 37 31](https://user-images.githubusercontent.com/90130731/195977831-0e3a33c6-f468-4231-a95a-cfb94d3c6562.png) |
+
+<img width="200" src="https://user-images.githubusercontent.com/90130731/195977831-0e3a33c6-f468-4231-a95a-cfb94d3c6562.png"> 
 
 タスク登録画面では、CoreDataを活用してタスクの件名、詳細内容、タスクの実行日を登録できます。
 タスクの件名、詳細内容につきましてはTextFieldを利用し、日付はDatePickerを利用しました。
@@ -33,8 +34,10 @@
 優先順位に沿ってタスクをCoreDataに動的に登録できるようにコードを記述しております。
 
 ### タスク一覧画面
-| ---- | 
-| ![Simulator Screen Shot - iPhone 14 Pro - 2022-10-09 at 16 16 41](https://user-images.githubusercontent.com/90130731/195977873-ea3a5f9b-3def-4187-8877-adb488c8ec9f.png) | ![Simulator Screen Shot - iPhone 14 Pro - 2022-10-09 at 16 16 43](https://user-images.githubusercontent.com/90130731/195977888-4ec60c61-023c-4812-be80-7509bbe64dfe.png) | 
+
+<img width="200" src="https://user-images.githubusercontent.com/90130731/195977873-ea3a5f9b-3def-4187-8877-adb488c8ec9f.png">　<img width="200" src="https://user-images.githubusercontent.com/90130731/195977888-4ec60c61-023c-4812-be80-7509bbe64dfe.png">
+
+
 CoreDataからListとForEachを利用して値を取り出し、登録したタスクを一覧表示します。
 画面上部に優先順位を記したButtonをセットしており、表示させたい優先順位のボタンをタップすると、
 その優先順位で登録したタスクを一覧表示させます。
@@ -43,8 +46,10 @@ CoreDataからListとForEachを利用して値を取り出し、登録したタ�
 [‎タスクアプリ (モチベーション維持)](https://apps.apple.com/jp/app/%E3%82%BF%E3%82%B9%E3%82%AF%E3%82%A2%E3%83%97%E3%83%AA-%E3%83%A2%E3%83%81%E3%83%99%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3%E7%B6%AD%E6%8C%81/id1634411803)
 
 ## 5.アプリの設計について
+![タスク管理アプリ  フロー図](https://user-images.githubusercontent.com/90130731/197327324-f903021a-7bc6-490f-81ab-7cb04620834e.jpg)
 
-![1期_石岡顕さん - Frame 2](https://user-images.githubusercontent.com/90130731/195977939-ec3d2fb3-6324-4510-af7b-804bf88e8e8c.jpg)
+![1期_石岡顕さん (11)](https://user-images.githubusercontent.com/90130731/197327332-af16204d-7ee5-44f9-9578-96c0479adc68.jpg)
+
 
 |  ファイル名  | 解説・概要  |
 | ---- | ---- |
@@ -190,9 +195,8 @@ struct SaveView_Previews: PreviewProvider {
 
 ```
 
-![1期_石岡顕さん - Frame 3](https://user-images.githubusercontent.com/90130731/195979462-4db4ef17-2c4f-426a-9d3c-df5ff4c55909.jpg)
 
-<https://speakerdeck.com/ken20215/tasukuapuri-motibesiyonwei-chi>
+
 ## 7.開発環境
 * Xcode14.0.1 
 * macOS Monterey 12.6

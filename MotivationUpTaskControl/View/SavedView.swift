@@ -6,8 +6,21 @@
 //
 
 import SwiftUI
+import Charts
+
+struct ChartEntry: Identifiable {
+    // 達成度と優先度毎のタスク登録数
+    var id: String
+    var count: Int
+    var color: String
+}
 
 struct SavedView: View {
+    // CoreDataから値を探してもらう。値を探して見つけた値をFetchedResults<Memo>型のitemsに格納する。
+    @FetchRequest(
+        sortDescriptors: [NSSortDescriptor(keyPath: \Memo.date, ascending: true)],
+        animation: .default)
+    private var items: FetchedResults<Memo>
     @Environment(\.managedObjectContext) private var viewContext
     @Environment(\.dismiss) private var dismiss
     @StateObject private var saveItems = SavedViewModel()
@@ -21,6 +34,11 @@ struct SavedView: View {
     @State private var priorityCategory = PriorityEnum.emergencyHighAndImportantHigh.rawValue
     @State private var index: Int = 0
     @State private var showEdit: Bool = false
+    @State private var priority1: Int = 0
+    @State private var priority2: Int = 0
+    @State private var priority3: Int = 0
+    @State private var priority4: Int = 0
+    @State private var arrayPriority: [ChartEntry] = []
 
     var body: some View {
         Group {
@@ -108,15 +126,71 @@ struct SavedView: View {
                     .padding(.horizontal)
                     .background(Color.black)
                 }
-                Spacer()
+                AnimatedChart()
                 // 編集画面が表示される際に、上のText「Tasks」と優先度を決めるボタンの表示を無くしたい。
                 TaskListView(items: FetchRequest(sortDescriptors: [NSSortDescriptor(keyPath: \Memo.date, ascending: true)],
                                                  predicate: NSPredicate(format: "priority == %@", priorityCategory),
                                                  animation: .default), showEdit: $showEdit)
                 Spacer()
             } //  VStackここまで
+            .onAppear(perform: {
+                arrayPriority.removeAll()
+                arrayPriority.append(contentsOf: selectPriority(items: items))
+            })
         } // Groopここまで
     } // var bodyここまで
+
+    //  横棒一つにする（帯グラフにする）
+    //  x軸は達成度にする。y軸を各優先度のタスクの数（Int型）。
+    @ViewBuilder
+    func AnimatedChart() -> some View {
+        Chart {
+            ForEach(arrayPriority) { item in
+                BarMark(
+                    x: .value("priority", item.count),
+                    y: .value("count", item.id)
+                )
+                .foregroundStyle(by: .value("item Color", item.color))
+            }
+        }
+        .chartForegroundStyleScale([
+            PriorityEnum.emergencyHighAndImportantHigh.rawValue: .red,
+            PriorityEnum.emergencyHighAndImportantLow.rawValue: .yellow,
+            PriorityEnum.emergencyLowAndImportantHigh.rawValue: .green,
+            PriorityEnum.emergencyLowAndImportantLow.rawValue: .blue
+        ])
+        .frame(height: 120)
+        .padding(.top)
+        .padding(.horizontal)
+    }
+
+    func selectPriority(items: FetchedResults<Memo>) -> [ChartEntry] {
+        var priorityList: [ChartEntry] = []
+        for item in items {
+            if item.priority == PriorityEnum.emergencyHighAndImportantHigh.rawValue {
+                priority1 = 1
+                priorityList.append(ChartEntry(id: "達成度",
+                                               count: priority1,
+                                               color: PriorityEnum.emergencyHighAndImportantHigh.rawValue))
+            } else if item.priority == PriorityEnum.emergencyHighAndImportantLow.rawValue {
+                priority2 = 1
+                priorityList.append(ChartEntry(id: "達成度",
+                                               count: priority2,
+                                               color: PriorityEnum.emergencyHighAndImportantLow.rawValue))
+            } else if item.priority == PriorityEnum.emergencyLowAndImportantHigh.rawValue {
+                priority3 = 1
+                priorityList.append(ChartEntry(id: "達成度",
+                                               count: priority3,
+                                               color: PriorityEnum.emergencyLowAndImportantHigh.rawValue))
+            } else {
+                priority4 = 1
+                priorityList.append(ChartEntry(id: "達成度",
+                                               count: priority4,
+                                               color: PriorityEnum.emergencyLowAndImportantLow.rawValue))
+            }
+        }
+        return priorityList
+    } // selectPriorityここまで
 } // SaveViewここまで
 
 struct SaveView_Previews: PreviewProvider {
