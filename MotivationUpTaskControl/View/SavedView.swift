@@ -34,10 +34,6 @@ struct SavedView: View {
     @State private var priorityCategory = PriorityEnum.emergencyHighAndImportantHigh.rawValue
     @State private var index: Int = 0
     @State private var showEdit: Bool = false
-    @State private var priority1: Int = 0
-    @State private var priority2: Int = 0
-    @State private var priority3: Int = 0
-    @State private var priority4: Int = 0
     @State private var arrayPriority: [ChartEntry] = []
 
     var body: some View {
@@ -59,6 +55,7 @@ struct SavedView: View {
                                 Button(action: {
                                     priorityCategory = PriorityEnum.emergencyHighAndImportantHigh.rawValue
                                     self.index = 0
+                                    arrayPriority.append(contentsOf: selectPriority(items: items))
                                 }) {
                                     Text("\(PriorityEnum.emergencyHighAndImportantHigh.rawValue)")
                                         .fontWeight(self.index == 0 ? .bold : .none)
@@ -74,6 +71,7 @@ struct SavedView: View {
                                 Button(action: {
                                     priorityCategory = PriorityEnum.emergencyHighAndImportantLow.rawValue
                                     self.index = 1
+                                    arrayPriority.append(contentsOf: selectPriority(items: items))
                                 }) {
                                     Text("\(PriorityEnum.emergencyHighAndImportantLow.rawValue)")
                                         .fontWeight(self.index == 1 ? .bold : .none)
@@ -89,6 +87,7 @@ struct SavedView: View {
                                 Button(action: {
                                     priorityCategory =  PriorityEnum.emergencyLowAndImportantLow.rawValue
                                     self.index = 2
+                                    arrayPriority.append(contentsOf: selectPriority(items: items))
                                 }) {
                                     Text("\( PriorityEnum.emergencyLowAndImportantLow.rawValue)")
                                         .fontWeight(self.index == 2 ? .bold : .none)
@@ -104,6 +103,7 @@ struct SavedView: View {
                                 Button(action: {
                                     priorityCategory =  PriorityEnum.emergencyLowAndImportantHigh.rawValue
                                     self.index = 3
+                                    arrayPriority.append(contentsOf: selectPriority(items: items))
                                 }) {
                                     Text("\(PriorityEnum.emergencyLowAndImportantHigh.rawValue)")
                                         .fontWeight(self.index == 3 ? .bold : .none)
@@ -127,14 +127,15 @@ struct SavedView: View {
                     .background(Color.black)
                 }
                 AnimatedChart()
+                Spacer()
                 // 編集画面が表示される際に、上のText「Tasks」と優先度を決めるボタンの表示を無くしたい。
                 TaskListView(items: FetchRequest(sortDescriptors: [NSSortDescriptor(keyPath: \Memo.date, ascending: true)],
                                                  predicate: NSPredicate(format: "priority == %@", priorityCategory),
-                                                 animation: .default), showEdit: $showEdit)
+                                                 animation: .default), showEdit: $showEdit,
+                             arrayPriority2: $arrayPriority)
                 Spacer()
             } //  VStackここまで
             .onAppear(perform: {
-                arrayPriority.removeAll()
                 arrayPriority.append(contentsOf: selectPriority(items: items))
             })
         } // Groopここまで
@@ -154,38 +155,36 @@ struct SavedView: View {
             }
         }
         .chartForegroundStyleScale([
-            PriorityEnum.emergencyHighAndImportantHigh.rawValue: .red,
             PriorityEnum.emergencyHighAndImportantLow.rawValue: .yellow,
+            PriorityEnum.emergencyLowAndImportantLow.rawValue: .blue,
             PriorityEnum.emergencyLowAndImportantHigh.rawValue: .green,
-            PriorityEnum.emergencyLowAndImportantLow.rawValue: .blue
+            PriorityEnum.emergencyHighAndImportantHigh.rawValue: .red
         ])
         .frame(height: 120)
         .padding(.top)
         .padding(.horizontal)
+        .padding(.bottom)
     }
 
     func selectPriority(items: FetchedResults<Memo>) -> [ChartEntry] {
+        arrayPriority.removeAll()
         var priorityList: [ChartEntry] = []
         for item in items {
             if item.priority == PriorityEnum.emergencyHighAndImportantHigh.rawValue {
-                priority1 = 1
-                priorityList.append(ChartEntry(id: "達成度",
-                                               count: priority1,
+                priorityList.append(ChartEntry(id: "タスク割合",
+                                               count: 1,
                                                color: PriorityEnum.emergencyHighAndImportantHigh.rawValue))
             } else if item.priority == PriorityEnum.emergencyHighAndImportantLow.rawValue {
-                priority2 = 1
-                priorityList.append(ChartEntry(id: "達成度",
-                                               count: priority2,
+                priorityList.append(ChartEntry(id: "タスク割合",
+                                               count: 1,
                                                color: PriorityEnum.emergencyHighAndImportantLow.rawValue))
             } else if item.priority == PriorityEnum.emergencyLowAndImportantHigh.rawValue {
-                priority3 = 1
-                priorityList.append(ChartEntry(id: "達成度",
-                                               count: priority3,
+                priorityList.append(ChartEntry(id: "タスク割合",
+                                               count: 1,
                                                color: PriorityEnum.emergencyLowAndImportantHigh.rawValue))
             } else {
-                priority4 = 1
-                priorityList.append(ChartEntry(id: "達成度",
-                                               count: priority4,
+                priorityList.append(ChartEntry(id: "タスク割合",
+                                               count: 1,
                                                color: PriorityEnum.emergencyLowAndImportantLow.rawValue))
             }
         }

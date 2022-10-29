@@ -11,8 +11,10 @@ struct TaskListView: View {
     @Environment(\.managedObjectContext) private var viewContext
     @Environment(\.dismiss) private var dismiss
     @StateObject private var saveItems = SavedViewModel()
+    @State var savedItem = SavedView()
     @FetchRequest var items: FetchedResults<Memo>
     @Binding var showEdit: Bool
+    @Binding var arrayPriority2: [ChartEntry]
 
     var body: some View {
         if items.isEmpty {
@@ -47,7 +49,9 @@ struct TaskListView: View {
                     .onDelete { IndexSet in
                         saveItems.deleteItems(offsets: IndexSet,
                                               items: items)
+                       
                     } // .onDeleteここまで
+                    // 削除対象
                 } // Listここまで
                 Spacer(minLength: 200)
                     .listStyle(GroupedListStyle())
