@@ -34,6 +34,7 @@ struct SavedView: View {
     @State private var priorityCategory = PriorityEnum.emergencyHighAndImportantHigh.rawValue
     @State private var index: Int = 0
     @State private var showEdit: Bool = false
+    @State private var showItem: Bool = false
     @State private var arrayPriority: [ChartEntry] = []
 
     var body: some View {
@@ -132,11 +133,17 @@ struct SavedView: View {
                 TaskListView(items: FetchRequest(sortDescriptors: [NSSortDescriptor(keyPath: \Memo.date, ascending: true)],
                                                  predicate: NSPredicate(format: "priority == %@", priorityCategory),
                                                  animation: .default), showEdit: $showEdit,
-                             arrayPriority2: $arrayPriority)
+                             showItem: $showItem)
                 Spacer()
             } //  VStackここまで
             .onAppear(perform: {
                 arrayPriority.append(contentsOf: selectPriority(items: items))
+            })
+            .onChange(of: showItem, perform: { showItem in
+                if showItem == true {
+                    arrayPriority.append(contentsOf: selectPriority(items: items))
+                    self.showItem = false
+                }
             })
         } // Groopここまで
     } // var bodyここまで

@@ -14,7 +14,8 @@ struct TaskListView: View {
     @State var savedItem = SavedView()
     @FetchRequest var items: FetchedResults<Memo>
     @Binding var showEdit: Bool
-    @Binding var arrayPriority2: [ChartEntry]
+    @Binding var showItem: Bool
+    //    @Binding var arrayPriority2: [ChartEntry]
 
     var body: some View {
         if items.isEmpty {
@@ -49,7 +50,8 @@ struct TaskListView: View {
                     .onDelete { IndexSet in
                         saveItems.deleteItems(offsets: IndexSet,
                                               items: items)
-                       
+                        showItem = true
+                        print(showItem)
                     } // .onDeleteここまで
                     // 削除対象
                 } // Listここまで
