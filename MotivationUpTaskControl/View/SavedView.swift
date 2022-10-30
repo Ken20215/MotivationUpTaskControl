@@ -36,7 +36,8 @@ struct SavedView: View {
     @State private var showEdit: Bool = false
     @State private var showItem: Bool = false
     @State private var arrayPriority: [ChartEntry] = []
-
+    @State private var newArrayPriority: [ChartEntry] = []
+    
     var body: some View {
         Group {
             VStack {
@@ -45,7 +46,7 @@ struct SavedView: View {
                         // showがtrueであればText（Tasks）を表示させる。
                         HStack {
                             Text("タスク一覧")
-                                // 文字サイズを変更
+                            // 文字サイズを変更
                                 .font(.system(size: 45, weight: .bold, design: .default))
                                 .foregroundColor(Color.orange)
                             Spacer()
@@ -56,7 +57,6 @@ struct SavedView: View {
                                 Button(action: {
                                     priorityCategory = PriorityEnum.emergencyHighAndImportantHigh.rawValue
                                     self.index = 0
-                                    arrayPriority.append(contentsOf: selectPriority(items: items))
                                 }) {
                                     Text("\(PriorityEnum.emergencyHighAndImportantHigh.rawValue)")
                                         .fontWeight(self.index == 0 ? .bold : .none)
@@ -64,7 +64,7 @@ struct SavedView: View {
                                         .padding()
                                         .background {
                                             Capsule()
-                                                // 影を装飾
+                                            // 影を装飾
                                                 .shadow(radius: 4)
                                                 .opacity(self.index == 0 ? 1 : 0.2)
                                         } // backgroundここまで
@@ -72,7 +72,6 @@ struct SavedView: View {
                                 Button(action: {
                                     priorityCategory = PriorityEnum.emergencyHighAndImportantLow.rawValue
                                     self.index = 1
-                                    arrayPriority.append(contentsOf: selectPriority(items: items))
                                 }) {
                                     Text("\(PriorityEnum.emergencyHighAndImportantLow.rawValue)")
                                         .fontWeight(self.index == 1 ? .bold : .none)
@@ -80,7 +79,7 @@ struct SavedView: View {
                                         .padding()
                                         .background {
                                             Capsule()
-                                                // 影を装飾
+                                            // 影を装飾
                                                 .shadow(radius: 4)
                                                 .opacity(self.index == 1 ? 1 : 0.2)
                                         } // backgroundここまで
@@ -88,7 +87,6 @@ struct SavedView: View {
                                 Button(action: {
                                     priorityCategory =  PriorityEnum.emergencyLowAndImportantLow.rawValue
                                     self.index = 2
-                                    arrayPriority.append(contentsOf: selectPriority(items: items))
                                 }) {
                                     Text("\( PriorityEnum.emergencyLowAndImportantLow.rawValue)")
                                         .fontWeight(self.index == 2 ? .bold : .none)
@@ -96,7 +94,7 @@ struct SavedView: View {
                                         .padding()
                                         .background {
                                             Capsule()
-                                                // 影を装飾
+                                            // 影を装飾
                                                 .shadow(radius: 4)
                                                 .opacity(self.index == 2 ? 1 : 0.2)
                                         } // backgroundここまで
@@ -104,7 +102,6 @@ struct SavedView: View {
                                 Button(action: {
                                     priorityCategory =  PriorityEnum.emergencyLowAndImportantHigh.rawValue
                                     self.index = 3
-                                    arrayPriority.append(contentsOf: selectPriority(items: items))
                                 }) {
                                     Text("\(PriorityEnum.emergencyLowAndImportantHigh.rawValue)")
                                         .fontWeight(self.index == 3 ? .bold : .none)
@@ -112,7 +109,7 @@ struct SavedView: View {
                                         .padding()
                                         .background {
                                             Capsule()
-                                                // 影を装飾
+                                            // 影を装飾
                                                 .shadow(radius: 4)
                                                 .opacity(self.index == 3 ? 1 : 0.2)
                                         } // backgroundここまで
@@ -138,22 +135,24 @@ struct SavedView: View {
             } //  VStackここまで
             .onAppear(perform: {
                 arrayPriority.append(contentsOf: selectPriority(items: items))
+                newArrayPriority.append(contentsOf: totalArrayPriority(arrayPriority: arrayPriority))
             })
-            .onChange(of: showItem, perform: { showItem in
-                if showItem == true {
+            .onChange(of: showItem, perform: { item in
+                if item == true {
                     arrayPriority.append(contentsOf: selectPriority(items: items))
+                    newArrayPriority.append(contentsOf: totalArrayPriority(arrayPriority: arrayPriority))
                     self.showItem = false
                 }
             })
         } // Groopここまで
     } // var bodyここまで
-
+    
     //  横棒一つにする（帯グラフにする）
     //  x軸は達成度にする。y軸を各優先度のタスクの数（Int型）。
     @ViewBuilder
     func AnimatedChart() -> some View {
         Chart {
-            ForEach(arrayPriority) { item in
+            ForEach(newArrayPriority) { item in
                 BarMark(
                     x: .value("priority", item.count),
                     y: .value("count", item.id)
@@ -170,10 +169,10 @@ struct SavedView: View {
         .frame(height: 120)
         .padding(.top)
         .padding(.horizontal)
-        .padding(.bottom)
     }
-
-    func selectPriority(items: FetchedResults<Memo>) -> [ChartEntry] {
+    
+    // タスクの明細
+    private func selectPriority(items: FetchedResults<Memo>) -> [ChartEntry] {
         arrayPriority.removeAll()
         var priorityList: [ChartEntry] = []
         for item in items {
@@ -197,6 +196,56 @@ struct SavedView: View {
         }
         return priorityList
     } // selectPriorityここまで
+    
+    private func totalArrayPriority(arrayPriority: [ChartEntry]) -> [ChartEntry] {
+        newArrayPriority.removeAll()
+        var newPriorityList: [ChartEntry] = []
+        var jugEmergencyHighAndImportantLow: Bool = false
+        var jugEmergencyLowAndImportantHigh: Bool = false
+        var jugEmergencyLowAndImportantLow: Bool = false
+        
+        for item in arrayPriority {
+            if item.color == PriorityEnum.emergencyHighAndImportantHigh.rawValue {
+                newPriorityList.append(ChartEntry(id: "タスク割合",
+                                                  count: 1,
+                                                  color: PriorityEnum.emergencyHighAndImportantHigh.rawValue))
+            } else {
+                jugEmergencyHighAndImportantLow = true
+            }
+        }
+        if jugEmergencyHighAndImportantLow == true {
+            for item in arrayPriority {
+                if item.color == PriorityEnum.emergencyHighAndImportantLow.rawValue {
+                    newPriorityList.append(ChartEntry(id: "タスク割合",
+                                                      count: 1,
+                                                      color: PriorityEnum.emergencyHighAndImportantLow.rawValue))
+                } else {
+                    jugEmergencyLowAndImportantHigh = true
+                }
+            }
+        }
+        if jugEmergencyLowAndImportantHigh == true {
+            for item in arrayPriority {
+                if item.color == PriorityEnum.emergencyLowAndImportantHigh.rawValue {
+                    newPriorityList.append(ChartEntry(id: "タスク割合",
+                                                      count: 1,
+                                                      color: PriorityEnum.emergencyLowAndImportantHigh.rawValue))
+                } else {
+                    jugEmergencyLowAndImportantLow = true
+                }
+            }
+        }
+        if jugEmergencyLowAndImportantLow == true {
+            for item in arrayPriority {
+                if item.color == PriorityEnum.emergencyLowAndImportantLow.rawValue {
+                    newPriorityList.append(ChartEntry(id: "タスク割合",
+                                                      count: 1,
+                                                      color: PriorityEnum.emergencyLowAndImportantLow.rawValue))
+                }
+            }
+        }
+        return newPriorityList
+    }
 } // SaveViewここまで
 
 struct SaveView_Previews: PreviewProvider {
