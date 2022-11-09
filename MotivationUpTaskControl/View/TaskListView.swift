@@ -43,7 +43,7 @@ struct TaskListView: View {
                                                     .environment(\.locale, Locale.init(identifier: "en_US"))
                                                     .foregroundColor(.red)
                                             } // Vstackここまで
-                                        }
+                                        } // Buttonここまで
                                        }) // NavigationLinkここまで
                     } // ForEachここまで
                     .onDelete { IndexSet in

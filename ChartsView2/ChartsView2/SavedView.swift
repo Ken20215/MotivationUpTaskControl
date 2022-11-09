@@ -11,18 +11,18 @@ import Charts
 
 
 struct SavedView: View {
-    let data: [ChartEntry] = [
-      ChartEntry(priority: "緊急かつ重要ではない", count: 1),
-      ChartEntry(priority: "緊急ではないが、重要", count: 1),
-      ChartEntry(priority: "緊急ではないが、重要ではない", count: 1),
-      ChartEntry(priority: "緊急かつ重要", count: 1)
+    let chartsData: [ChartEntry] = [
+        ChartEntry(priority: PriorityEnum.emergencyHighAndImportantLow.rawValue, count: 1),
+        ChartEntry(priority: PriorityEnum.emergencyLowAndImportantHigh.rawValue, count: 1),
+        ChartEntry(priority: PriorityEnum.emergencyLowAndImportantLow.rawValue, count: 1),
+        ChartEntry(priority: PriorityEnum.emergencyHighAndImportantHigh.rawValue, count: 1)
     ]
     var body: some View {
-        Chart(data) {
+        Chart(chartsData) { item in
             BarMark(
-                x: .value("Count", $0.count)
+                x: .value("Count", item.count)
             )
-            .foregroundStyle(by: .value("Category", $0.priority))
+            .foregroundStyle(by: .value("Category", item.priority))
         }
         .frame(width: 350, height: 100)
         .padding()
@@ -30,7 +30,7 @@ struct SavedView: View {
 }
 
 
-struct ChartsSampleView_Previews: PreviewProvider {
+struct SavedView_Previews: PreviewProvider {
     static var previews: some View {
         SavedView()
     }
@@ -41,4 +41,11 @@ struct ChartEntry: Identifiable {
     var id = UUID()
     let priority: String
     let count: Int
+}
+
+enum PriorityEnum: String, CaseIterable {
+    case emergencyHighAndImportantHigh = "緊急かつ重要"   // 緊急かつ重要
+    case emergencyHighAndImportantLow =  "緊急かつ重要ではない"   // 緊急かつ重要ではない
+    case emergencyLowAndImportantHigh = "緊急ではないが、重要"    // 緊急ではないが、重要
+    case emergencyLowAndImportantLow  = "緊急ではないが、重要ではない"  // 緊急ではないが、重要ではない
 }
