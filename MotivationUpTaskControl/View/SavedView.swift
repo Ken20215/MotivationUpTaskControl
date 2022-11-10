@@ -10,9 +10,9 @@ import Charts
 
 struct ChartEntry: Identifiable {
     // 達成度と優先度毎のタスク登録数
-    var id: String
+    let id = UUID()
+    var priority: String
     var count: Int
-    var color: String
 }
 
 struct SavedView: View {
@@ -154,10 +154,9 @@ struct SavedView: View {
         Chart {
             ForEach(newArrayPriority) { item in
                 BarMark(
-                    x: .value("priority", item.count),
-                    y: .value("count", item.id)
+                    x: .value("Count", item.count)
                 )
-                .foregroundStyle(by: .value("item Color", item.color))
+                .foregroundStyle(by: .value("Category", item.priority))
             }
         }
         .chartForegroundStyleScale([
@@ -166,7 +165,7 @@ struct SavedView: View {
             PriorityEnum.emergencyLowAndImportantHigh.rawValue: .green,
             PriorityEnum.emergencyHighAndImportantHigh.rawValue: .red
         ])
-        .frame(height: 120)
+        .frame(height: 90)
         .padding(.top)
         .padding(.horizontal)
     }
@@ -177,21 +176,17 @@ struct SavedView: View {
         var priorityList: [ChartEntry] = []
         for item in items {
             if item.priority == PriorityEnum.emergencyHighAndImportantHigh.rawValue {
-                priorityList.append(ChartEntry(id: "タスク割合",
-                                               count: 1,
-                                               color: PriorityEnum.emergencyHighAndImportantHigh.rawValue))
+                priorityList.append(ChartEntry(priority: PriorityEnum.emergencyHighAndImportantHigh.rawValue,
+                                               count: 1))
             } else if item.priority == PriorityEnum.emergencyHighAndImportantLow.rawValue {
-                priorityList.append(ChartEntry(id: "タスク割合",
-                                               count: 1,
-                                               color: PriorityEnum.emergencyHighAndImportantLow.rawValue))
+                priorityList.append(ChartEntry(priority: PriorityEnum.emergencyHighAndImportantLow.rawValue,
+                                               count: 1))
             } else if item.priority == PriorityEnum.emergencyLowAndImportantHigh.rawValue {
-                priorityList.append(ChartEntry(id: "タスク割合",
-                                               count: 1,
-                                               color: PriorityEnum.emergencyLowAndImportantHigh.rawValue))
+                priorityList.append(ChartEntry(priority: PriorityEnum.emergencyLowAndImportantHigh.rawValue,
+                                               count: 1))
             } else {
-                priorityList.append(ChartEntry(id: "タスク割合",
-                                               count: 1,
-                                               color: PriorityEnum.emergencyLowAndImportantLow.rawValue))
+                priorityList.append(ChartEntry(priority: PriorityEnum.emergencyLowAndImportantLow.rawValue,
+                                               count: 1))
             }
         }
         return priorityList
@@ -205,20 +200,18 @@ struct SavedView: View {
         var jugEmergencyLowAndImportantLow: Bool = false
 
         for item in arrayPriority {
-            if item.color == PriorityEnum.emergencyHighAndImportantHigh.rawValue {
-                newPriorityList.append(ChartEntry(id: "タスク割合",
-                                                  count: 1,
-                                                  color: PriorityEnum.emergencyHighAndImportantHigh.rawValue))
+            if item.priority == PriorityEnum.emergencyHighAndImportantHigh.rawValue {
+                newArrayPriority.append(ChartEntry(priority: PriorityEnum.emergencyHighAndImportantHigh.rawValue,
+                                                   count: 1))
             } else {
                 jugEmergencyHighAndImportantLow = true
             }
         }
         if jugEmergencyHighAndImportantLow == true {
             for item in arrayPriority {
-                if item.color == PriorityEnum.emergencyHighAndImportantLow.rawValue {
-                    newPriorityList.append(ChartEntry(id: "タスク割合",
-                                                      count: 1,
-                                                      color: PriorityEnum.emergencyHighAndImportantLow.rawValue))
+                if item.priority == PriorityEnum.emergencyHighAndImportantLow.rawValue {
+                    newArrayPriority.append(ChartEntry(priority: PriorityEnum.emergencyHighAndImportantLow.rawValue,
+                                                       count: 1))
                 } else {
                     jugEmergencyLowAndImportantHigh = true
                 }
@@ -226,10 +219,9 @@ struct SavedView: View {
         }
         if jugEmergencyLowAndImportantHigh == true {
             for item in arrayPriority {
-                if item.color == PriorityEnum.emergencyLowAndImportantHigh.rawValue {
-                    newPriorityList.append(ChartEntry(id: "タスク割合",
-                                                      count: 1,
-                                                      color: PriorityEnum.emergencyLowAndImportantHigh.rawValue))
+                if item.priority == PriorityEnum.emergencyLowAndImportantHigh.rawValue {
+                    newArrayPriority.append(ChartEntry(priority: PriorityEnum.emergencyLowAndImportantHigh.rawValue,
+                                                       count: 1))
                 } else {
                     jugEmergencyLowAndImportantLow = true
                 }
@@ -237,10 +229,9 @@ struct SavedView: View {
         }
         if jugEmergencyLowAndImportantLow == true {
             for item in arrayPriority {
-                if item.color == PriorityEnum.emergencyLowAndImportantLow.rawValue {
-                    newPriorityList.append(ChartEntry(id: "タスク割合",
-                                                      count: 1,
-                                                      color: PriorityEnum.emergencyLowAndImportantLow.rawValue))
+                if item.priority == PriorityEnum.emergencyLowAndImportantLow.rawValue {
+                    newPriorityList.append(ChartEntry(priority: PriorityEnum.emergencyLowAndImportantLow.rawValue,
+                                                      count: 1))
                 }
             }
         }

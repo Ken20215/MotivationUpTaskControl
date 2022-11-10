@@ -9,7 +9,6 @@ import SwiftUI
 import Foundation
 import Charts
 
-
 struct SavedView: View {
     let chartsData: [ChartEntry] = [
         ChartEntry(priority: PriorityEnum.emergencyHighAndImportantLow.rawValue, count: 1),
@@ -29,13 +28,11 @@ struct SavedView: View {
     }
 }
 
-
 struct SavedView_Previews: PreviewProvider {
     static var previews: some View {
         SavedView()
     }
 }
-
 
 struct ChartEntry: Identifiable {
     var id = UUID()
