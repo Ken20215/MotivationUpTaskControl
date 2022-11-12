@@ -35,9 +35,18 @@ struct SavedView: View {
     @State private var index: Int = 0
     @State private var showEdit: Bool = false
     @State private var showItem: Bool = false
-    @State private var arrayPriority: [ChartEntry] = []
+    @State var priorityNumber1: Int = 0
+    @State var priorityNumber2: Int = 0
+    @State var priorityNumber3: Int = 0
+    @State var priorityNumber4: Int = 0
+    @State private var arrayPriority: [ChartEntry] = [
+
+    ]
     @State private var newArrayPriority: [ChartEntry] = []
-    
+
+    // countのInt変数を作成し.onApperで集計したメソッドに代入する。
+    // 配列で
+
     var body: some View {
         Group {
             VStack {
@@ -46,7 +55,7 @@ struct SavedView: View {
                         // showがtrueであればText（Tasks）を表示させる。
                         HStack {
                             Text("タスク一覧")
-                            // 文字サイズを変更
+                                // 文字サイズを変更
                                 .font(.system(size: 45, weight: .bold, design: .default))
                                 .foregroundColor(Color.orange)
                             Spacer()
@@ -64,7 +73,7 @@ struct SavedView: View {
                                         .padding()
                                         .background {
                                             Capsule()
-                                            // 影を装飾
+                                                // 影を装飾
                                                 .shadow(radius: 4)
                                                 .opacity(self.index == 0 ? 1 : 0.2)
                                         } // backgroundここまで
@@ -79,7 +88,7 @@ struct SavedView: View {
                                         .padding()
                                         .background {
                                             Capsule()
-                                            // 影を装飾
+                                                // 影を装飾
                                                 .shadow(radius: 4)
                                                 .opacity(self.index == 1 ? 1 : 0.2)
                                         } // backgroundここまで
@@ -94,7 +103,7 @@ struct SavedView: View {
                                         .padding()
                                         .background {
                                             Capsule()
-                                            // 影を装飾
+                                                // 影を装飾
                                                 .shadow(radius: 4)
                                                 .opacity(self.index == 2 ? 1 : 0.2)
                                         } // backgroundここまで
@@ -109,7 +118,7 @@ struct SavedView: View {
                                         .padding()
                                         .background {
                                             Capsule()
-                                            // 影を装飾
+                                                // 影を装飾
                                                 .shadow(radius: 4)
                                                 .opacity(self.index == 3 ? 1 : 0.2)
                                         } // backgroundここまで
@@ -146,7 +155,7 @@ struct SavedView: View {
             })
         } // Groopここまで
     } // var bodyここまで
-    
+
     //  横棒一つにする（帯グラフにする）
     //  x軸は達成度にする。y軸を各優先度のタスクの数（Int型）。
     @ViewBuilder
@@ -169,7 +178,7 @@ struct SavedView: View {
         .padding(.top)
         .padding(.horizontal)
     }
-    
+
     // タスクの明細
     private func selectPriority(items: FetchedResults<Memo>) -> [ChartEntry] {
         arrayPriority.removeAll()
@@ -191,23 +200,18 @@ struct SavedView: View {
         }
         return priorityList
     } // selectPriorityここまで
-    
+
     private func totalArrayPriority(arrayPriority: [ChartEntry]) -> [ChartEntry] {
         newArrayPriority.removeAll()
         var newPriorityList: [ChartEntry] = []
         var jugEmergencyHighAndImportantLow: Bool = false
         var jugEmergencyLowAndImportantHigh: Bool = false
         var jugEmergencyLowAndImportantLow: Bool = false
-        var priorityNumber1: Int = 0
-        var priorityNumber2: Int = 0
-        var priorityNumber3: Int = 0
-        var priorityNumber4: Int = 0
-        
+
         for item in arrayPriority {
             if item.priority == PriorityEnum.emergencyHighAndImportantHigh.rawValue {
-                priorityNumber1 += 1
                 newArrayPriority.append(ChartEntry(priority: PriorityEnum.emergencyHighAndImportantHigh.rawValue,
-                                                   count: priorityNumber1))
+                                                   count: 1))
             } else {
                 jugEmergencyHighAndImportantLow = true
             }
@@ -215,9 +219,8 @@ struct SavedView: View {
         if jugEmergencyHighAndImportantLow == true {
             for item in arrayPriority {
                 if item.priority == PriorityEnum.emergencyHighAndImportantLow.rawValue {
-                    priorityNumber2 += 1
                     newArrayPriority.append(ChartEntry(priority: PriorityEnum.emergencyHighAndImportantLow.rawValue,
-                                                       count: priorityNumber2))
+                                                       count: 1))
                 } else {
                     jugEmergencyLowAndImportantHigh = true
                 }
@@ -226,9 +229,8 @@ struct SavedView: View {
         if jugEmergencyLowAndImportantHigh == true {
             for item in arrayPriority {
                 if item.priority == PriorityEnum.emergencyLowAndImportantHigh.rawValue {
-                    priorityNumber3 += 1
                     newArrayPriority.append(ChartEntry(priority: PriorityEnum.emergencyLowAndImportantHigh.rawValue,
-                                                       count: priorityNumber3))
+                                                       count: 1))
                 } else {
                     jugEmergencyLowAndImportantLow = true
                 }
@@ -237,9 +239,8 @@ struct SavedView: View {
         if jugEmergencyLowAndImportantLow == true {
             for item in arrayPriority {
                 if item.priority == PriorityEnum.emergencyLowAndImportantLow.rawValue {
-                    priorityNumber4 += 1
                     newPriorityList.append(ChartEntry(priority: PriorityEnum.emergencyLowAndImportantLow.rawValue,
-                                                      count: priorityNumber4))
+                                                      count: 1))
                 }
             }
         }
