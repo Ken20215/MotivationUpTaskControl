@@ -37,7 +37,7 @@ struct SavedView: View {
     @State private var showItem: Bool = false
     @State private var arrayPriority: [ChartEntry] = []
     @State private var newArrayPriority: [ChartEntry] = []
-
+    
     var body: some View {
         Group {
             VStack {
@@ -46,7 +46,7 @@ struct SavedView: View {
                         // showがtrueであればText（Tasks）を表示させる。
                         HStack {
                             Text("タスク一覧")
-                                // 文字サイズを変更
+                            // 文字サイズを変更
                                 .font(.system(size: 45, weight: .bold, design: .default))
                                 .foregroundColor(Color.orange)
                             Spacer()
@@ -64,7 +64,7 @@ struct SavedView: View {
                                         .padding()
                                         .background {
                                             Capsule()
-                                                // 影を装飾
+                                            // 影を装飾
                                                 .shadow(radius: 4)
                                                 .opacity(self.index == 0 ? 1 : 0.2)
                                         } // backgroundここまで
@@ -79,7 +79,7 @@ struct SavedView: View {
                                         .padding()
                                         .background {
                                             Capsule()
-                                                // 影を装飾
+                                            // 影を装飾
                                                 .shadow(radius: 4)
                                                 .opacity(self.index == 1 ? 1 : 0.2)
                                         } // backgroundここまで
@@ -94,7 +94,7 @@ struct SavedView: View {
                                         .padding()
                                         .background {
                                             Capsule()
-                                                // 影を装飾
+                                            // 影を装飾
                                                 .shadow(radius: 4)
                                                 .opacity(self.index == 2 ? 1 : 0.2)
                                         } // backgroundここまで
@@ -109,7 +109,7 @@ struct SavedView: View {
                                         .padding()
                                         .background {
                                             Capsule()
-                                                // 影を装飾
+                                            // 影を装飾
                                                 .shadow(radius: 4)
                                                 .opacity(self.index == 3 ? 1 : 0.2)
                                         } // backgroundここまで
@@ -135,18 +135,18 @@ struct SavedView: View {
             } //  VStackここまで
             .onAppear(perform: {
                 arrayPriority.append(contentsOf: selectPriority(items: items))
-                //                newArrayPriority.append(contentsOf: totalArrayPriority(arrayPriority: arrayPriority))
+                newArrayPriority.append(contentsOf: totalArrayPriority(arrayPriority: arrayPriority))
             })
             .onChange(of: showItem, perform: { item in
                 if item == true {
                     arrayPriority.append(contentsOf: selectPriority(items: items))
-                    //                    newArrayPriority.append(contentsOf: totalArrayPriority(arrayPriority: arrayPriority))
+                    newArrayPriority.append(contentsOf: totalArrayPriority(arrayPriority: arrayPriority))
                     self.showItem = false
                 }
             })
         } // Groopここまで
     } // var bodyここまで
-
+    
     //  横棒一つにする（帯グラフにする）
     //  x軸は達成度にする。y軸を各優先度のタスクの数（Int型）。
     @ViewBuilder
@@ -169,7 +169,7 @@ struct SavedView: View {
         .padding(.top)
         .padding(.horizontal)
     }
-
+    
     // タスクの明細
     private func selectPriority(items: FetchedResults<Memo>) -> [ChartEntry] {
         arrayPriority.removeAll()
@@ -191,7 +191,7 @@ struct SavedView: View {
         }
         return priorityList
     } // selectPriorityここまで
-
+    
     private func totalArrayPriority(arrayPriority: [ChartEntry]) -> [ChartEntry] {
         newArrayPriority.removeAll()
         var newPriorityList: [ChartEntry] = []
@@ -202,7 +202,7 @@ struct SavedView: View {
         var priorityNumber2: Int = 0
         var priorityNumber3: Int = 0
         var priorityNumber4: Int = 0
-
+        
         for item in arrayPriority {
             if item.priority == PriorityEnum.emergencyHighAndImportantHigh.rawValue {
                 priorityNumber1 += 1
