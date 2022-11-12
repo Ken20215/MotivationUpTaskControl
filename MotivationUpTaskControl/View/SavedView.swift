@@ -135,12 +135,12 @@ struct SavedView: View {
             } //  VStackここまで
             .onAppear(perform: {
                 arrayPriority.append(contentsOf: selectPriority(items: items))
-                newArrayPriority.append(contentsOf: totalArrayPriority(arrayPriority: arrayPriority))
+                //                newArrayPriority.append(contentsOf: totalArrayPriority(arrayPriority: arrayPriority))
             })
             .onChange(of: showItem, perform: { item in
                 if item == true {
                     arrayPriority.append(contentsOf: selectPriority(items: items))
-                    newArrayPriority.append(contentsOf: totalArrayPriority(arrayPriority: arrayPriority))
+                    //                    newArrayPriority.append(contentsOf: totalArrayPriority(arrayPriority: arrayPriority))
                     self.showItem = false
                 }
             })
@@ -177,16 +177,16 @@ struct SavedView: View {
         for item in items {
             if item.priority == PriorityEnum.emergencyHighAndImportantHigh.rawValue {
                 priorityList.append(ChartEntry(priority: PriorityEnum.emergencyHighAndImportantHigh.rawValue,
-                                               count: 1))
+                                               count: priorityNumber1))
             } else if item.priority == PriorityEnum.emergencyHighAndImportantLow.rawValue {
                 priorityList.append(ChartEntry(priority: PriorityEnum.emergencyHighAndImportantLow.rawValue,
-                                               count: 1))
+                                               count: priorityNumber2))
             } else if item.priority == PriorityEnum.emergencyLowAndImportantHigh.rawValue {
                 priorityList.append(ChartEntry(priority: PriorityEnum.emergencyLowAndImportantHigh.rawValue,
-                                               count: 1))
+                                               count: priorityNumber3))
             } else {
                 priorityList.append(ChartEntry(priority: PriorityEnum.emergencyLowAndImportantLow.rawValue,
-                                               count: 1))
+                                               count: priorityNumber4))
             }
         }
         return priorityList
@@ -198,11 +198,16 @@ struct SavedView: View {
         var jugEmergencyHighAndImportantLow: Bool = false
         var jugEmergencyLowAndImportantHigh: Bool = false
         var jugEmergencyLowAndImportantLow: Bool = false
+        var priorityNumber1: Int = 0
+        var priorityNumber2: Int = 0
+        var priorityNumber3: Int = 0
+        var priorityNumber4: Int = 0
 
         for item in arrayPriority {
             if item.priority == PriorityEnum.emergencyHighAndImportantHigh.rawValue {
+                priorityNumber1 += 1
                 newArrayPriority.append(ChartEntry(priority: PriorityEnum.emergencyHighAndImportantHigh.rawValue,
-                                                   count: 1))
+                                                   count: priorityNumber1))
             } else {
                 jugEmergencyHighAndImportantLow = true
             }
@@ -210,8 +215,9 @@ struct SavedView: View {
         if jugEmergencyHighAndImportantLow == true {
             for item in arrayPriority {
                 if item.priority == PriorityEnum.emergencyHighAndImportantLow.rawValue {
+                    priorityNumber2 += 1
                     newArrayPriority.append(ChartEntry(priority: PriorityEnum.emergencyHighAndImportantLow.rawValue,
-                                                       count: 1))
+                                                       count: priorityNumber2))
                 } else {
                     jugEmergencyLowAndImportantHigh = true
                 }
@@ -220,8 +226,9 @@ struct SavedView: View {
         if jugEmergencyLowAndImportantHigh == true {
             for item in arrayPriority {
                 if item.priority == PriorityEnum.emergencyLowAndImportantHigh.rawValue {
+                    priorityNumber3 += 1
                     newArrayPriority.append(ChartEntry(priority: PriorityEnum.emergencyLowAndImportantHigh.rawValue,
-                                                       count: 1))
+                                                       count: priorityNumber3))
                 } else {
                     jugEmergencyLowAndImportantLow = true
                 }
@@ -230,8 +237,9 @@ struct SavedView: View {
         if jugEmergencyLowAndImportantLow == true {
             for item in arrayPriority {
                 if item.priority == PriorityEnum.emergencyLowAndImportantLow.rawValue {
+                    priorityNumber4 += 1
                     newPriorityList.append(ChartEntry(priority: PriorityEnum.emergencyLowAndImportantLow.rawValue,
-                                                      count: 1))
+                                                      count: priorityNumber4))
                 }
             }
         }
