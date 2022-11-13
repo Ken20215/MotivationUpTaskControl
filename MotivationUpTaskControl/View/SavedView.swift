@@ -35,13 +35,7 @@ struct SavedView: View {
     @State private var index: Int = 0
     @State private var showEdit: Bool = false
     @State private var showItem: Bool = false
-    @State var priorityNumber1: Int = 0
-    @State var priorityNumber2: Int = 0
-    @State var priorityNumber3: Int = 0
-    @State var priorityNumber4: Int = 0
-    @State private var arrayPriority: [ChartEntry] = [
-
-    ]
+    @State private var arrayPriority: [ChartEntry] = []
     @State private var newArrayPriority: [ChartEntry] = []
 
     // countのInt変数を作成し.onApperで集計したメソッドに代入する。
@@ -186,16 +180,16 @@ struct SavedView: View {
         for item in items {
             if item.priority == PriorityEnum.emergencyHighAndImportantHigh.rawValue {
                 priorityList.append(ChartEntry(priority: PriorityEnum.emergencyHighAndImportantHigh.rawValue,
-                                               count: priorityNumber1))
+                                               count: 1))
             } else if item.priority == PriorityEnum.emergencyHighAndImportantLow.rawValue {
                 priorityList.append(ChartEntry(priority: PriorityEnum.emergencyHighAndImportantLow.rawValue,
-                                               count: priorityNumber2))
+                                               count: 1))
             } else if item.priority == PriorityEnum.emergencyLowAndImportantHigh.rawValue {
                 priorityList.append(ChartEntry(priority: PriorityEnum.emergencyLowAndImportantHigh.rawValue,
-                                               count: priorityNumber3))
+                                               count: 1))
             } else {
                 priorityList.append(ChartEntry(priority: PriorityEnum.emergencyLowAndImportantLow.rawValue,
-                                               count: priorityNumber4))
+                                               count: 1))
             }
         }
         return priorityList

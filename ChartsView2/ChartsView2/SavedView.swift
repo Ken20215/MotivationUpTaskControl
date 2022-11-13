@@ -12,9 +12,9 @@ import Charts
 struct SavedView: View {
     let chartsData: [ChartEntry] = [
         ChartEntry(priority: PriorityEnum.emergencyHighAndImportantLow.rawValue, count: 1),
-        ChartEntry(priority: PriorityEnum.emergencyLowAndImportantHigh.rawValue, count: 2),
-        ChartEntry(priority: PriorityEnum.emergencyLowAndImportantLow.rawValue, count: 1),
-        ChartEntry(priority: PriorityEnum.emergencyHighAndImportantHigh.rawValue, count: 2)
+        ChartEntry(priority: PriorityEnum.emergencyLowAndImportantHigh.rawValue, count: 6),
+        ChartEntry(priority: PriorityEnum.emergencyLowAndImportantLow.rawValue, count: 3),
+        ChartEntry(priority: PriorityEnum.emergencyHighAndImportantHigh.rawValue, count: 8)
     ]
     var body: some View {
         Chart(chartsData) { item in
