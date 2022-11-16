@@ -35,10 +35,6 @@ struct SavedView: View {
     @State private var index: Int = 0
     @State private var showEdit: Bool = false
     @State private var showItem: Bool = false
-    @State private var priorityNumber1: Int = 0
-    @State private var priorityNumber2: Int = 0
-    @State private var priorityNumber3: Int = 0
-    @State private var priorityNumber4: Int = 0
     @State private var arrayPriority: [ChartEntry] = []
 
     var body: some View {
@@ -137,19 +133,13 @@ struct SavedView: View {
                 Spacer()
             } //  VStackここまで
             .onAppear(perform: {
-                selectPriority(items: items)
-                arrayPriority.append(contentsOf: assignmentNumber(priorityNumber1: priorityNumber1,
-                                                                  priorityNumber2: priorityNumber2,
-                                                                  priorityNumber3: priorityNumber3,
-                                                                  priorityNumber4: priorityNumber4))
+                arrayPriority.append(contentsOf: assignmentNumber(totalTapleCount:
+                                                                    selectPriority(items: items)))
             })
             .onChange(of: showItem, perform: { item in
                 if item == true {
-                    selectPriority(items: items)
-                    arrayPriority.append(contentsOf: assignmentNumber(priorityNumber1: priorityNumber1,
-                                                                      priorityNumber2: priorityNumber2,
-                                                                      priorityNumber3: priorityNumber3,
-                                                                      priorityNumber4: priorityNumber4))
+                    arrayPriority.append(contentsOf: assignmentNumber(totalTapleCount:
+                                                                        selectPriority(items: items)))
                     self.showItem = false
                 }
             })
@@ -179,13 +169,16 @@ struct SavedView: View {
         .padding(.horizontal)
     }
 
-    // タスクの明細
-    private func selectPriority(items: FetchedResults<Memo>) {
-        arrayPriority.removeAll()
-        priorityNumber1 = 0
-        priorityNumber2 = 0
-        priorityNumber3 = 0
-        priorityNumber4 = 0
+    // タスク優先度毎の登録数をチェック
+    private func selectPriority(items: FetchedResults<Memo>) -> (Int, Int, Int, Int) {
+        var priorityNumber1 = 0
+        var priorityNumber2 = 0
+        var priorityNumber3 = 0
+        var priorityNumber4 = 0
+        var priorityTotalCount: (Int, Int, Int, Int) = (priorityNumber1,
+                                                        priorityNumber2,
+                                                        priorityNumber3,
+                                                        priorityNumber4)
         for item in items {
             if item.priority == PriorityEnum.emergencyHighAndImportantHigh.rawValue {
                 priorityNumber1 += 1
@@ -196,69 +189,26 @@ struct SavedView: View {
             } else {
                 priorityNumber4 += 1
             }
+            priorityTotalCount = (priorityNumber1, priorityNumber2, priorityNumber3, priorityNumber4)
         }
+        return priorityTotalCount
     } // selectPriorityここまで
 
-    private func assignmentNumber(priorityNumber1: Int, priorityNumber2: Int, priorityNumber3: Int, priorityNumber4: Int) -> [ChartEntry] {
+    // タスク登録数の配列にへの代入メソッド
+    private func assignmentNumber(totalTapleCount: (Int, Int, Int, Int)) -> [ChartEntry] {
+        arrayPriority.removeAll()
         var priorityList: [ChartEntry] = []
         priorityList.append(ChartEntry(priority: PriorityEnum.emergencyHighAndImportantHigh.rawValue,
-                                       count: priorityNumber1))
+                                       count: totalTapleCount.0))
         priorityList.append(ChartEntry(priority: PriorityEnum.emergencyHighAndImportantLow.rawValue,
-                                       count: priorityNumber2))
+                                       count: totalTapleCount.1))
         priorityList.append(ChartEntry(priority: PriorityEnum.emergencyLowAndImportantHigh.rawValue,
-                                       count: priorityNumber3))
+                                       count: totalTapleCount.2))
         priorityList.append(ChartEntry(priority: PriorityEnum.emergencyLowAndImportantLow.rawValue,
-                                       count: priorityNumber4))
+                                       count: totalTapleCount.3))
         return priorityList
     }
-}
-
-//    private func totalArrayPriority(arrayPriority: [ChartEntry]) -> [ChartEntry] {
-//        newArrayPriority.removeAll()
-//        var newPriorityList: [ChartEntry] = []
-//        var jugEmergencyHighAndImportantLow: Bool = false
-//        var jugEmergencyLowAndImportantHigh: Bool = false
-//        var jugEmergencyLowAndImportantLow: Bool = false
-//
-//        for item in arrayPriority {
-//            if item.priority == PriorityEnum.emergencyHighAndImportantHigh.rawValue {
-//                newArrayPriority.append(ChartEntry(priority: PriorityEnum.emergencyHighAndImportantHigh.rawValue,
-//                                                   count: 1))
-//            } else {
-//                jugEmergencyHighAndImportantLow = true
-//            }
-//        }
-//        if jugEmergencyHighAndImportantLow == true {
-//            for item in arrayPriority {
-//                if item.priority == PriorityEnum.emergencyHighAndImportantLow.rawValue {
-//                    newArrayPriority.append(ChartEntry(priority: PriorityEnum.emergencyHighAndImportantLow.rawValue,
-//                                                       count: 1))
-//                } else {
-//                    jugEmergencyLowAndImportantHigh = true
-//                }
-//            }
-//        }
-//        if jugEmergencyLowAndImportantHigh == true {
-//            for item in arrayPriority {
-//                if item.priority == PriorityEnum.emergencyLowAndImportantHigh.rawValue {
-//                    newArrayPriority.append(ChartEntry(priority: PriorityEnum.emergencyLowAndImportantHigh.rawValue,
-//                                                       count: 1))
-//                } else {
-//                    jugEmergencyLowAndImportantLow = true
-//                }
-//            }
-//        }
-//        if jugEmergencyLowAndImportantLow == true {
-//            for item in arrayPriority {
-//                if item.priority == PriorityEnum.emergencyLowAndImportantLow.rawValue {
-//                    newPriorityList.append(ChartEntry(priority: PriorityEnum.emergencyLowAndImportantLow.rawValue,
-//                                                      count: 1))
-//                }
-//            }
-//        }
-//        return newPriorityList
-//    }
-// } // SaveViewここまで
+} // SaveViewここまで
 
 struct SaveView_Previews: PreviewProvider {
     static var previews: some View {
