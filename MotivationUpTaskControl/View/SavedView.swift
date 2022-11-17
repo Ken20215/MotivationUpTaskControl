@@ -171,25 +171,25 @@ struct SavedView: View {
 
     // タスク優先度毎の登録数をチェック
     private func selectPriority(items: FetchedResults<Memo>) -> (Int, Int, Int, Int) {
-        var priorityNumberHighHigh = 0
+        var priorityHighHigh = 0
         var priorityHighLow = 0
-        var priorityNumberLowHigh = 0
-        var priorityNumberLowLow = 0
-        var priorityTotalCount: (Int, Int, Int, Int) = (priorityNumberHighHigh,
+        var priorityLowHigh = 0
+        var priorityLowLow = 0
+        var priorityTotalCount: (Int, Int, Int, Int) = (priorityHighHigh,
                                                         priorityHighLow,
-                                                        priorityNumberLowHigh,
-                                                        priorityNumberLowLow)
+                                                        priorityLowHigh,
+                                                        priorityLowLow)
         for item in items {
             if item.priority == PriorityEnum.emergencyHighAndImportantHigh.rawValue {
                 priorityHighHigh += 1
             } else if item.priority == PriorityEnum.emergencyHighAndImportantLow.rawValue {
                 priorityHighLow += 1
             } else if item.priority == PriorityEnum.emergencyLowAndImportantHigh.rawValue {
-                priorityNumberLowHigh += 1
+                priorityLowHigh += 1
             } else {
-                priorityNumberLowLow += 1
+                priorityLowLow += 1
             }
-            priorityTotalCount = (priorityNumber1, priorityNumber2, priorityNumber3, priorityNumber4)
+            priorityTotalCount = (priorityHighHigh, priorityHighLow, priorityLowHigh, priorityLowLow)
         }
         return priorityTotalCount
     } // selectPriorityここまで
