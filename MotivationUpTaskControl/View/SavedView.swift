@@ -175,10 +175,6 @@ struct SavedView: View {
         var priorityHighLow = 0
         var priorityLowHigh = 0
         var priorityLowLow = 0
-        var priorityTotalCount: (Int, Int, Int, Int) = (priorityHighHigh,
-                                                        priorityHighLow,
-                                                        priorityLowHigh,
-                                                        priorityLowLow)
         for item in items {
             if item.priority == PriorityEnum.emergencyHighAndImportantHigh.rawValue {
                 priorityHighHigh += 1
@@ -189,9 +185,8 @@ struct SavedView: View {
             } else {
                 priorityLowLow += 1
             }
-            priorityTotalCount = (priorityHighHigh, priorityHighLow, priorityLowHigh, priorityLowLow)
         }
-        return priorityTotalCount
+        return (priorityHighHigh, priorityHighLow, priorityLowHigh, priorityLowLow)
     } // selectPriorityここまで
 
     // タスク登録数の配列にへの代入メソッド
