@@ -170,7 +170,7 @@ struct SavedView: View {
     }
 
     // タスク優先度毎の登録数をチェック
-    private func selectPriority(items: FetchedResults<Memo>) -> (Int, Int, Int, Int) {
+    private func selectPriority(items: FetchedResults<Memo>) -> (priorityHighHigh: Int, priorityHighLow: Int, priorityLowHigh: Int, priorityLowLow: Int) {
         var priorityHighHigh = 0
         var priorityHighLow = 0
         var priorityLowHigh = 0
@@ -190,17 +190,17 @@ struct SavedView: View {
     } // selectPriorityここまで
 
     // タスク登録数の配列にへの代入メソッド
-    private func assignmentNumber(totalTapleCount: (Int, Int, Int, Int)) -> [ChartEntry] {
+    private func assignmentNumber(totalTapleCount: (priorityHighHigh: Int, priorityHighLow: Int, priorityLowHigh: Int, priorityLowLow: Int)) -> [ChartEntry] {
         arrayPriority.removeAll()
         var priorityList: [ChartEntry] = []
         priorityList.append(ChartEntry(priority: PriorityEnum.emergencyHighAndImportantHigh.rawValue,
-                                       count: totalTapleCount.0))
+                                       count: totalTapleCount.priorityHighHigh))
         priorityList.append(ChartEntry(priority: PriorityEnum.emergencyHighAndImportantLow.rawValue,
-                                       count: totalTapleCount.1))
+                                       count: totalTapleCount.priorityHighLow))
         priorityList.append(ChartEntry(priority: PriorityEnum.emergencyLowAndImportantHigh.rawValue,
-                                       count: totalTapleCount.2))
+                                       count: totalTapleCount.priorityLowHigh))
         priorityList.append(ChartEntry(priority: PriorityEnum.emergencyLowAndImportantLow.rawValue,
-                                       count: totalTapleCount.3))
+                                       count: totalTapleCount.priorityLowLow))
         return priorityList
     }
 } // SaveViewここまで
