@@ -67,7 +67,7 @@ struct TabBarButton: View {
                 if selected == "house" {
                     dipText = "ホーム"
                 } else if selected == "suit.heart.fill" {
-                    dipText = "リスト一覧"
+                    dipText = "タスク一覧"
                 }
             }
         }) {

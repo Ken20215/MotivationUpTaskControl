@@ -6,8 +6,21 @@
 //
 
 import SwiftUI
+import Charts
+
+struct ChartEntry: Identifiable {
+    // 達成度と優先度毎のタスク登録数
+    let id = UUID()
+    var priority: String
+    var count: Int
+}
 
 struct SavedView: View {
+    // CoreDataから値を探してもらう。値を探して見つけた値をFetchedResults<Memo>型のitemsに格納する。
+    @FetchRequest(
+        sortDescriptors: [NSSortDescriptor(keyPath: \Memo.date, ascending: true)],
+        animation: .default)
+    private var items: FetchedResults<Memo>
     @Environment(\.managedObjectContext) private var viewContext
     @Environment(\.dismiss) private var dismiss
     @StateObject private var saveItems = SavedViewModel()
@@ -21,6 +34,8 @@ struct SavedView: View {
     @State private var priorityCategory = PriorityEnum.emergencyHighAndImportantHigh.rawValue
     @State private var index: Int = 0
     @State private var showEdit: Bool = false
+    @State private var showItem: Bool = false
+    @State private var arrayPriority: [ChartEntry] = []
 
     var body: some View {
         Group {
@@ -108,15 +123,86 @@ struct SavedView: View {
                     .padding(.horizontal)
                     .background(Color.black)
                 }
+                AnimatedChart()
                 Spacer()
                 // 編集画面が表示される際に、上のText「Tasks」と優先度を決めるボタンの表示を無くしたい。
                 TaskListView(items: FetchRequest(sortDescriptors: [NSSortDescriptor(keyPath: \Memo.date, ascending: true)],
                                                  predicate: NSPredicate(format: "priority == %@", priorityCategory),
-                                                 animation: .default), showEdit: $showEdit)
+                                                 animation: .default), showEdit: $showEdit,
+                             showItem: $showItem)
                 Spacer()
             } //  VStackここまで
+            .onAppear(perform: {
+                arrayPriority.append(contentsOf: assignmentNumber(totalTapleCount:
+                                                                    selectPriority(items: items)))
+            })
+            .onChange(of: showItem, perform: { item in
+                if item == true {
+                    arrayPriority.append(contentsOf: assignmentNumber(totalTapleCount:
+                                                                        selectPriority(items: items)))
+                    self.showItem = false
+                }
+            })
         } // Groopここまで
     } // var bodyここまで
+
+    //  横棒一つにする（帯グラフにする）
+    //  x軸は達成度にする。y軸を各優先度のタスクの数（Int型）。
+    @ViewBuilder
+    func AnimatedChart() -> some View {
+        Chart {
+            ForEach(arrayPriority) { item in
+                BarMark(
+                    x: .value("Count", item.count)
+                )
+                .foregroundStyle(by: .value("Category", item.priority))
+            }
+        }
+        .chartForegroundStyleScale([
+            PriorityEnum.emergencyHighAndImportantLow.rawValue: .yellow,
+            PriorityEnum.emergencyLowAndImportantLow.rawValue: .blue,
+            PriorityEnum.emergencyLowAndImportantHigh.rawValue: .green,
+            PriorityEnum.emergencyHighAndImportantHigh.rawValue: .red
+        ])
+        .frame(height: 90)
+        .padding(.top)
+        .padding(.horizontal)
+    }
+
+    // タスク優先度毎の登録数をチェック
+    private func selectPriority(items: FetchedResults<Memo>) -> (priorityHighHigh: Int, priorityHighLow: Int, priorityLowHigh: Int, priorityLowLow: Int) {
+        var priorityHighHigh = 0
+        var priorityHighLow = 0
+        var priorityLowHigh = 0
+        var priorityLowLow = 0
+        for item in items {
+            if item.priority == PriorityEnum.emergencyHighAndImportantHigh.rawValue {
+                priorityHighHigh += 1
+            } else if item.priority == PriorityEnum.emergencyHighAndImportantLow.rawValue {
+                priorityHighLow += 1
+            } else if item.priority == PriorityEnum.emergencyLowAndImportantHigh.rawValue {
+                priorityLowHigh += 1
+            } else {
+                priorityLowLow += 1
+            }
+        }
+        return (priorityHighHigh, priorityHighLow, priorityLowHigh, priorityLowLow)
+    } // selectPriorityここまで
+
+    // タスク登録数の配列にへの代入メソッド
+    private func assignmentNumber(totalTapleCount: (priorityHighHigh: Int, priorityHighLow: Int, priorityLowHigh: Int, priorityLowLow: Int)) -> [ChartEntry] {
+        arrayPriority.removeAll()
+        var priorityList: [ChartEntry] = []
+        priorityList.append(ChartEntry(priority: PriorityEnum.emergencyHighAndImportantHigh.rawValue,
+                                       count: totalTapleCount.priorityHighHigh))
+        priorityList.append(ChartEntry(priority: PriorityEnum.emergencyHighAndImportantLow.rawValue,
+                                       count: totalTapleCount.priorityHighLow))
+        priorityList.append(ChartEntry(priority: PriorityEnum.emergencyLowAndImportantHigh.rawValue,
+                                       count: totalTapleCount.priorityLowHigh))
+        priorityList.append(ChartEntry(priority: PriorityEnum.emergencyLowAndImportantLow.rawValue,
+                                       count: totalTapleCount.priorityLowLow))
+        return priorityList
+    }
 } // SaveViewここまで
 
 struct SaveView_Previews: PreviewProvider {

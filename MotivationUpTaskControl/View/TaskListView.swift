@@ -11,8 +11,10 @@ struct TaskListView: View {
     @Environment(\.managedObjectContext) private var viewContext
     @Environment(\.dismiss) private var dismiss
     @StateObject private var saveItems = SavedViewModel()
+    @State var savedItem = SavedView()
     @FetchRequest var items: FetchedResults<Memo>
     @Binding var showEdit: Bool
+    @Binding var showItem: Bool
 
     var body: some View {
         if items.isEmpty {
@@ -41,13 +43,15 @@ struct TaskListView: View {
                                                     .environment(\.locale, Locale.init(identifier: "en_US"))
                                                     .foregroundColor(.red)
                                             } // Vstackここまで
-                                        }
+                                        } // Buttonここまで
                                        }) // NavigationLinkここまで
                     } // ForEachここまで
                     .onDelete { IndexSet in
                         saveItems.deleteItems(offsets: IndexSet,
                                               items: items)
+                        showItem = true
                     } // .onDeleteここまで
+                    // 削除対象
                 } // Listここまで
                 Spacer(minLength: 200)
                     .listStyle(GroupedListStyle())
