@@ -4,14 +4,14 @@
 タスクの重要度によって、優先順位を決めて登録するアプリです。
 4つの重要度に分けており、短期的に達成したい目標や、これから挑戦したいことなどを記録します。
 
-今後はグラフなどを用いてタスク達成度の確認ができるように改善していきます。
+今後は登録したタスクの期日に通知機能を追加する予定です。
 
  <a href="https://speakerdeck.com/ken20215/tasukuapuri-motibesiyonwei-chi"><img alt="紹介スライド" src="https://user-images.githubusercontent.com/90130731/196432434-fe3e8c03-7797-4bcc-9adf-1d9dfa7d2beb.png"></a>
 
 
 ## 2.実行画面
 
-<a href="https://youtube.com/shorts/RsRpHOyPpZs?feature=share"><img width="200" alt="デモ動画" src="https://user-images.githubusercontent.com/90130731/196175922-5f4633a9-4607-4afa-bd38-d0e8262a4106.png"></a>
+<a href="https://youtube.com/shorts/4dgr4d_3mhg"><img width="200" alt="デモ動画" src="https://user-images.githubusercontent.com/90130731/196175922-5f4633a9-4607-4afa-bd38-d0e8262a4106.png"></a>
 
 ## 3.アプリの機能
 ### ホーム画面
@@ -35,8 +35,7 @@
 
 ### タスク一覧画面
 
-<img width="200" src="https://user-images.githubusercontent.com/90130731/195977873-ea3a5f9b-3def-4187-8877-adb488c8ec9f.png">　<img width="200" src="https://user-images.githubusercontent.com/90130731/195977888-4ec60c61-023c-4812-be80-7509bbe64dfe.png">
-
+<img width="200" src="https://user-images.githubusercontent.com/90130731/203468545-b10751bf-8c2e-4d02-873d-78575083d44f.png">　<img width="200" src="https://user-images.githubusercontent.com/90130731/203468601-29ff077d-cb87-4c6b-a9f6-10db2170f322.png">
 
 CoreDataからListとForEachを利用して値を取り出し、登録したタスクを一覧表示します。
 画面上部に優先順位を記したButtonをセットしており、表示させたい優先順位のボタンをタップすると、
@@ -47,9 +46,9 @@ CoreDataからListとForEachを利用して値を取り出し、登録したタ�
 [‎タスクアプリ (モチベーション維持)](https://apps.apple.com/jp/app/%E3%82%BF%E3%82%B9%E3%82%AF%E3%82%A2%E3%83%97%E3%83%AA-%E3%83%A2%E3%83%81%E3%83%99%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3%E7%B6%AD%E6%8C%81/id1634411803)
 
 ## 5.アプリの設計について
-![タスク管理アプリ  フロー図](https://user-images.githubusercontent.com/90130731/197327324-f903021a-7bc6-490f-81ab-7cb04620834e.jpg)
+![タスク管理アプリ  フロー図](https://github.com/Ken20215/MotivationUpTaskControl/files/10096283/1._.4.pdf)
 
-![1期_石岡顕さん (11)](https://user-images.githubusercontent.com/90130731/197327332-af16204d-7ee5-44f9-9578-96c0479adc68.jpg)
+![1期_石岡顕さん (11)](https://github.com/Ken20215/MotivationUpTaskControl/files/10092751/1._.4.pdf)
 
 
 |  ファイル名  | 解説・概要  |
@@ -57,8 +56,8 @@ CoreDataからListとForEachを利用して値を取り出し、登録したタ�
 |  ContentView.swift  |  TabViewを使用し、HomeViewとSaveViewの2画面を管理するView  |
 |  HomeView.swift  |  4つの優先順位毎にタスクを登録するButtonを配置したView。 |
 |  RegistrationView.swift | HomeViewでタップしたButtonの遷移先としてsheetモディファイアを使用。CoreDataを利用し、タスクの件名、内容、期日を登録し優先順位を再設定する項目を表示するView。件名、内容はTextFild、期日はDatePicker、優先順位を再設定する項目はPickerで設定する。 |
-|  SavedView.swift | RegistrationViewで優先順位毎に登録したタスクを、Listで表示を担当するView |
-|  TaskListView.swift |  |
+|  SavedView.swift | RegistrationViewで優先順位毎に登録したタスクをList表示を担当する子ViewのTaskListViewを呼び出し、優先順位毎に登録したタスクのグラフ描画を担当するView |
+|  TaskListView.swift | 登録したタスクのList表示を担当するView |
 |  EditView.swift | SavedViewでList表示されたタスクをタップした際に、タスクの内容と期日を編集を担当するView |
 |  SavedViewModel.swift | リストを削除するメソッドを記述したクラス。 |
 |  RegistrationViewModel.swift | タスクを登録するメソッドを記述したクラス |
@@ -196,7 +195,95 @@ struct SaveView_Previews: PreviewProvider {
 
 ```
 
+### ポイント2.登録タスクをグラフで描画し進捗を確認できるように実装しました。
+CoreDataに登録している登録タスクを優先順位毎にグラフに描画し、現在のタスクを管理できるように実装行いました。
+グラフ描画を行うためにWWDC22で新しく発表されたChartsを利用しました。優先順位毎に色分けをしてグラフ描画します。
 
+登録タスクを識別できるように構造体「ChartEntry」をIdentifiableで宣言。
+
+```Swift
+struct ChartEntry: Identifiable {
+    // 達成度と優先度毎のタスク登録数
+    let id = UUID()
+    var priority: String
+    var count: Int
+}
+```
+
+```Swift
+    @ViewBuilder
+    func AnimatedChart() -> some View {
+        Chart {
+            ForEach(arrayPriority) { item in
+                BarMark(
+                    x: .value("Count", item.count)
+                )
+                .foregroundStyle(by: .value("Category", item.priority))
+            }
+        }
+        .chartForegroundStyleScale([
+            PriorityEnum.emergencyHighAndImportantLow.rawValue: .yellow,
+            PriorityEnum.emergencyLowAndImportantLow.rawValue: .blue,
+            PriorityEnum.emergencyLowAndImportantHigh.rawValue: .green,
+            PriorityEnum.emergencyHighAndImportantHigh.rawValue: .red
+        ])
+        .frame(height: 90)
+        .padding(.top)
+        .padding(.horizontal)
+    }
+```
+
+グラフ描画する為に以下のメソッドを作成しました。
+①CoreDataに登録している優先毎のタスクを列挙型で管理をしている優先順位の文字列を比較させて、
+データがtrueであれば登録したタスクのカウント数として「1」をメソッド内に宣言した優先度を表す変数に代入しました。
+カウントされた値をタプル型で返却を行い、登録タスクの優先度の振り分けを行いました。
+
+```Swift
+    // タスク優先度毎の登録数をチェック
+    private func selectPriority(items: FetchedResults<Memo>) -> (priorityHighHigh: Int, priorityHighLow: Int, priorityLowHigh: Int, priorityLowLow: Int) {
+        var priorityHighHigh = 0
+        var priorityHighLow = 0
+        var priorityLowHigh = 0
+        var priorityLowLow = 0
+        for item in items {
+            if item.priority == PriorityEnum.emergencyHighAndImportantHigh.rawValue {
+                priorityHighHigh += 1
+            } else if item.priority == PriorityEnum.emergencyHighAndImportantLow.rawValue {
+                priorityHighLow += 1
+            } else if item.priority == PriorityEnum.emergencyLowAndImportantHigh.rawValue {
+                priorityLowHigh += 1
+            } else {
+                priorityLowLow += 1
+            }
+        }
+        return (priorityHighHigh, priorityHighLow, priorityLowHigh, priorityLowLow)
+    } // selectPriorityここまで
+```
+
+②グラフに描画する為に@Stateで宣言した配列に「selectPriority」で返却されるタプル型の値を代入させ登録タスクを集計するメソッドです。
+各優先度の登録カウントを引数に指定して「ChartEntry」型の配列で返却します。
+
+```Swift
+    private func assignmentNumber(totalTapleCount: (priorityHighHigh: Int, priorityHighLow: Int, priorityLowHigh: Int, priorityLowLow: Int)) -> [ChartEntry] {
+        arrayPriority.removeAll()
+        var priorityList: [ChartEntry] = []
+        priorityList.append(ChartEntry(priority: PriorityEnum.emergencyHighAndImportantHigh.rawValue,
+                                       count: totalTapleCount.priorityHighHigh))
+        priorityList.append(ChartEntry(priority: PriorityEnum.emergencyHighAndImportantLow.rawValue,
+                                       count: totalTapleCount.priorityHighLow))
+        priorityList.append(ChartEntry(priority: PriorityEnum.emergencyLowAndImportantHigh.rawValue,
+                                       count: totalTapleCount.priorityLowHigh))
+        priorityList.append(ChartEntry(priority: PriorityEnum.emergencyLowAndImportantLow.rawValue,
+                                       count: totalTapleCount.priorityLowLow))
+        return priorityList
+    }
+} // SaveViewここまで
+```
+.onApperと.onChange内で下記記載のarrayPriority配列に代入を行います。
+これでタスク登録一覧画面を開いたタイミングとタスクを削除したタイミングでグラフを再描画することできます。
+```Swift
+    @State private var arrayPriority: [ChartEntry] = []
+```
 
 ## 7.開発環境
 * Xcode14.0.1 

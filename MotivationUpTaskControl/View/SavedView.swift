@@ -170,6 +170,7 @@ struct SavedView: View {
     }
 
     // タスク優先度毎の登録数をチェック
+    // タプル型で返却する。戻り値にラベルを指定することができる。
     private func selectPriority(items: FetchedResults<Memo>) -> (priorityHighHigh: Int, priorityHighLow: Int, priorityLowHigh: Int, priorityLowLow: Int) {
         var priorityHighHigh = 0
         var priorityHighLow = 0
