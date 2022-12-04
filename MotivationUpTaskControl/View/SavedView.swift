@@ -31,6 +31,7 @@ struct SavedView: View {
         PriorityEnum.emergencyLowAndImportantLow.rawValue,
         PriorityEnum.emergencyLowAndImportantHigh.rawValue
     ]
+    // 列挙型で管理した優先度の名称をインスタンス
     @State private var priorityCategory = PriorityEnum.emergencyHighAndImportantHigh.rawValue
     @State private var index: Int = 0
     @State private var showEdit: Bool = false
