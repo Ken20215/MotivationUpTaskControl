@@ -6,7 +6,7 @@
 
 今後は登録したタスクの期日に通知機能を追加する予定です。
 
- <a href="https://speakerdeck.com/ken20215/tasukuapuri-motibesiyonwei-chi"><img alt="紹介スライド" src="https://user-images.githubusercontent.com/90130731/196432434-fe3e8c03-7797-4bcc-9adf-1d9dfa7d2beb.png"></a>
+ <a href="https://speakerdeck.com/ken20215/tasukuahuri-motihesiyonwei-chi-shao-jie-suraito"><img alt="紹介スライド" src="https://user-images.githubusercontent.com/90130731/206172803-4fb90269-7589-4959-acfb-d78cf7a75465.png"></a>
 
 
 ## 2.実行画面
