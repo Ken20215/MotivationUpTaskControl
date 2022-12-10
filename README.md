@@ -11,7 +11,10 @@
 
 ## 2.実行画面
 
-<a href="https://youtube.com/shorts/4dgr4d_3mhg"><img width="300" alt="デモ動画" src="https://user-images.githubusercontent.com/90130731/206699050-c237e7dd-8f99-45c5-a73a-8f68f898695b.png"></a>
+<a href="https://youtube.com/shorts/4dgr4d_3mhg"><img width="200" alt="デモ動画" src="https://user-images.githubusercontent.com/90130731/206834335-945bd448-fa93-414f-ae46-b14528c20e50.png"></a>
+  ↑
+画像をクリックをしてアプリを操作している動画をご確認いただけます。
+
 
 ## 3.アプリの機能
 ### ホーム画面
