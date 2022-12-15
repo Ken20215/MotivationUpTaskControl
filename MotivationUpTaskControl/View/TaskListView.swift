@@ -25,6 +25,7 @@ struct TaskListView: View {
                 .foregroundColor(Color.orange)
         } else {
             NavigationView {
+                // List表示する
                 List {
                     ForEach(items, id: \.self) { item in
                         NavigationLink(destination: EditMemoView(edititem: item),
