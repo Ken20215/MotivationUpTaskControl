@@ -104,9 +104,9 @@ struct HomeView: View {
                 Spacer()
             } // Vstackここまで
             .navigationBarTitle("Task")
-        }
-    }
-}
+        } // Zstackここまで
+    } // var bodyここまで
+} // HomeViewここまで
 
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
