@@ -18,7 +18,7 @@ struct HomeView: View {
         ZStack {
             VStack {
                 HStack {
-                    Text("達成させるタスクを入力しよう！!")
+                    Text("達成させるタスクを入力しよう!！!")
                         .font(.system(size: 20, weight: .bold, design: .default))
                         .foregroundColor(Color.orange)
                         .padding(.horizontal)
